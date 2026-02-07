@@ -424,10 +424,14 @@
       line-height: 1.3;
     }
 
-    /* Mobile only: hide tooltips */
+    /* Mobile only: hide tooltips by default, show only when visible */
     @media (max-width: 768px) {
       .pictogram-tooltip-box {
         display: none !important;
+      }
+      
+      .pictogram-tooltip-box.visible {
+        display: flex !important;
       }
     }
 
@@ -916,16 +920,38 @@
       
       span.appendChild(tooltip);
       
+      // Desktop: hover behavior (mouseenter/mouseleave)
       span.addEventListener('mouseenter', () => {
-        tooltip.classList.add('visible');
+        if (window.innerWidth > 768) {
+          tooltip.classList.add('visible');
+        }
       });
       
       span.addEventListener('mouseleave', () => {
-        tooltip.classList.remove('visible');
+        if (window.innerWidth > 768) {
+          tooltip.classList.remove('visible');
+        }
+      });
+      
+      // Mobile: tap/click behavior (toggle on click)
+      span.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          tooltip.classList.toggle('visible');
+        }
       });
       
       return span;
     }
+    
+    // Close all pictogram tooltips when clicking outside
+    document.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.pictogram-tooltip-box.visible').forEach(tooltip => {
+          tooltip.classList.remove('visible');
+        });
+      }
+    });
 
     // Function to update demo content based on current language
     function updateDemoContent() {
