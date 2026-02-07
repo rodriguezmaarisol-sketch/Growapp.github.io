@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GROW APP - Educación Inclusiva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff') format('woff');
+      font-weight: normal;
+    }
+    
+    @font-face {
+      font-family: 'OpenDyslexic';
+      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Bold.woff') format('woff');
+      font-weight: bold;
+    }
+    
+    .font-dyslexic {
+      font-family: 'OpenDyslexic', 'Montserrat', sans-serif;
+    }
+    
+    .font-main {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .font-body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #FFFAF2 0%, #FFE4C4 50%, #FFFAF2 100%);
+    }
+
+    .coming-soon-gradient {
+      background: linear-gradient(135deg, #FFFAF2 0%, #FFE4C4 50%, #FFFAF2 100%);
+    }
+    
+    .card-shadow {
+      box-shadow: 0 8px 32px rgba(244, 116, 5, 0.15);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(242, 116, 5, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(242, 116, 5, 0.6); }
+    }
+    
+    .slide-in {
+      animation: slideIn 0.8s ease-out forwards;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .portal-container {
+      perspective: 1000px;
+    }
+
+    .portal-frame {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    .portal-arch {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 4px solid #F27405;
+      border-radius: 50% 50% 0% 0%;
+      opacity: 0.8;
+      animation: archGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes archGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(242, 116, 5, 0.3), inset 0 0 30px rgba(242, 116, 5, 0.1);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(242, 116, 5, 0.6), inset 0 0 50px rgba(242, 116, 5, 0.2);
+      }
+    }
+
+    .portal-view {
+      position: absolute;
+      width: 95%;
+      height: 95%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border-radius: 45% 45% 0% 0%;
+      overflow: hidden;
+    }
+
+    .horizon-sun {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #FFB142 0%, #F27405 100%);
+      border-radius: 50%;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: sunRise 4s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(255, 177, 66, 0.5);
+    }
+
+    @keyframes sunRise {
+      0%, 100% {
+        bottom: 15%;
+        opacity: 0.7;
+      }
+      50% {
+        bottom: 25%;
+        opacity: 1;
+      }
+    }
+
+    .horizon-line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FFB142, transparent);
+      bottom: 30%;
+      animation: horizonGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes horizonGlow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    .portal-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #FFB142;
+      border-radius: 50%;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    .star-1 {
+      top: 20%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .star-2 {
+      top: 30%;
+      right: 25%;
+      animation-delay: 0.5s;
+    }
+
+    .star-3 {
+      top: 15%;
+      right: 15%;
+      animation-delay: 1s;
+    }
+
+    .star-4 {
+      top: 40%;
+      left: 15%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .portal-base {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 8%;
+      background: linear-gradient(90deg, #F27405 0%, #FFB142 50%, #F27405 100%);
+      border-radius: 50% 50% 0 0;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #F27405;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
+      background-color: white;
+      color: #2C3E50;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #FFB142;
+      box-shadow: 0 0 0 4px rgba(242, 116, 5, 0.1);
+      background-color: #FFFAF2;
+    }
+
+    .input-field::placeholder {
+      color: #2C3E50;
+      opacity: 0.6;
+    }
+
+    textarea.input-field {
+      resize: vertical;
+      min-height: 140px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      background-color: #F27405;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      background-color: #d95f00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(242, 116, 5, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn.loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .status-message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      margin-top: 12px;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .status-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .demo-text {
+      transition: all 0.5s ease;
+    }
+
+    .pictogram-word {
+      position: relative;
+      cursor: help;
+      border-bottom: 2px dotted #F27405;
+      padding: 2px 0;
+      display: inline-block;
+    }
+
+    .pictogram-tooltip-box {
+      position: absolute;
+      background-color: #F27405;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-family: 'Open Sans', sans-serif;
+      white-space: normal;
+      width: max-content;
+      max-width: 140px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 10000;
+      box-shadow: 0 4px 12px rgba(242, 116, 5, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+    }
+
+    .pictogram-tooltip-box.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(-12px);
+    }
+
+    .pictogram-tooltip-box::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #F27405;
+    }
+
+    .pictogram-emoji {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .pictogram-tooltip-text {
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(244, 116, 5, 0.25);
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn.active {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #accessible-text {
+      font-family: 'OpenDyslexic', 'Open Sans', sans-serif;
+    }
+    
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 768px) {
+      .coming-soon-container {
+        flex-direction: column-reverse;
+      }
+
+      .portal-frame {
+        max-width: 300px;
+        aspect-ratio: 1;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+ </head>
+ <body class="h-full font-body" style="background-color: #FFFAF2; color: #2C3E50;">
+  <div id="app-wrapper" class="w-full h-full overflow-auto">
+   <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-95 backdrop-blur-sm" style="background-color: #FFFAF2;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center py-4">
+      <div class="flex items-center gap-3">
+       <span class="font-dyslexic font-bold text-4xl" style="color: #F27405;">GROW APP</span>
+      </div>
+      <div class="flex items-center gap-8">
+       <!-- Language Toggle Button -->
+       <div class="flex items-center gap-2 bg-white rounded-full p-1" style="border: 2px solid #F27405;">
+        <button id="lang-es" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="background-color: #F27405; color: white;">ES</button>
+        <button id="lang-en" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="color: #F27405;">EN</button>
+       </div>
+       <div class="hidden md:flex items-center gap-8 font-main font-medium">
+        <a href="#problema" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_problema">Problema</a>
+        <a href="#solucion" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_solucion">Solución</a>
+        <a href="#demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_demo">Demo</a>
+        <a href="#contacto" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;" data-i18n="nav_conectar">Conectar</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+
+   <!-- Hero Section -->
+   <section class="hero-gradient min-h-screen flex items-center pt-6 relative overflow-hidden">
+    <div class="absolute top-20 right-10 w-32 h-32 rounded-full opacity-20 floating" style="background-color: #F27405;"></div>
+    <div class="absolute bottom-40 left-10 w-24 h-24 rounded-full opacity-15 floating" style="background-color: #FFB142; animation-delay: -3s;"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="slide-in text-center">
+       <img src="images/logo.png" alt="GROW APP" class="w-auto inline-block" style="height: 280px; margin-bottom: -12px;">
+       <h1 class="font-dyslexic text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6" style="color: #2C3E50;" data-i18n="hero_title">Tu código postal no debería determinar tu futuro.</h1>
+       <p class="font-body text-base sm:text-lg leading-relaxed mb-4 opacity-90 text-justify" data-i18n="hero_subtitle">Somos el espacio virtual donde el TDAH y la dislexia encuentran su propio ritmo y sus propias herramientas. Es la puerta abierta para que tu talento brille sin etiquetas, asegurando que el acceso al conocimiento sea, por fin, una oportunidad real para todos.</p>
+       <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#demo" class="px-8 py-4 rounded-full font-main font-bold text-white text-lg transition-all hover:scale-105 hover:shadow-lg" style="background-color: #F27405;" data-i18n="hero_btn_demo">Explorar Demo</a>
+        <a href="#problema" class="px-8 py-4 rounded-full font-main font-semibold border-2 transition-all hover:scale-105" style="border-color: #F27405; color: #F27405;" data-i18n="hero_btn_more">Conocer Más</a>
+       </div>
+      </div>
+      <!-- Hero Visual -->
+      <div class="relative flex justify-center lg:justify-end">
+       <div class="relative w-80 h-96 rounded-3xl card-shadow p-6 floating" style="background-color: white;">
+        <!-- Mock App Interface -->
+        <div class="flex items-center gap-3 mb-4">
+         <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: #F27405;">
+          <span class="text-white text-lg">🌱</span>
+         </div>
+         <div>
+          <div class="font-dyslexic font-bold text-sm">GROW APP</div>
+          <div class="text-xs opacity-60">Modo Accesible</div>
+         </div>
+        </div>
+        <div class="space-y-3 mb-4">
+         <div class="h-4 rounded-full w-full" style="background-color: #FFB142;"></div>
+         <div class="h-4 rounded-full w-3/4" style="background-color: #FFB142; opacity: 0.7;"></div>
+         <div class="h-4 rounded-full w-5/6" style="background-color: #FFB142; opacity: 0.5;"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mb-4">
+         <div class="aspect-square rounded-xl flex items-center justify-center text-2xl" style="background-color: #FFFAF2;">📖</div>
+         <div class="aspect-square rounded-xl flex items-center justify-center text-2xl" style="background-color: #FFFAF2;">🎨</div>
+         <div class="aspect-square rounded-xl flex items-center justify-center text-2xl" style="background-color: #FFFAF2;">✨</div>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+         <div class="flex items-center justify-between p-3 rounded-xl" style="background-color: #F27405;">
+          <span class="text-white font-main font-semibold text-sm">Iniciar Sesion</span>
+          <span class="text-white">→</span>
+         </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="absolute -top-4 -right-4 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-lg" style="background-color: #FFB142;">⭐</div>
+        <div class="absolute -bottom-4 -left-4 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-lg" style="background-color: white;">🎯</div>
+       </div>
+      </div>
+     </div>
+     <!-- Scroll Indicator -->
+     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+      <div class="w-8 h-12 rounded-full border-2 flex items-start justify-center p-2" style="border-color: #F27405;">
+       <div class="w-1.5 h-3 rounded-full" style="background-color: #F27405;"></div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Coming Soon Section -->
+   <section class="coming-soon-gradient min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-7xl mx-auto">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start w-full">
+      <div class="slide-in-left w-full">
+       <div class="portal-frame">
+        <div class="portal-arch"></div>
+        <div class="portal-view">
+         <div class="portal-star star-1"></div>
+         <div class="portal-star star-2"></div>
+         <div class="portal-star star-3"></div>
+         <div class="portal-star star-4"></div>
+         <div class="horizon-line"></div>
+         <div class="horizon-sun"></div>
+        </div>
+        <div class="portal-base"></div>
+       </div>
+      </div>
+      <div class="slide-in-right w-full">
+       <h2 class="font-dyslexic text-4xl sm:text-5xl font-bold leading-tight mb-4" style="color: #2C3E50;" data-i18n="comingsoon_title">Proximamente: Un lugar diseñado para que aprender sea disfrutar.</h2>
+       <p class="font-main font-semibold text-lg mb-6 text-justify" style="color: #F27405;" data-i18n="comingsoon_subtitle">Sabemos que el sistema actual no siempre habla nuestro idioma. Por eso, estamos diseñando GROW APP como un refugio donde el TDAH y la dislexia no sean etiquetas, sino formas distintas de ver el mundo.</p>
+       <p class="font-body text-lg leading-relaxed mb-8 opacity-90 text-justify" data-i18n="comingsoon_description">El portal está casi listo, pero queremos que los cimientos tengan tu voz. No estamos haciendo solo una app; estamos creando la herramienta que a muchos de nosotros nos hubiera gustado tener.</p>
+       <form class="space-y-6" action="https://formspree.io/f/xnjbqpwg" method="POST" id="contact-form">
+        <div>
+         <label for="email" class="block font-main font-semibold text-sm mb-3" style="color: #2C3E50;" data-i18n="form_email_label">📧 E-mail (opcional)</label>
+         <input type="email" id="email" name="email" class="input-field" placeholder="tu@email.com">
+        </div>
+        <div>
+         <label for="feedback" class="block font-main font-semibold text-sm mb-3" style="color: #2C3E50;" data-i18n="form_feedback_label">💭 Ayudanos a diseñarla</label>
+         <textarea id="feedback" name="message" class="input-field" placeholder="¿Qué herramienta te falta para estudiar mejor?" required data-i18n="form_feedback_placeholder"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" data-i18n="form_submit">Quiero ser parte del estreno</button>
+       </form>
+       <div id="form-message" class="mt-4 p-4 rounded-lg hidden" style="background-color: rgba(242, 116, 5, 0.1); color: #2C3E50;"></div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Problem Section -->
+   <section id="problema" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #2C3E50;">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: #F27405; color: white;" data-i18n="problem_badge">⚠️ El Problema</span>
+      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="problem_title">La Doble Exclusión</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="rounded-3xl p-8 card-shadow" style="background-color: #FFFAF2;">
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6" style="background-color: #FFB142;">📍</div>
+       <h3 class="font-dyslexic text-2xl font-bold mb-4" style="color: #2C3E50;" data-i18n="problem_geo_title">Barrera Geográfica</h3>
+       <p class="font-body text-lg opacity-80 mb-6" style="color: #2C3E50;" data-i18n="problem_geo_desc">La distancia física separa a los estudiantes rurales de las oportunidades educativas.</p>
+      </div>
+      <div class="rounded-3xl p-8 card-shadow" style="background-color: #FFFAF2;">
+       <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6" style="background-color: #FFB142;">🧠</div>
+       <h3 class="font-dyslexic text-2xl font-bold mb-4" style="color: #2C3E50;" data-i18n="problem_cog_title">Barrera Cognitiva</h3>
+       <p class="font-body text-lg opacity-80 mb-6" style="color: #2C3E50;" data-i18n="problem_cog_desc">Para estudiantes con TDAH y dislexia, el sistema no ofrece herramientas adecuadas.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Solution Section -->
+   <section id="solucion" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: #FFB142; color: #2C3E50;" data-i18n="solution_badge">✅ La Solución</span>
+      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" style="color: #2C3E50;" data-i18n="solution_title">GROW APP: Tres Pilares de Inclusión</h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="rounded-3xl p-8 card-shadow" style="background-color: white;">
+       <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 mx-auto" style="background-color: #F27405;">👀</div>
+       <h3 class="font-dyslexic text-xl font-bold text-center mb-4" style="color: #2C3E50;" data-i18n="solution_pillar1">Alfabetización Visual</h3>
+      </div>
+      <div class="rounded-3xl p-8 card-shadow" style="background-color: white;">
+       <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 mx-auto" style="background-color: #F27405;">⚙️</div>
+       <h3 class="font-dyslexic text-xl font-bold text-center mb-4" style="color: #2C3E50;" data-i18n="solution_pillar2">Herramientas Accesibles</h3>
+      </div>
+      <div class="rounded-3xl p-8 card-shadow" style="background-color: white;">
+       <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6 mx-auto" style="background-color: #F27405;">🌐</div>
+       <h3 class="font-dyslexic text-xl font-bold text-center mb-4" style="color: #2C3E50;" data-i18n="solution_pillar3">Acceso Federal</h3>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Demo Section -->
+   <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #FFB142 0%, #F27405 100%);">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: white; color: #F27405;" data-i18n="demo_badge">🎮 Demo Interactiva</span>
+      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="demo_title">Experimenta el Modo Accesible</h2>
+     </div>
+     <div class="max-w-6xl mx-auto">
+      <!-- Invitation Text -->
+      <p class="font-main text-2xl font-bold text-white mb-8 text-center max-w-2xl mx-auto" data-i18n="demo_invitation">Te invito a experimentar como la tecnologia puede cambiar la percepcion de un estudiante.</p>
+      <!-- Pictogram Instructions -->
+      <p class="font-body text-base text-white text-opacity-85 mb-8 text-center" data-i18n="demo_instructions">Pasa el cursor sobre las palabras subrayadas en naranja para ver los pictogramas con explicaciones sencillas</p>
+      <!-- Toggle Switch -->
+      <div class="flex justify-center items-center gap-4 mb-12">
+       <span id="mode-standard" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500" style="background-color: #FFB142; color: #2C3E50;" data-i18n="demo_mode_standard">📄 Estandar</span>
+       <button id="card-toggle-switch" class="relative inline-flex items-center h-8 w-14 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 flex-shrink-0" style="background-color: #E0E0E0; focus-ring-color: #F27405;">
+        <span id="toggle-switch-dot" class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform" style="margin-left: 2px;"></span>
+       </button>
+       <span id="mode-accessible" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500 opacity-60" style="color: white;" data-i18n="demo_mode_accessible">Modo GROW APP</span>
+      </div>
+      <!-- Demo Cards Grid - Side by Side Comparison -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+       <!-- Card 1: Standard (left) - Always stays the same -->
+       <div class="rounded-3xl p-8 card-shadow transition-all duration-300 feature-card" style="background-color: white;">
+        <div class="flex items-center gap-3 mb-6">
+         <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: #2C3E50;"><span class="text-white">📄</span></div>
+         <span class="font-main font-bold" style="color: #2C3E50;" data-i18n="demo_card_standard">Texto Estandar</span>
+        </div>
+        <div class="demo-text font-body leading-relaxed" style="color: #2C3E50;" id="demo-standard-content">
+         <p class="mb-4" data-i18n="demo_standard_p1">La educacion inclusiva es un derecho fundamental que debe garantizarse para todos los estudiantes, independientemente de sus capacidades o ubicacion geografica.</p>
+         <p data-i18n="demo_standard_p2">Sin embargo, muchos ninos y jovenes con dislexia y TDAH enfrentan barreras significativas que limitan su aprendizaje efectivo.</p>
+        </div>
+       </div>
+       <!-- Card 2: Modo GROW APP Comparison (right) -->
+       <div class="rounded-3xl p-8 card-shadow transition-all duration-500 feature-card" id="accessible-card" style="background-color: white;">
+        <div class="flex items-center gap-3 mb-6">
+         <div id="accessible-card-icon" class="w-10 h-10 rounded-xl flex items-center justify-center transition-all" style="background-color: #2C3E50;"><span id="accessible-card-icon-text" class="text-white">📄</span></div>
+         <span id="accessible-card-title" class="font-main font-bold transition-all" style="color: #2C3E50;" data-i18n="demo_card_accessible">Texto en Modo GROW APP</span>
+        </div>
+        <div id="accessible-demo-content" class="demo-text font-body leading-relaxed transition-all" style="color: #2C3E50;">
+         <p class="mb-4" data-i18n="demo_card_description">Activa el toggle para ver como se transforma el contenido con pictogramas, colores y la fuente OpenDyslexic.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- About Marisol Section -->
+   <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+     <div class="mb-16">
+      <h2 class="font-dyslexic text-2xl md:text-4xl font-bold" style="color: #2C3E50;" data-i18n="about_title">🌾 I Grew Up in Rurality, But Not Alone</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- Text Content -->
+      <div>
+       <div class="space-y-6">
+        <div>
+         <h3 class="font-dyslexic font-bold text-xl mb-3" style="color: #2C3E50;" data-i18n="about_roots_title">🏠 My Roots</h3>
+         <p class="font-body text-lg leading-relaxed text-justify" style="color: #2C3E50;" data-i18n="about_roots_text">I grew up in a rural environment, in Comandante Nicanor Otamendi, a small town in the heart of the Argentine countryside, where educational opportunities are not always within reach. From a young age, I understood that learning often means traveling further than others.</p>
+        </div>
+        <div>
+         <h3 class="font-dyslexic font-bold text-xl mb-3" style="color: #2C3E50;" data-i18n="about_obstacle_title">🚧 The First Obstacle</h3>
+         <p class="font-body text-lg leading-relaxed text-justify" style="color: #2C3E50;" data-i18n="about_obstacle_text">To access higher education, I had to make a difficult decision: move more than 500 km away from my home. This experience taught me that distance is the first major barrier to learning, but it's not the only one.</p>
+        </div>
+        <div>
+         <h3 class="font-dyslexic font-bold text-xl mb-3" style="color: #2C3E50;" data-i18n="about_epiphany_title">💡 The Epiphany</h3>
+         <p class="font-body text-lg leading-relaxed text-justify" style="color: #2C3E50;" data-i18n="about_epiphany_text">At school I saw something I couldn't ignore: talented classmates who became frustrated with simple tasks, others who avoided reading aloud, and many who struggled against invisible barriers.</p>
+        </div>
+       </div>
+      </div>
+      <!-- Image/Visual -->
+      <div class="relative">
+       <div class="aspect-square max-w-md mx-auto rounded-3xl overflow-hidden card-shadow" style="background: linear-gradient(135deg, #FFB142 0%, #F27405 100%);">
+        <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+         <img src="images/profile.jpg" alt="Marisol Rodriguez" class="w-56 h-56 rounded-full object-cover mb-6">
+         <h3 class="font-dyslexic text-2xl font-bold text-white mb-2">Marisol Rodriguez</h3>
+         <p class="text-white text-opacity-90 font-main" data-i18n="about_role">International Relations Student</p>
+         <p class="text-white text-opacity-80 text-sm mt-1" data-i18n="about_university">Universidad Austral, Argentina</p>
+         <div class="flex gap-2 mt-4 justify-center"><span class="px-3 py-1 rounded-full bg-white bg-opacity-20 text-white text-xs font-medium">🌍 International Relations</span></div>
+        </div>
+       </div>
+       <!-- Decorative -->
+       <div class="absolute -bottom-6 -right-6 w-24 h-24 rounded-2xl flex items-center justify-center text-4xl card-shadow" style="background-color: white;">🎓</div>
+      </div>
+     </div>
+     <!-- Impact Quote -->
+     <div class="mt-12 p-8 rounded-2xl" style="background-color: #FFB142;">
+      <p class="font-main font-semibold italic text-lg" style="color: #2C3E50;" data-i18n="about_quote">"It wasn't about effort. It was a lack of tools that adapted to them. That's when I knew education could be different. That was the moment GROW APP was born."</p>
+     </div>
+    </div>
+   </section>
+
+   <!-- CTA Section -->
+   <section id="contacto" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #2C3E50;">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="cta_title">Sigamos Construyendo Puentes Juntos</h2>
+     <p class="font-body text-xl text-white text-opacity-80 mb-8" data-i18n="cta_subtitle">Estoy convencida de que la educación de calidad debe ser, por definición, inclusiva.</p>
+     <div class="flex flex-wrap justify-center gap-4">
+      <a href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" class="px-6 py-3 rounded-full font-main font-bold text-white transition-all hover:scale-105" style="background-color: #F27405;" data-i18n="social_linkedin">LinkedIn</a>
+      <a href="mailto:rodriguezmaarisol@gmail.com" class="px-6 py-3 rounded-full font-main font-bold transition-all hover:scale-105" style="background-color: #FFB142; color: #2C3E50;" data-i18n="social_gmail">Gmail</a>
+     </div>
+    </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t" style="background-color: #FFFAF2; border-color: rgba(44, 62, 80, 0.1);">
+    <div class="max-w-7xl mx-auto text-center">
+     <p class="font-body text-sm opacity-70" style="color: #2C3E50;" data-i18n="footer_text">2026 Marisol Rodriguez | Grow App</p>
+    </div>
+   </footer>
+  </div>
+
+  <script>
+    // Translation dictionary
+    const translations = {
+      es: {
+        nav_problema: 'Problema',
+        nav_solucion: 'Solución',
+        nav_demo: 'Demo',
+        nav_conectar: 'Conectar',
+        hero_title: 'Tu código postal no debería determinar tu futuro.',
+        hero_subtitle: 'Somos el espacio virtual donde el TDAH y la dislexia encuentran su propio ritmo y sus propias herramientas. Es la puerta abierta para que tu talento brille sin etiquetas, asegurando que el acceso al conocimiento sea, por fin, una oportunidad real para todos.',
+        hero_btn_demo: 'Explorar Demo',
+        hero_btn_more: 'Conocer Más',
+        comingsoon_title: 'Proximamente: Un lugar diseñado para que aprender sea disfrutar.',
+        comingsoon_subtitle: 'Sabemos que el sistema actual no siempre habla nuestro idioma. Por eso, estamos diseñando GROW APP como un refugio donde el TDAH y la dislexia no sean etiquetas, sino formas distintas de ver el mundo.',
+        comingsoon_description: 'El portal está casi listo, pero queremos que los cimientos tengan tu voz. No estamos haciendo solo una app; estamos creando la herramienta que a muchos de nosotros nos hubiera gustado tener.',
+        form_email_label: '📧 E-mail (opcional)',
+        form_feedback_label: '💭 Ayudanos a diseñarla',
+        form_feedback_placeholder: '¿Qué herramienta te falta para estudiar mejor?',
+        form_submit: 'Quiero ser parte del estreno',
+        problem_badge: '⚠️ El Problema',
+        problem_title: 'La Doble Exclusión',
+        problem_geo_title: 'Barrera Geográfica',
+        problem_geo_desc: 'La distancia física separa a los estudiantes rurales de las oportunidades educativas.',
+        problem_cog_title: 'Barrera Cognitiva',
+        problem_cog_desc: 'Para estudiantes con TDAH y dislexia, el sistema no ofrece herramientas adecuadas.',
+        solution_badge: '✅ La Solución',
+        solution_title: 'GROW APP: Tres Pilares de Inclusión',
+        solution_pillar1: 'Alfabetización Visual',
+        solution_pillar2: 'Herramientas Accesibles',
+        solution_pillar3: 'Acceso Federal',
+        demo_badge: '🎮 Demo Interactiva',
+        demo_title: 'Experimenta el Modo Accesible',
+        demo_invitation: 'Te invito a experimentar como la tecnologia puede cambiar la percepcion de un estudiante.',
+        demo_instructions: 'Pasa el cursor sobre las palabras subrayadas en naranja para ver los pictogramas con explicaciones sencillas',
+        demo_mode_standard: '📄 Estandar',
+        demo_mode_accessible: 'Modo GROW APP',
+        demo_card_standard: 'Texto Estandar',
+        demo_card_accessible: 'Texto en Modo GROW APP',
+        demo_card_description: 'Activa el toggle para ver como se transforma el contenido con pictogramas, colores y la fuente OpenDyslexic.',
+        demo_standard_p1: 'La educacion inclusiva es un derecho fundamental que debe garantizarse para todos los estudiantes, independientemente de sus capacidades o ubicacion geografica.',
+        demo_standard_p2: 'Sin embargo, muchos ninos y jovenes con dislexia y TDAH enfrentan barreras significativas que limitan su aprendizaje efectivo.',
+        cta_title: 'Sigamos Construyendo Puentes Juntos',
+        cta_subtitle: 'Estoy convencida de que la educación de calidad debe ser, por definición, inclusiva.',
+        social_linkedin: 'LinkedIn',
+        social_gmail: 'Gmail',
+        about_title: '🌾 Crecí en la Ruralidad, Pero No Solo',
+        about_roots_title: '🏠 Mis Raíces',
+        about_roots_text: 'Crecí en un entorno rural, en Comandante Nicanor Otamendi, una pequeña localidad en el corazón del campo argentino, donde las oportunidades educativas no siempre están al alcance. Desde pequeña entendí que aprender a menudo significa viajar más lejos que otros.',
+        about_obstacle_title: '🚧 El Primer Obstáculo',
+        about_obstacle_text: 'Para acceder a la educación superior, tuve que tomar una decisión difícil: mudarme más de 500 km de mi hogar. Esta experiencia me enseñó que la distancia es la primera gran barrera del aprendizaje, pero no la única.',
+        about_epiphany_title: '💡 La Epifanía',
+        about_epiphany_text: 'En la escuela vi algo que no podía ignorar: compañeros talentosos que se frustraban con tareas simples, otros que evitaban leer en voz alta, y muchos que luchaban contra barreras invisibles.',
+        about_role: 'Estudiante de Relaciones Internacionales',
+        about_university: 'Universidad Austral, Argentina',
+        about_quote: '"No era sobre esfuerzo. Era la falta de herramientas que se adaptaran a ellos. Ahí supe que la educación podía ser diferente. Ese fue el momento en que nació GROW APP."',
+        footer_text: '2026 Marisol Rodriguez | Grow App'
+      },
+      en: {
+        nav_problema: 'Problem',
+        nav_solucion: 'Solution',
+        nav_demo: 'Demo',
+        nav_conectar: 'Connect',
+        hero_title: 'Your zip code should not determine your future.',
+        hero_subtitle: 'We are the virtual space where ADHD and dyslexia find their own rhythm and their own tools. It is the open door for your talent to shine without labels, ensuring that access to knowledge is, at last, a real opportunity for all.',
+        hero_btn_demo: 'Explore Demo',
+        hero_btn_more: 'Learn More',
+        comingsoon_title: 'Coming Soon: A place designed for learning to be enjoyable.',
+        comingsoon_subtitle: 'We know the current system does not always speak our language. That is why we are designing GROW APP as a refuge where ADHD and dyslexia are not labels, but different ways of seeing the world.',
+        comingsoon_description: 'The portal is almost ready, but we want the foundation to have your voice. We are not just building an app; we are creating the tool that many of us would have liked to have.',
+        form_email_label: '📧 Email (optional)',
+        form_feedback_label: '💭 Help us design it',
+        form_feedback_placeholder: 'What tool do you need to study better?',
+        form_submit: 'I want to be part of the launch',
+        problem_badge: '⚠️ The Problem',
+        problem_title: 'The Double Exclusion',
+        problem_geo_title: 'Geographic Barrier',
+        problem_geo_desc: 'Physical distance separates rural students from educational opportunities.',
+        problem_cog_title: 'Cognitive Barrier',
+        problem_cog_desc: 'For students with ADHD and dyslexia, the system does not offer adequate tools.',
+        solution_badge: '✅ The Solution',
+        solution_title: 'GROW APP: Three Pillars of Inclusion',
+        solution_pillar1: 'Visual Literacy',
+        solution_pillar2: 'Accessible Tools',
+        solution_pillar3: 'Federal Access',
+        demo_badge: '🎮 Interactive Demo',
+        demo_title: 'Experience Accessible Mode',
+        demo_invitation: 'I invite you to experience how technology can change how a student perceives learning.',
+        demo_instructions: 'Hover over the words underlined in orange to see pictograms with simple explanations',
+        demo_mode_standard: '📄 Standard',
+        demo_mode_accessible: 'GROW APP Mode',
+        demo_card_standard: 'Standard Text',
+        demo_card_accessible: 'Text in GROW APP Mode',
+        demo_card_description: 'Activate the toggle to see how the content transforms with pictograms, colors and OpenDyslexic font.',
+        demo_standard_p1: 'Inclusive education is a fundamental right that must be guaranteed for all students, regardless of their abilities or geographic location.',
+        demo_standard_p2: 'However, many children and young people with dyslexia and ADHD face significant barriers that limit their effective learning.',
+        cta_title: 'Let\'s Keep Building Bridges Together',
+        cta_subtitle: 'I am convinced that quality education must be, by definition, inclusive.',
+        social_linkedin: 'LinkedIn',
+        social_gmail: 'Gmail',
+        about_title: '🌾 I Grew Up in Rurality, But Not Alone',
+        about_roots_title: '🏠 My Roots',
+        about_roots_text: 'I grew up in a rural environment, in Comandante Nicanor Otamendi, a small town in the heart of the Argentine countryside, where educational opportunities are not always within reach. From a young age, I understood that learning often means traveling further than others.',
+        about_obstacle_title: '🚧 The First Obstacle',
+        about_obstacle_text: 'To access higher education, I had to make a difficult decision: move more than 500 km away from my home. This experience taught me that distance is the first major barrier to learning, but it\'s not the only one.',
+        about_epiphany_title: '💡 The Epiphany',
+        about_epiphany_text: 'At school I saw something I couldn\'t ignore: talented classmates who became frustrated with simple tasks, others who avoided reading aloud, and many who struggled against invisible barriers.',
+        about_role: 'International Relations Student',
+        about_university: 'Universidad Austral, Argentina',
+        about_quote: '"It wasn\'t about effort. It was a lack of tools that adapted to them. That\'s when I knew education could be different. That was the moment GROW APP was born."',
+        footer_text: '2026 Marisol Rodriguez | Grow App'
+      }
+    };
+
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    // Get demo elements first
+    const toggleSwitch = document.getElementById('card-toggle-switch');
+    const toggleDot = document.getElementById('toggle-switch-dot');
+    const modeStandard = document.getElementById('mode-standard');
+    const modeAccessible = document.getElementById('mode-accessible');
+    const accessibleCard = document.getElementById('accessible-card');
+    const accessibleCardIcon = document.getElementById('accessible-card-icon');
+    const accessibleCardTitle = document.getElementById('accessible-card-title');
+    const accessibleDemoContent = document.getElementById('accessible-demo-content');
+
+    let isAccessibleMode = false;
+
+    // Function to create pictogram words with tooltips
+    function createPictogramWord(word, emoji, explanation) {
+      const span = document.createElement('span');
+      span.className = 'pictogram-word';
+      span.textContent = word;
+      span.style.borderBottom = '2px dotted #F27405';
+      span.style.paddingBottom = '2px';
+      span.style.cursor = 'help';
+      
+      const tooltip = document.createElement('div');
+      tooltip.className = 'pictogram-tooltip-box';
+      tooltip.innerHTML = `
+        <span class="pictogram-emoji">${emoji}</span>
+        <span class="pictogram-tooltip-text">${explanation}</span>
+      `;
+      
+      span.appendChild(tooltip);
+      
+      span.addEventListener('mouseenter', () => {
+        tooltip.classList.add('visible');
+      });
+      
+      span.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+      });
+      
+      return span;
+    }
+
+    // Function to update demo content based on current language
+    function updateDemoContent() {
+      if (!isAccessibleMode) return;
+      
+      // Recreate the accessible mode content with current language
+      accessibleDemoContent.innerHTML = '';
+      
+      const p1 = document.createElement('p');
+      p1.className = 'mb-4';
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? 'La ' : 'The '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'educación' : 'education', '📚', currentLang === 'es' ? 'Proceso de enseñanza y aprendizaje estructurado' : 'Process of structured teaching and learning'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' ' : ' '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'inclusiva' : 'inclusive', '🤝', currentLang === 'es' ? 'Sistema que valida y atiende distintos estilos de aprendizaje' : 'System that validates and caters to different learning styles'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' es un ' : ' is a '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'derecho' : 'right', '⚖️', currentLang === 'es' ? 'Garantía fundamental para el desarrollo integral' : 'Fundamental guarantee for full development'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' ' : ' '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'fundamental' : 'fundamental', '🎯', currentLang === 'es' ? 'Base esencial en la vida de cada persona' : 'Essential foundation in every person\'s life'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' que debe ' : ' that must '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'garantizarse' : 'be guaranteed', '✓', currentLang === 'es' ? 'Implementarse de forma equitativa y accesible' : 'Be implemented equitably and accessibly'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' para todos los ' : ' for all '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'estudiantes' : 'students', '👨‍🎓', currentLang === 'es' ? 'Aprendices con potencial y estilos únicos' : 'Learners with potential and unique styles'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ', ' : ', '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'independientemente' : 'regardless', '🌍', currentLang === 'es' ? 'Sin limitaciones por diferencias individuales' : 'Without limitations due to individual differences'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' de sus ' : ' of their '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'capacidades' : 'abilities', '💪', currentLang === 'es' ? 'Ritmos y formas distintas de procesar información' : 'Different rhythms and ways of processing information'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' o ' : ' or '));
+      p1.appendChild(createPictogramWord(currentLang === 'es' ? 'ubicación' : 'location', '📍', currentLang === 'es' ? 'Contexto geográfico o situación socioeconómica' : 'Geographic context or socioeconomic situation'));
+      p1.appendChild(document.createTextNode(currentLang === 'es' ? ' geográfica.' : '.'));
+      
+      const p2 = document.createElement('p');
+      p2.appendChild(document.createTextNode(''));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'Sin embargo' : 'However', '⚠️', currentLang === 'es' ? 'La realidad demuestra obstáculos importantes' : 'Reality shows important obstacles'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ', muchos ' : ', many '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'niños' : 'children', '👧', currentLang === 'es' ? 'Estudiantes en edad primaria' : 'Primary school age students'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ' y ' : ' and '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'jóvenes' : 'youth', '👦', currentLang === 'es' ? 'Estudiantes en edad secundaria' : 'Secondary school age students'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ' con ' : ' with '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'dislexia' : 'dyslexia', '📖', currentLang === 'es' ? 'Trastorno específico que afecta la lectura y escritura' : 'Specific disorder that affects reading and writing'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ' y ' : ' and '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'TDAH' : 'ADHD', '🧠', currentLang === 'es' ? 'Trastorno del Déficit de Atención e Hiperactividad' : 'Attention-Deficit/Hyperactivity Disorder'));
+      p2.appendChild(document.createTextNode(' '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'enfrentan' : 'face', '💪', currentLang === 'es' ? 'Deben superar barreras que no son de su responsabilidad' : 'Must overcome barriers that are not their responsibility'));
+      p2.appendChild(document.createTextNode(' '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'barreras' : 'barriers', '🚧', currentLang === 'es' ? 'Obstáculos sistémicos en acceso y metodología educativa' : 'Systemic obstacles in access and educational methodology'));
+      p2.appendChild(document.createTextNode(' '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'significativas' : 'significant', '📊', currentLang === 'es' ? 'De magnitud que impacta profundamente el aprendizaje' : 'Of magnitude that deeply impacts learning'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ' que ' : ' that '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'limitan' : 'limit', '📉', currentLang === 'es' ? 'Disminuyen sustancialmente las oportunidades de' : 'Substantially reduce opportunities for'));
+      p2.appendChild(document.createTextNode(currentLang === 'es' ? ' su ' : ' their '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'aprendizaje' : 'learning', '🎓', currentLang === 'es' ? 'Adquisición de conocimientos y desarrollo de competencias' : 'Acquisition of knowledge and development of competencies'));
+      p2.appendChild(document.createTextNode(' '));
+      p2.appendChild(createPictogramWord(currentLang === 'es' ? 'efectivo' : 'effective', '✨', currentLang === 'es' ? 'De calidad que responda a necesidades específicas' : 'Quality that meets specific needs'));
+      p2.appendChild(document.createTextNode('.'));
+      
+      accessibleDemoContent.appendChild(p1);
+      accessibleDemoContent.appendChild(p2);
+    }
+
+    // Function to change language
+    function changeLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      // Update all elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          if (element.tagName === 'TEXTAREA' || element.tagName === 'INPUT') {
+            element.placeholder = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        }
+      });
+
+      // Update language buttons styling
+      const btnEs = document.getElementById('lang-es');
+      const btnEn = document.getElementById('lang-en');
+      
+      if (lang === 'es') {
+        btnEs.style.backgroundColor = '#F27405';
+        btnEs.style.color = 'white';
+        btnEn.style.backgroundColor = 'transparent';
+        btnEn.style.color = '#F27405';
+      } else {
+        btnEn.style.backgroundColor = '#F27405';
+        btnEn.style.color = 'white';
+        btnEs.style.backgroundColor = 'transparent';
+        btnEs.style.color = '#F27405';
+      }
+
+      // Update demo content if in accessible mode
+      updateDemoContent();
+    }
+
+    // Language button listeners
+    document.getElementById('lang-es').addEventListener('click', () => changeLanguage('es'));
+    document.getElementById('lang-en').addEventListener('click', () => changeLanguage('en'));
+
+    // Initialize language on page load
+    changeLanguage(currentLang);
+
+    // Form submission handler for Formspree
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        formMessage.classList.add('hidden');
+      });
+    }
+
+    // Listen for form submission completion
+    window.addEventListener('message', function(event) {
+      if (event.origin !== 'https://formspree.io') return;
+      
+      if (event.data.success === true) {
+        // Show success message
+        formMessage.classList.remove('hidden');
+        formMessage.textContent = currentLang === 'es' ? '¡Gracias! Tu mensaje fue enviado correctamente. 🎉' : '¡Thanks! Your message was sent successfully. 🎉';
+        formMessage.style.backgroundColor = '#d4edda';
+        formMessage.style.color = '#155724';
+        formMessage.style.borderColor = '#c3e6cb';
+        
+        // Clear the form
+        if (contactForm) {
+          contactForm.reset();
+        }
+        
+        // Clear message after 5 seconds
+        setTimeout(() => {
+          formMessage.classList.add('hidden');
+        }, 5000);
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = this.getAttribute('href');
+        if (target !== '#') {
+          e.preventDefault();
+          const targetElement = document.querySelector(target);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Add toggle switch listener
+    if (toggleSwitch) {
+      toggleSwitch.addEventListener('click', function () {
+        isAccessibleMode = !isAccessibleMode;
+
+        if (isAccessibleMode) {
+          // Switch to GROW APP accessible mode
+          toggleDot.style.marginLeft = '24px';
+          toggleSwitch.style.backgroundColor = '#F27405';
+          modeStandard.style.opacity = '0.6';
+          modeAccessible.style.opacity = '1';
+          
+          // Update accessible card
+          accessibleCard.style.backgroundColor = '#FFF5E6';
+          accessibleCardIcon.style.backgroundColor = '#F27405';
+          accessibleCardTitle.style.color = '#F27405';
+          accessibleCardTitle.textContent = currentLang === 'es' ? '✨ Modo GROW APP' : '✨ GROW APP Mode';
+          accessibleDemoContent.style.fontFamily = '"OpenDyslexic", sans-serif';
+          
+          // Update demo content with current language
+          updateDemoContent();
+        } else {
+          // Switch back to standard mode
+          toggleDot.style.marginLeft = '2px';
+          toggleSwitch.style.backgroundColor = '#E0E0E0';
+          modeStandard.style.opacity = '1';
+          modeAccessible.style.opacity = '0.6';
+          
+          // Reset accessible card to default view
+          accessibleCard.style.backgroundColor = 'white';
+          accessibleCardIcon.style.backgroundColor = '#2C3E50';
+          accessibleCardTitle.style.color = '#2C3E50';
+          accessibleCardTitle.textContent = currentLang === 'es' ? 'Texto en Modo GROW APP' : 'Text in GROW APP Mode';
+          accessibleDemoContent.style.fontFamily = '"Open Sans", sans-serif';
+          accessibleDemoContent.innerHTML = `
+            <p class="mb-4">${currentLang === 'es' ? 'Activa el toggle para ver como se transforma el contenido con pictogramas, colores y la fuente OpenDyslexic.' : 'Activate the toggle to see how the content transforms with pictograms, colors and OpenDyslexic font.'}</p>
+          `;
+        }
+      });
+    }
+  </script>
+ </body>
+</html>
