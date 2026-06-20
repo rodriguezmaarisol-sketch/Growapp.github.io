@@ -42,14 +42,33 @@
       font-family: 'Open Sans', sans-serif;
     }
 
+    .top-nav-row {
+      height: 76px;
+    }
+
+    .logo-nav-wrap {
+      height: 58px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
     .logo-nav {
-      height: 110px;
+      height: 58px;
       width: auto;
+      display: block;
+      transform: scale(1.35);
+      transform-origin: left center;
     }
 
     @media (min-width: 768px) {
+      .logo-nav-wrap {
+        height: 64px;
+      }
+
       .logo-nav {
-        height: 150px;
+        height: 64px;
+        transform: scale(1.45);
       }
     }
     
@@ -493,9 +512,9 @@
    <!-- Navigation -->
    <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-95 backdrop-blur-sm" style="background-color: #FFFAF2;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex justify-between items-center py-4">
-      <div class="flex items-center gap-3">
-      <img src="images/logo-nav.png?v=20260620" alt="WE GROW APP" class="logo-nav">
+    <div class="top-nav-row flex justify-between items-center">
+     <div class="logo-nav-wrap flex items-center gap-3">
+     <img src="images/logo-nav.png?v=20260620" alt="WE GROW APP" class="logo-nav">
       </div>
       <div class="flex items-center gap-8">
        <!-- Language Toggle Button -->
