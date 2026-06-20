@@ -47,18 +47,16 @@
     }
 
     .logo-nav-wrap {
-      height: 58px;
-      overflow: hidden;
+      height: 56px;
       display: flex;
       align-items: center;
     }
 
     .logo-nav {
-      height: 58px;
+      height: 100%;
       width: auto;
       display: block;
-      transform: scale(1.2);
-      transform-origin: left center;
+      max-width: min(52vw, 320px);
     }
 
     @media (min-width: 768px) {
@@ -67,8 +65,7 @@
       }
 
       .logo-nav {
-        height: 64px;
-        transform: scale(1.28);
+        max-width: 360px;
       }
     }
     
