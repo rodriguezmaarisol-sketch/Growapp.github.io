@@ -509,17 +509,8 @@
     }
 
     .faq-cta-panel {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .faq-cta-panel::before {
-      content: '';
-      position: absolute;
-      inset: 1rem;
-      border-radius: 24px;
-      border: 1px solid rgba(242, 116, 5, 0.12);
-      pointer-events: none;
+      border: 1px solid rgba(44, 62, 80, 0.10);
+      background-color: #FCFCFC;
     }
 
     .toggle-btn {
@@ -866,7 +857,7 @@
     <div class="text-center mb-12 sm:mb-14">
      <span class="inline-flex items-center px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: rgba(242, 116, 5, 0.1); color: #F27405;" data-i18n="faq_kicker">FAQ</span>
      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold" style="color: #2C3E50;" data-i18n="faq_title">Preguntas frecuentes</h2>
-     <p class="font-body text-base sm:text-lg leading-relaxed mt-4 max-w-2xl mx-auto" style="color: #2C3E50; opacity: 0.8;" data-i18n="faq_intro">Respuestas claras sobre cómo funciona Grow App y para quién está pensada.</p>
+    <p class="font-body text-base sm:text-lg leading-relaxed mt-4 max-w-2xl mx-auto" style="color: #2C3E50; opacity: 0.8;" data-i18n="faq_intro">Respondemos las consultas más comunes sobre Grow App</p>
     </div>
 
     <div class="rounded-[28px] bg-white card-shadow overflow-hidden">
@@ -992,27 +983,15 @@
   </section>
 
   <!-- Institutional CTA -->
-  <section id="implementar" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+  <section id="implementar" class="py-24 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white">
    <div class="max-w-5xl mx-auto">
-    <div class="faq-cta-panel rounded-[32px] p-8 sm:p-10 lg:p-12 card-shadow" style="background: linear-gradient(135deg, #FFF7EE 0%, #FFF1E2 100%); border: 1px solid rgba(242, 116, 5, 0.10);">
-     <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center relative z-10">
-      <div class="flex items-start gap-4 sm:gap-5">
-       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: #F27405; color: white;">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-         <path d="M4 21V8l8-4 8 4v13"></path>
-         <path d="M9 21v-7h6v7"></path>
-         <path d="M12 4v4"></path>
-        </svg>
-       </div>
-       <div>
-        <span class="inline-flex items-center px-3 py-1.5 rounded-full font-main font-semibold text-xs mb-4" style="background-color: rgba(242, 116, 5, 0.12); color: #F27405;" data-i18n="faq_cta_kicker">Implementación institucional</span>
-        <h3 class="font-dyslexic text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-4" style="color: #2C3E50;" data-i18n="faq_cta_title">¿Querés implementar Grow App en tu institución?</h3>
-        <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #2C3E50; opacity: 0.82;" data-i18n="faq_cta_desc">Estamos construyendo alianzas con escuelas e instituciones interesadas en promover experiencias de aprendizaje más inclusivas.</p>
-       </div>
-      </div>
-      <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 justify-start lg:justify-end">
+    <div class="faq-cta-panel rounded-[32px] p-10 sm:p-12 lg:p-14">
+     <div class="max-w-3xl">
+      <h3 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5" style="color: #2C3E50;" data-i18n="faq_cta_title">Educación inclusiva para tu institución.</h3>
+      <p class="font-body text-base sm:text-lg leading-relaxed mb-8" style="color: #2C3E50; opacity: 0.78;" data-i18n="faq_cta_desc">Una oportunidad para transformar cómo aprenden tus estudiantes.</p>
+      <div class="flex flex-col sm:flex-row gap-4">
        <a href="#contacto" class="px-7 py-4 rounded-full font-main font-bold text-white transition-all hover:scale-105 text-center" style="background-color: #F27405;" data-i18n="faq_cta_btn_primary">Sumar a mi colegio</a>
-       <a href="mailto:rodriguezmaarisol@gmail.com?subject=Agendar%20una%20reuni%C3%B3n%20sobre%20GROW%20APP" class="px-7 py-4 rounded-full font-main font-bold transition-all hover:scale-105 text-center" style="background-color: white; color: #2C3E50; border: 1px solid rgba(44, 62, 80, 0.12);" data-i18n="faq_cta_btn_secondary">Agendar una reunión</a>
+       <a href="mailto:rodriguezmaarisol@gmail.com?subject=Agendar%20una%20reuni%C3%B3n%20sobre%20GROW%20APP" class="px-7 py-4 rounded-full font-main font-bold transition-all hover:scale-105 text-center" style="background-color: white; color: #2C3E50; border: 1px solid rgba(44, 62, 80, 0.16);" data-i18n="faq_cta_btn_secondary">Agendar una reunión</a>
       </div>
      </div>
     </div>
@@ -1085,7 +1064,7 @@
         hero_feature4_desc: 'Enfocada en resultados',
         faq_title: 'Preguntas frecuentes',
         faq_kicker: 'FAQ',
-        faq_intro: 'Respuestas claras sobre cómo funciona Grow App y para quién está pensada.',
+        faq_intro: 'Respondemos las consultas más comunes sobre Grow App',
         faq_q1: '¿Qué es Grow App?',
         faq_a1: 'Grow App es una plataforma de educación neuroinclusiva diseñada para estudiantes con TDAH, dislexia y otras neurodivergencias. Reúne herramientas visuales, accesibles y personalizables para acompañar diferentes formas de aprender.',
         faq_q2: '¿Necesito tener un diagnóstico para usarla?',
@@ -1104,9 +1083,8 @@
         faq_a8: 'No. Grow App es una herramienta de apoyo. Su objetivo es complementar el trabajo de docentes, familias e instituciones educativas, facilitando el acceso al aprendizaje.',
         faq_q9: '¿Tiene costo?',
         faq_a9: 'Actualmente estamos desarrollando diferentes modalidades de acceso. Podés registrarte para conocer las novedades y futuras actualizaciones.',
-        faq_cta_kicker: 'Implementación institucional',
-        faq_cta_title: '¿Querés implementar Grow App en tu institución?',
-        faq_cta_desc: 'Estamos construyendo alianzas con escuelas e instituciones interesadas en promover experiencias de aprendizaje más inclusivas.',
+        faq_cta_title: 'Educación inclusiva para tu institución.',
+        faq_cta_desc: 'Una oportunidad para transformar cómo aprenden tus estudiantes.',
         faq_cta_btn_primary: 'Sumar a mi colegio',
         faq_cta_btn_secondary: 'Agendar una reunión',
         comingsoon_title: 'Proximamente: Un lugar diseñado para que aprender sea disfrutar.',
@@ -1204,9 +1182,8 @@
         faq_a8: 'No. Grow App is a support tool. Its goal is to complement the work of teachers, families, and educational institutions, making learning more accessible.',
         faq_q9: 'Does it cost anything?',
         faq_a9: 'We are currently developing different access models. You can register to stay up to date with news and future updates.',
-        faq_cta_kicker: 'Institutional implementation',
-        faq_cta_title: 'Want to implement Grow App at your institution?',
-        faq_cta_desc: 'We are building alliances with schools and institutions interested in promoting more inclusive learning experiences.',
+        faq_cta_title: 'Inclusive education for your institution.',
+        faq_cta_desc: 'An opportunity to transform how your students learn.',
         faq_cta_btn_primary: 'Bring it to my school',
         faq_cta_btn_secondary: 'Schedule a meeting',
         comingsoon_title: 'Coming Soon: A place designed for learning to be enjoyable.',
