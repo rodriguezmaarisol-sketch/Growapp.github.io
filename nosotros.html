@@ -59,6 +59,14 @@
       max-width: min(52vw, 320px);
     }
 
+    .logo-home-link {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      line-height: 0;
+      cursor: pointer;
+    }
+
     @media (min-width: 768px) {
       .logo-nav-wrap {
         height: 64px;
@@ -89,7 +97,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="top-nav-row flex justify-between items-center">
           <div class="logo-nav-wrap flex items-center gap-3">
-            <a href="index.html" aria-label="Ir al inicio" class="h-full flex items-center">
+            <a href="index.html" aria-label="Ir al inicio" class="logo-home-link">
               <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="logo-nav">
             </a>
           </div>
