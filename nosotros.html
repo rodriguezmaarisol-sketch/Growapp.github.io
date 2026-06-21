@@ -72,6 +72,15 @@
     .card-shadow {
       box-shadow: 0 8px 32px rgba(244, 116, 5, 0.15);
     }
+
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(242, 116, 5, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(242, 116, 5, 0.6); }
+    }
   </style>
 </head>
 <body class="h-full font-body">
@@ -80,16 +89,20 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="top-nav-row flex justify-between items-center">
           <div class="logo-nav-wrap flex items-center gap-3">
-            <a href="index.html" aria-label="Ir al inicio">
-              <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="logo-nav">
-            </a>
+            <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="logo-nav">
           </div>
-          <div class="hidden md:flex items-center gap-8 font-main font-medium">
-            <a href="index.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Inicio</a>
-            <a href="nosotros.html" class="nav-link hover:text-orange-500 transition-colors font-semibold" style="color: #F27405;">Nosotros</a>
-            <a href="index.html#demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Demo</a>
-            <a href="index.html#preguntas-frecuentes" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Preguntas frecuentes</a>
-            <a href="index.html#contacto" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;">Contáctanos</a>
+          <div class="flex items-center gap-3 sm:gap-6">
+            <div class="flex items-center gap-2 bg-white rounded-full p-1" style="border: 2px solid #F27405;">
+              <button id="lang-es" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="background-color: #F27405; color: white;">ES</button>
+              <button id="lang-en" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="color: #F27405;">EN</button>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-main font-medium">
+              <a href="nosotros.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_nosotros">Nosotros</a>
+              <a href="index.html#demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_demo">Demo</a>
+              <a href="index.html#preguntas-frecuentes" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_faq">Preguntas frecuentes</a>
+              <a href="index.html#contacto" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;" data-i18n="nav_conectar">Contáctanos</a>
+              <a href="https://wegrowapparg.lovable.app/login" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full font-main font-bold text-white transition-all hover:scale-105 hover:shadow-lg pulse-glow whitespace-nowrap" style="background-color: #F27405;" data-i18n="nav_start_now">Empezar ahora</a>
+            </div>
           </div>
         </div>
       </div>
@@ -106,17 +119,80 @@
             <div class="hidden sm:block absolute -right-7 bottom-8 w-20 h-20 opacity-80" style="background-image: radial-gradient(#F27405 2px, transparent 2px); background-size: 10px 10px;"></div>
           </div>
           <div class="max-w-2xl">
-            <h1 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #0C1C3D;">Por qué creamos We Grow App</h1>
+            <h1 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #0C1C3D;" data-i18n="about_story_title">Por qué creamos We Grow App</h1>
             <div class="space-y-4">
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;">¡Hola! Mi nombre es Marisol Rodriguez. Crecí en una comunidad rural llamada Comandante Nicanor Otamendi, donde las oportunidades educativas no siempre llegaban de la misma manera para todos.</p>
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;">Con el tiempo entendí que las barreras no aparecen solamente por la distancia geográfica. También aparecen cuando las herramientas educativas no contemplan diferentes formas de aprender.</p>
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;">We Grow App nació para acercar una educación más accesible, visual y personalizada a estudiantes con TDAH, dislexia y otras neurodivergencias.</p>
+              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p1">¡Hola! Mi nombre es Marisol Rodriguez. Crecí en una comunidad rural llamada Comandante Nicanor Otamendi, donde las oportunidades educativas no siempre llegaban de la misma manera para todos.</p>
+              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p2">Con el tiempo entendí que las barreras no aparecen solamente por la distancia geográfica. También aparecen cuando las herramientas educativas no contemplan diferentes formas de aprender.</p>
+              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p3">We Grow App nació para acercar una educación más accesible, visual y personalizada a estudiantes con TDAH, dislexia y otras neurodivergencias.</p>
             </div>
-            <a href="https://youtu.be/TNb6fAkdUAg?si=4gVzWD-9JWxhwjul" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-6 font-main font-semibold text-base sm:text-lg underline decoration-2 underline-offset-4 transition-all hover:text-[#C95F00] hover:decoration-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 rounded-sm" style="color: #F27405;">Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App ↗</a>
+            <a href="https://youtu.be/TNb6fAkdUAg?si=4gVzWD-9JWxhwjul" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-6 font-main font-semibold text-base sm:text-lg underline decoration-2 underline-offset-4 transition-all hover:text-[#C95F00] hover:decoration-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 rounded-sm" style="color: #F27405;" data-i18n="about_story_cta">Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App ↗</a>
           </div>
         </div>
       </section>
     </main>
   </div>
+
+  <script>
+    const translations = {
+      es: {
+        nav_nosotros: 'Nosotros',
+        nav_demo: 'Demo',
+        nav_faq: 'Preguntas frecuentes',
+        nav_conectar: 'Contáctanos',
+        nav_start_now: 'Empezar ahora',
+        about_story_title: 'Por qué creamos We Grow App',
+        about_story_p1: '¡Hola! Mi nombre es Marisol Rodriguez. Crecí en una comunidad rural llamada Comandante Nicanor Otamendi, donde las oportunidades educativas no siempre llegaban de la misma manera para todos.',
+        about_story_p2: 'Con el tiempo entendí que las barreras no aparecen solamente por la distancia geográfica. También aparecen cuando las herramientas educativas no contemplan diferentes formas de aprender.',
+        about_story_p3: 'We Grow App nació para acercar una educación más accesible, visual y personalizada a estudiantes con TDAH, dislexia y otras neurodivergencias.',
+        about_story_cta: 'Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App ↗'
+      },
+      en: {
+        nav_nosotros: 'About us',
+        nav_demo: 'Demo',
+        nav_faq: 'FAQ',
+        nav_conectar: 'Contact us',
+        nav_start_now: 'Start now',
+        about_story_title: 'Why we created We Grow App',
+        about_story_p1: 'I grew up in a rural community where educational opportunities did not always reach everyone equally.',
+        about_story_p2: 'Over time I understood that barriers do not appear only because of geographic distance. They also appear when educational tools do not consider different ways of learning.',
+        about_story_p3: 'We Grow App was born to bring more accessible, visual, and personalized education to students with ADHD, dyslexia, and other neurodivergences.',
+        about_story_cta: 'UN Intervention - ECOSOC Youth Forum | SDG 9 Innovation: We Grow App presentation ↗'
+      }
+    };
+
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    function updateLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      const esBtn = document.getElementById('lang-es');
+      const enBtn = document.getElementById('lang-en');
+
+      if (lang === 'es') {
+        esBtn.style.backgroundColor = '#F27405';
+        esBtn.style.color = 'white';
+        enBtn.style.backgroundColor = 'transparent';
+        enBtn.style.color = '#F27405';
+      } else {
+        enBtn.style.backgroundColor = '#F27405';
+        enBtn.style.color = 'white';
+        esBtn.style.backgroundColor = 'transparent';
+        esBtn.style.color = '#F27405';
+      }
+    }
+
+    document.getElementById('lang-es').addEventListener('click', () => updateLanguage('es'));
+    document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
+
+    updateLanguage(currentLang);
+  </script>
 </body>
 </html>
