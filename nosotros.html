@@ -89,6 +89,49 @@
       0%, 100% { box-shadow: 0 0 20px rgba(242, 116, 5, 0.3); }
       50% { box-shadow: 0 0 40px rgba(242, 116, 5, 0.6); }
     }
+
+    .mobile-menu-fab {
+      position: fixed;
+      right: 16px;
+      bottom: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      border: 2px solid #F27405;
+      background-color: #F27405;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(242, 116, 5, 0.35);
+      z-index: 70;
+    }
+
+    .mobile-menu-fab:focus-visible {
+      outline: 3px solid rgba(242, 116, 5, 0.4);
+      outline-offset: 3px;
+    }
+
+    .mobile-menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+      z-index: 58;
+    }
+
+    .mobile-menu-panel {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 88px;
+      border-radius: 18px;
+      border: 2px solid rgba(242, 116, 5, 0.25);
+      background-color: #FFFAF2;
+      box-shadow: 0 18px 44px rgba(44, 62, 80, 0.22);
+      padding: 14px;
+      z-index: 60;
+    }
   </style>
 </head>
 <body class="h-full font-body">
@@ -117,6 +160,21 @@
         </div>
       </div>
     </nav>
+
+    <button id="mobile-menu-toggle" type="button" class="mobile-menu-fab md:hidden" aria-label="Abrir menú" aria-controls="mobile-menu-panel" aria-expanded="false">
+      <span id="mobile-menu-icon" aria-hidden="true" class="text-2xl leading-none font-bold">☰</span>
+    </button>
+
+    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop hidden md:hidden" aria-hidden="true"></div>
+    <div id="mobile-menu-panel" class="mobile-menu-panel hidden md:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
+      <div class="flex flex-col gap-3 font-main font-semibold">
+        <a href="nosotros.html" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="index.html#demo" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_demo">Demo</a>
+        <a href="index.html#preguntas-frecuentes" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_faq">Preguntas frecuentes</a>
+        <a href="index.html#contacto" class="px-4 py-3 rounded-xl font-bold text-white" style="background-color: #F27405;" data-i18n="nav_conectar">Contáctanos</a>
+        <a href="https://wegrowapparg.lovable.app/login" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl text-center font-bold text-white" style="background-color: #2C3E50;" data-i18n="nav_start_now">Empezar ahora</a>
+      </div>
+    </div>
 
     <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <section class="max-w-7xl mx-auto">
@@ -212,10 +270,66 @@
         esBtn.style.backgroundColor = 'transparent';
         esBtn.style.color = '#F27405';
       }
+
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      if (menuToggle) {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-label', isExpanded ? (lang === 'es' ? 'Cerrar menú' : 'Close menu') : (lang === 'es' ? 'Abrir menú' : 'Open menu'));
+      }
     }
 
     document.getElementById('lang-es').addEventListener('click', () => updateLanguage('es'));
     document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
+
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+    function setMobileMenuIcon(isOpen) {
+      if (!mobileMenuIcon) return;
+      mobileMenuIcon.textContent = isOpen ? '✕' : '☰';
+    }
+
+    function closeMobileMenu() {
+      mobileMenuPanel.classList.add('hidden');
+      mobileMenuBackdrop.classList.add('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenuToggle.setAttribute('aria-label', currentLang === 'es' ? 'Abrir menú' : 'Open menu');
+      setMobileMenuIcon(false);
+      document.body.style.overflow = '';
+    }
+
+    function openMobileMenu() {
+      mobileMenuPanel.classList.remove('hidden');
+      mobileMenuBackdrop.classList.remove('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      mobileMenuToggle.setAttribute('aria-label', currentLang === 'es' ? 'Cerrar menú' : 'Close menu');
+      setMobileMenuIcon(true);
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (mobileMenuToggle && mobileMenuPanel && mobileMenuBackdrop) {
+      mobileMenuToggle.addEventListener('click', () => {
+        if (mobileMenuPanel.classList.contains('hidden')) {
+          openMobileMenu();
+        } else {
+          closeMobileMenu();
+        }
+      });
+
+      mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+      mobileMenuPanel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
+        }
+      });
+    }
 
     updateLanguage(currentLang);
   </script>
