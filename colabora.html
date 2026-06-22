@@ -60,6 +60,11 @@
 
     .font-main { font-family: 'Montserrat', sans-serif; }
 
+    .lang-btn.active {
+      background-color: #F27405;
+      color: #ffffff !important;
+    }
+
     .top-nav-row { height: 76px; }
 
     .logo-nav-wrap {
@@ -185,7 +190,7 @@
     .section:last-of-type { border-bottom: none; }
 
     .eyebrow {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.08em;
       color: var(--or);
@@ -196,10 +201,11 @@
 
     .section-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
+      font-size: clamp(28px, 4vw, 36px);
       font-weight: 600;
       letter-spacing: -0.01em;
       margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
 
     .section-sub {
@@ -523,12 +529,12 @@
               <button id="lang-en" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="color: #F27405;">EN</button>
             </div>
             <div class="hidden md:flex items-center gap-8 font-main font-medium">
-              <a href="index.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Inicio</a>
-              <a href="nosotros.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Nosotros</a>
-              <a href="index.html#demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Demo</a>
-              <a href="index.html#preguntas-frecuentes" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Preguntas frecuentes</a>
-              <a href="colabora.html" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;">Contáctanos</a>
-              <a href="https://wegrowapparg.lovable.app/login" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full font-main font-bold text-white transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap" style="background-color: #F27405;">Empezar ahora</a>
+              <a href="index.html" id="nav-home" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Inicio</a>
+              <a href="nosotros.html" id="nav-about" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Nosotros</a>
+              <a href="index.html#demo" id="nav-demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Demo</a>
+              <a href="index.html#preguntas-frecuentes" id="nav-faq" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Preguntas frecuentes</a>
+              <a href="colabora.html" id="nav-contact" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;">Contáctanos</a>
+              <a href="https://wegrowapparg.lovable.app/login" id="nav-start" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full font-main font-bold text-white transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap" style="background-color: #F27405;">Empezar ahora</a>
             </div>
           </div>
         </div>
@@ -542,12 +548,12 @@
     <div id="mobile-menu-backdrop" class="mobile-menu-backdrop hidden md:hidden" aria-hidden="true"></div>
     <div id="mobile-menu-panel" class="mobile-menu-panel hidden md:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
       <div class="flex flex-col gap-3 font-main font-semibold">
-        <a href="index.html" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Inicio</a>
-        <a href="nosotros.html" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Nosotros</a>
-        <a href="index.html#demo" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Demo</a>
-        <a href="index.html#preguntas-frecuentes" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Preguntas frecuentes</a>
-        <a href="colabora.html" class="px-4 py-3 rounded-xl font-bold text-white" style="background-color: #F27405;">Contáctanos</a>
-        <a href="https://wegrowapparg.lovable.app/login" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl text-center font-bold text-white" style="background-color: #2C3E50;">Empezar ahora</a>
+        <a href="index.html" id="m-nav-home" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Inicio</a>
+        <a href="nosotros.html" id="m-nav-about" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Nosotros</a>
+        <a href="index.html#demo" id="m-nav-demo" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Demo</a>
+        <a href="index.html#preguntas-frecuentes" id="m-nav-faq" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Preguntas frecuentes</a>
+        <a href="colabora.html" id="m-nav-contact" class="px-4 py-3 rounded-xl font-bold text-white" style="background-color: #F27405;">Contáctanos</a>
+        <a href="https://wegrowapparg.lovable.app/login" id="m-nav-start" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl text-center font-bold text-white" style="background-color: #2C3E50;">Empezar ahora</a>
       </div>
     </div>
 
@@ -555,65 +561,65 @@
       <section class="hero">
         <div class="pill">
           <i class="ti ti-users" style="font-size:13px" aria-hidden="true"></i>
-          Abierto a colaboraciones
+          <span id="pill-text">Abierto a colaboraciones</span>
         </div>
-        <h1>Construimos educación inclusiva.<br><em>Sumate al equipo.</em></h1>
-        <p>Buscamos desarrolladores, diseñadores, instituciones y organizaciones que compartan la convicción de que aprender no debería depender de dónde naciste ni de cómo procesás la información.</p>
+        <h1><span id="hero-line-1">Construimos educación inclusiva.</span><br><em id="hero-line-2">Sumate al equipo.</em></h1>
+        <p id="hero-subtitle">Buscamos desarrolladores, diseñadores, instituciones y organizaciones que compartan la convicción de que aprender no debería depender de dónde naciste ni de cómo procesás la información.</p>
       </section>
 
       <section class="section">
-        <p class="eyebrow">Formas de colaborar</p>
-        <h2 class="section-title">Encontrá tu lugar en We Grow App</h2>
-        <p class="section-sub">Elegí la forma que mejor se adapta a lo que hacés. Podés seleccionar más de una.</p>
+        <p class="eyebrow" id="ways-eyebrow">Formas de colaborar</p>
+        <h2 class="section-title" id="ways-title">Encontrá tu lugar en We Grow App</h2>
+        <p class="section-sub" id="ways-subtitle">Elegí la forma que mejor se adapta a lo que hacés. Podés seleccionar más de una.</p>
 
         <div class="cards-grid" id="ways-grid">
           <div class="way-card" data-val="Desarrollo de producto" onclick="toggleWay(this)">
             <i class="ti ti-code card-icon" aria-hidden="true"></i>
-            <h3>Desarrollo de producto</h3>
-            <p>Ingeniería frontend, backend, mobile y accesibilidad técnica.</p>
+            <h3 id="way-title-1">Desarrollo de producto</h3>
+            <p id="way-desc-1">Ingeniería frontend, backend, mobile y accesibilidad técnica.</p>
           </div>
           <div class="way-card" data-val="Diseño UX/UI y accesibilidad" onclick="toggleWay(this)">
             <i class="ti ti-palette card-icon" aria-hidden="true"></i>
-            <h3>Diseño UX/UI</h3>
-            <p>Experiencia de usuario, diseño de interfaces y accesibilidad.</p>
+            <h3 id="way-title-2">Diseño UX/UI</h3>
+            <p id="way-desc-2">Experiencia de usuario, diseño de interfaces y accesibilidad.</p>
           </div>
           <div class="way-card" data-val="Instituciones educativas" onclick="toggleWay(this)">
             <i class="ti ti-school card-icon" aria-hidden="true"></i>
-            <h3>Instituciones educativas</h3>
-            <p>Escuelas, universidades y centros que quieran implementar We Grow App.</p>
+            <h3 id="way-title-3">Instituciones educativas</h3>
+            <p id="way-desc-3">Escuelas, universidades y centros que quieran implementar We Grow App.</p>
           </div>
           <div class="way-card" data-val="Alianzas estratégicas" onclick="toggleWay(this)">
             <i class="ti ti-handshake card-icon" aria-hidden="true"></i>
-            <h3>Alianzas estratégicas</h3>
-            <p>Organizaciones, fundaciones e inversores alineados con el impacto educativo.</p>
+            <h3 id="way-title-4">Alianzas estratégicas</h3>
+            <p id="way-desc-4">Organizaciones, fundaciones e inversores alineados con el impacto educativo.</p>
           </div>
           <div class="way-card" data-val="Innovación educativa" onclick="toggleWay(this)">
             <i class="ti ti-bulb card-icon" aria-hidden="true"></i>
-            <h3>Innovación educativa</h3>
-            <p>Investigadores, docentes y especialistas en pedagogía inclusiva.</p>
+            <h3 id="way-title-5">Innovación educativa</h3>
+            <p id="way-desc-5">Investigadores, docentes y especialistas en pedagogía inclusiva.</p>
           </div>
           <div class="way-card" data-val="Mentoría" onclick="toggleWay(this)">
             <i class="ti ti-star card-icon" aria-hidden="true"></i>
-            <h3>Mentoría</h3>
-            <p>Mentores de producto, negocio, impacto social y escalabilidad.</p>
+            <h3 id="way-title-6">Mentoría</h3>
+            <p id="way-desc-6">Mentores de producto, negocio, impacto social y escalabilidad.</p>
           </div>
         </div>
       </section>
 
       <section class="section" id="form-section">
-        <p class="eyebrow">Contacto</p>
-        <h2 class="section-title">Contanos sobre vos</h2>
-        <p class="section-sub">Respondemos todos los mensajes en menos de 48 horas.</p>
+        <p class="eyebrow" id="contact-eyebrow">Contacto</p>
+        <h2 class="section-title" id="contact-title">Contanos sobre vos</h2>
+        <p class="section-sub" id="contact-subtitle">Respondemos todos los mensajes en menos de 48 horas.</p>
 
         <form id="contact-form" novalidate>
           <div class="form-grid">
             <div class="field">
-              <label for="f-name">Nombre y apellido</label>
+              <label for="f-name" id="label-name">Nombre y apellido</label>
               <input type="text" id="f-name" name="nombre" placeholder="Tu nombre completo" autocomplete="name">
               <span class="error-msg" id="err-name">Este campo es obligatorio.</span>
             </div>
             <div class="field">
-              <label for="f-email">Email</label>
+              <label for="f-email" id="label-email">Email</label>
               <input type="email" id="f-email" name="email" placeholder="tu@email.com" autocomplete="email">
               <span class="error-msg" id="err-email">Ingresá un email válido.</span>
             </div>
@@ -621,65 +627,65 @@
 
           <div class="form-grid single">
             <div class="field">
-              <label for="f-org">Organización <span class="opt">(opcional)</span></label>
+              <label for="f-org"><span id="label-org">Organización</span> <span class="opt" id="optional-org">(opcional)</span></label>
               <input type="text" id="f-org" name="organizacion" placeholder="Empresa, institución u organización" autocomplete="organization">
             </div>
           </div>
 
-          <span class="checks-label">¿Cómo te gustaría participar? <span class="opt">(podés elegir más de una)</span></span>
+          <span class="checks-label"><span id="checks-label-main">¿Cómo te gustaría participar?</span> <span class="opt" id="checks-label-opt">(podés elegir más de una)</span></span>
           <div class="checks-grid" id="checks-grid">
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Desarrollo de producto"> Desarrollo de producto
+              <input type="checkbox" name="participacion" value="Desarrollo de producto"> <span id="check-text-1">Desarrollo de producto</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Diseño UX/UI y accesibilidad"> Diseño UX/UI y accesibilidad
+              <input type="checkbox" name="participacion" value="Diseño UX/UI y accesibilidad"> <span id="check-text-2">Diseño UX/UI y accesibilidad</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Instituciones educativas"> Instituciones educativas
+              <input type="checkbox" name="participacion" value="Instituciones educativas"> <span id="check-text-3">Instituciones educativas</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Alianzas estratégicas"> Alianzas estratégicas
+              <input type="checkbox" name="participacion" value="Alianzas estratégicas"> <span id="check-text-4">Alianzas estratégicas</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Innovación educativa"> Innovación educativa
+              <input type="checkbox" name="participacion" value="Innovación educativa"> <span id="check-text-5">Innovación educativa</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Mentoría"> Mentoría
+              <input type="checkbox" name="participacion" value="Mentoría"> <span id="check-text-6">Mentoría</span>
             </label>
             <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Otro"> Otro
+              <input type="checkbox" name="participacion" value="Otro"> <span id="check-text-7">Otro</span>
             </label>
           </div>
 
           <div class="form-grid single" style="margin-bottom:18px">
             <div class="field">
-              <label for="f-msg">Mensaje</label>
+              <label for="f-msg" id="label-message">Mensaje</label>
               <textarea id="f-msg" name="mensaje" placeholder="Contanos qué hacés, qué te interesa del proyecto y cómo podrías aportar."></textarea>
             </div>
           </div>
 
           <button type="submit" class="btn-submit" id="submit-btn">
             <i class="ti ti-send" style="font-size:16px" aria-hidden="true"></i>
-            Enviar mensaje
+            <span id="submit-text">Enviar mensaje</span>
           </button>
-          <p class="privacy-note">Tus datos son confidenciales. No los compartimos con terceros.</p>
+          <p class="privacy-note" id="privacy-note">Tus datos son confidenciales. No los compartimos con terceros.</p>
         </form>
       </section>
 
       <div class="success-state" id="success-state">
         <i class="ti ti-circle-check s-icon" aria-hidden="true"></i>
-        <h2>¡Se envió correctamente!</h2>
-        <p>Recibimos tu mensaje y el equipo de We Grow App te responderá en menos de 48 horas. Gracias por tu interés.</p>
+        <h2 id="success-title">¡Se envió correctamente!</h2>
+        <p id="success-text">Recibimos tu mensaje y el equipo de We Grow App te responderá en menos de 48 horas. Gracias por tu interés.</p>
         <a href="index.html" class="btn-back">
           <i class="ti ti-arrow-left" style="font-size:14px" aria-hidden="true"></i>
-          Volver al inicio
+          <span id="back-home-text">Volver al inicio</span>
         </a>
       </div>
 
       <div class="cta-close">
         <div class="accent-line"></div>
-        <h2>Más de 15 millones de estudiantes en América Latina aprenden diferente.</h2>
-        <p>Ayudanos a construir el sistema que necesitan.</p>
+        <h2 id="close-title">Más de 15 millones de estudiantes en América Latina aprenden diferente.</h2>
+        <p id="close-text">Ayudanos a construir el sistema que necesitan.</p>
       </div>
 
       <footer>
@@ -695,6 +701,229 @@
 
   <script>
     const FORM_ENDPOINT = 'https://formsubmit.co/ajax/growapplat@gmail.com';
+    const translations = {
+      es: {
+        nav_home: 'Inicio',
+        nav_about: 'Nosotros',
+        nav_demo: 'Demo',
+        nav_faq: 'Preguntas frecuentes',
+        nav_contact: 'Contáctanos',
+        nav_start: 'Empezar ahora',
+        pill_text: 'Abierto a colaboraciones',
+        hero_line_1: 'Construimos educación inclusiva.',
+        hero_line_2: 'Sumate al equipo.',
+        hero_subtitle: 'Buscamos desarrolladores, diseñadores, instituciones y organizaciones que compartan la convicción de que aprender no debería depender de dónde naciste ni de cómo procesás la información.',
+        ways_eyebrow: 'Formas de colaborar',
+        ways_title: 'Encontrá tu lugar en We Grow App',
+        ways_subtitle: 'Elegí la forma que mejor se adapta a lo que hacés. Podés seleccionar más de una.',
+        way_title_1: 'Desarrollo de producto',
+        way_desc_1: 'Ingeniería frontend, backend, mobile y accesibilidad técnica.',
+        way_title_2: 'Diseño UX/UI',
+        way_desc_2: 'Experiencia de usuario, diseño de interfaces y accesibilidad.',
+        way_title_3: 'Instituciones educativas',
+        way_desc_3: 'Escuelas, universidades y centros que quieran implementar We Grow App.',
+        way_title_4: 'Alianzas estratégicas',
+        way_desc_4: 'Organizaciones, fundaciones e inversores alineados con el impacto educativo.',
+        way_title_5: 'Innovación educativa',
+        way_desc_5: 'Investigadores, docentes y especialistas en pedagogía inclusiva.',
+        way_title_6: 'Mentoría',
+        way_desc_6: 'Mentores de producto, negocio, impacto social y escalabilidad.',
+        contact_eyebrow: 'Contacto',
+        contact_title: 'Contanos sobre vos',
+        contact_subtitle: 'Respondemos todos los mensajes en menos de 48 horas.',
+        label_name: 'Nombre y apellido',
+        label_email: 'Email',
+        label_org: 'Organización',
+        optional_org: '(opcional)',
+        checks_label_main: '¿Cómo te gustaría participar?',
+        checks_label_opt: '(podés elegir más de una)',
+        check_text_1: 'Desarrollo de producto',
+        check_text_2: 'Diseño UX/UI y accesibilidad',
+        check_text_3: 'Instituciones educativas',
+        check_text_4: 'Alianzas estratégicas',
+        check_text_5: 'Innovación educativa',
+        check_text_6: 'Mentoría',
+        check_text_7: 'Otro',
+        label_message: 'Mensaje',
+        submit_text: 'Enviar mensaje',
+        privacy_note: 'Tus datos son confidenciales. No los compartimos con terceros.',
+        success_title: '¡Se envió correctamente!',
+        success_text: 'Recibimos tu mensaje y el equipo de We Grow App te responderá en menos de 48 horas. Gracias por tu interés.',
+        back_home_text: 'Volver al inicio',
+        close_title: 'Más de 15 millones de estudiantes en América Latina aprenden diferente.',
+        close_text: 'Ayudanos a construir el sistema que necesitan.',
+        err_name: 'Este campo es obligatorio.',
+        err_email: 'Ingresá un email válido.',
+        placeholder_name: 'Tu nombre completo',
+        placeholder_org: 'Empresa, institución u organización',
+        placeholder_message: 'Contanos qué hacés, qué te interesa del proyecto y cómo podrías aportar.',
+        loading_text: 'Enviando...',
+        error_send: 'Hubo un error al enviar. Intentá de nuevo o escribinos a growapplat@gmail.com'
+      },
+      en: {
+        nav_home: 'Home',
+        nav_about: 'About us',
+        nav_demo: 'Demo',
+        nav_faq: 'FAQ',
+        nav_contact: 'Contact us',
+        nav_start: 'Start now',
+        pill_text: 'Open to collaborations',
+        hero_line_1: 'We build inclusive education.',
+        hero_line_2: 'Join the team.',
+        hero_subtitle: 'We are looking for developers, designers, institutions, and organizations that share the belief that learning should not depend on where you were born or how you process information.',
+        ways_eyebrow: 'Ways to collaborate',
+        ways_title: 'Find your place in We Grow App',
+        ways_subtitle: 'Choose the way that best fits what you do. You can select more than one.',
+        way_title_1: 'Product development',
+        way_desc_1: 'Frontend, backend, mobile engineering, and technical accessibility.',
+        way_title_2: 'UX/UI design',
+        way_desc_2: 'User experience, interface design, and accessibility.',
+        way_title_3: 'Educational institutions',
+        way_desc_3: 'Schools, universities, and centers that want to implement We Grow App.',
+        way_title_4: 'Strategic alliances',
+        way_desc_4: 'Organizations, foundations, and investors aligned with educational impact.',
+        way_title_5: 'Educational innovation',
+        way_desc_5: 'Researchers, teachers, and inclusive pedagogy specialists.',
+        way_title_6: 'Mentoring',
+        way_desc_6: 'Product, business, social impact, and scalability mentors.',
+        contact_eyebrow: 'Contact',
+        contact_title: 'Tell us about yourself',
+        contact_subtitle: 'We reply to all messages in less than 48 hours.',
+        label_name: 'Full name',
+        label_email: 'Email',
+        label_org: 'Organization',
+        optional_org: '(optional)',
+        checks_label_main: 'How would you like to participate?',
+        checks_label_opt: '(you can choose more than one)',
+        check_text_1: 'Product development',
+        check_text_2: 'UX/UI design and accessibility',
+        check_text_3: 'Educational institutions',
+        check_text_4: 'Strategic alliances',
+        check_text_5: 'Educational innovation',
+        check_text_6: 'Mentoring',
+        check_text_7: 'Other',
+        label_message: 'Message',
+        submit_text: 'Send message',
+        privacy_note: 'Your data is confidential. We do not share it with third parties.',
+        success_title: 'Sent successfully!',
+        success_text: 'We received your message and the We Grow App team will reply within 48 hours. Thank you for your interest.',
+        back_home_text: 'Back to home',
+        close_title: 'More than 15 million students in Latin America learn differently.',
+        close_text: 'Help us build the system they need.',
+        err_name: 'This field is required.',
+        err_email: 'Please enter a valid email.',
+        placeholder_name: 'Your full name',
+        placeholder_org: 'Company, institution, or organization',
+        placeholder_message: 'Tell us what you do, what interests you about the project, and how you could contribute.',
+        loading_text: 'Sending...',
+        error_send: 'There was an error sending your message. Please try again or email us at growapplat@gmail.com'
+      }
+    };
+
+    let currentLang = localStorage.getItem('language') || 'es';
+
+    function t(key) {
+      return translations[currentLang][key] || translations.es[key] || key;
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function updateLanguageButtons() {
+      const esBtn = document.getElementById('lang-es');
+      const enBtn = document.getElementById('lang-en');
+      if (!esBtn || !enBtn) return;
+
+      esBtn.classList.toggle('active', currentLang === 'es');
+      enBtn.classList.toggle('active', currentLang === 'en');
+      esBtn.style.color = currentLang === 'es' ? 'white' : '#F27405';
+      enBtn.style.color = currentLang === 'en' ? 'white' : '#F27405';
+      esBtn.style.backgroundColor = currentLang === 'es' ? '#F27405' : 'transparent';
+      enBtn.style.backgroundColor = currentLang === 'en' ? '#F27405' : 'transparent';
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+
+      const map = {
+        'nav-home': 'nav_home',
+        'nav-about': 'nav_about',
+        'nav-demo': 'nav_demo',
+        'nav-faq': 'nav_faq',
+        'nav-contact': 'nav_contact',
+        'nav-start': 'nav_start',
+        'm-nav-home': 'nav_home',
+        'm-nav-about': 'nav_about',
+        'm-nav-demo': 'nav_demo',
+        'm-nav-faq': 'nav_faq',
+        'm-nav-contact': 'nav_contact',
+        'm-nav-start': 'nav_start',
+        'pill-text': 'pill_text',
+        'hero-line-1': 'hero_line_1',
+        'hero-line-2': 'hero_line_2',
+        'hero-subtitle': 'hero_subtitle',
+        'ways-eyebrow': 'ways_eyebrow',
+        'ways-title': 'ways_title',
+        'ways-subtitle': 'ways_subtitle',
+        'way-title-1': 'way_title_1',
+        'way-desc-1': 'way_desc_1',
+        'way-title-2': 'way_title_2',
+        'way-desc-2': 'way_desc_2',
+        'way-title-3': 'way_title_3',
+        'way-desc-3': 'way_desc_3',
+        'way-title-4': 'way_title_4',
+        'way-desc-4': 'way_desc_4',
+        'way-title-5': 'way_title_5',
+        'way-desc-5': 'way_desc_5',
+        'way-title-6': 'way_title_6',
+        'way-desc-6': 'way_desc_6',
+        'contact-eyebrow': 'contact_eyebrow',
+        'contact-title': 'contact_title',
+        'contact-subtitle': 'contact_subtitle',
+        'label-name': 'label_name',
+        'label-email': 'label_email',
+        'label-org': 'label_org',
+        'optional-org': 'optional_org',
+        'checks-label-main': 'checks_label_main',
+        'checks-label-opt': 'checks_label_opt',
+        'check-text-1': 'check_text_1',
+        'check-text-2': 'check_text_2',
+        'check-text-3': 'check_text_3',
+        'check-text-4': 'check_text_4',
+        'check-text-5': 'check_text_5',
+        'check-text-6': 'check_text_6',
+        'check-text-7': 'check_text_7',
+        'label-message': 'label_message',
+        'submit-text': 'submit_text',
+        'privacy-note': 'privacy_note',
+        'success-title': 'success_title',
+        'success-text': 'success_text',
+        'back-home-text': 'back_home_text',
+        'close-title': 'close_title',
+        'close-text': 'close_text',
+        'err-name': 'err_name',
+        'err-email': 'err_email'
+      };
+
+      Object.keys(map).forEach(function(id) {
+        setText(id, t(map[id]));
+      });
+
+      document.getElementById('f-name').placeholder = t('placeholder_name');
+      document.getElementById('f-org').placeholder = t('placeholder_org');
+      document.getElementById('f-msg').placeholder = t('placeholder_message');
+
+      updateLanguageButtons();
+    }
+
+    function showSuccess() {
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success-state').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     function toggleWay(card) {
       card.classList.toggle('selected');
@@ -748,7 +977,7 @@
 
       var btn = document.getElementById('submit-btn');
       btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader" style="font-size:16px" aria-hidden="true"></i> Enviando...';
+      btn.innerHTML = '<i class="ti ti-loader" style="font-size:16px" aria-hidden="true"></i> ' + t('loading_text');
 
       var cleanName = name.value.trim().replace(/\s+/g, ' ');
       var cleanEmail = email.value.trim().toLowerCase();
@@ -769,9 +998,17 @@
       })
       .catch(function() {
         btn.disabled = false;
-        btn.innerHTML = '<i class="ti ti-send" style="font-size:16px" aria-hidden="true"></i> Enviar mensaje';
-        alert('Hubo un error al enviar. Intentá de nuevo o escribinos a growapplat@gmail.com');
+        btn.innerHTML = '<i class="ti ti-send" style="font-size:16px" aria-hidden="true"></i> ' + t('submit_text');
+        alert(t('error_send'));
       });
+    });
+
+    document.getElementById('lang-es').addEventListener('click', function() {
+      applyLanguage('es');
+    });
+
+    document.getElementById('lang-en').addEventListener('click', function() {
+      applyLanguage('en');
     });
 
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -806,6 +1043,8 @@
         }
       });
     }
+
+    applyLanguage(currentLang);
   </script>
 </body>
 </html>
