@@ -761,15 +761,10 @@
 
       fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
+        mode: 'no-cors',
         body: formData
       })
-      .then(function(response) {
-        if (!response.ok) {
-          throw new Error('send_failed');
-        }
+      .then(function() {
         showSuccess();
       })
       .catch(function() {

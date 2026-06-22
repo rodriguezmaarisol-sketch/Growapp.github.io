@@ -722,6 +722,54 @@
    </div>
   </section>
 
+   <!-- Demo Section -->
+   <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #FFB142 0%, #F27405 100%);">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: white; color: #F27405;" data-i18n="demo_badge">🎮 Demo Interactiva</span>
+      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="demo_title">Experimenta el Modo Accesible</h2>
+     </div>
+     <div class="max-w-6xl mx-auto">
+      <!-- Invitation Text -->
+      <p class="font-main text-2xl font-bold text-white mb-8 text-center max-w-2xl mx-auto" data-i18n="demo_invitation">Te invito a experimentar como la tecnologia puede cambiar la percepcion de un estudiante.</p>
+      <!-- Pictogram Instructions -->
+      <p class="font-body text-base text-white text-opacity-85 mb-8 text-center" data-i18n="demo_instructions">Pasa el cursor sobre las palabras subrayadas en naranja para ver los pictogramas con explicaciones sencillas</p>
+      <!-- Toggle Switch -->
+      <div class="flex justify-center items-center gap-4 mb-12">
+       <span id="mode-standard" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500" style="background-color: #FFB142; color: #2C3E50;" data-i18n="demo_mode_standard">📄 Estandar</span>
+      <button id="card-toggle-switch" class="relative inline-flex items-center h-8 w-14 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 flex-shrink-0" style="background-color: #E0E0E0;">
+        <span id="toggle-switch-dot" class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform" style="margin-left: 2px;"></span>
+       </button>
+       <span id="mode-accessible" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500 opacity-60" style="color: white;" data-i18n="demo_mode_accessible">Modo We Grow App</span>
+      </div>
+      <!-- Demo Cards Grid - Side by Side Comparison -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+       <!-- Card 1: Standard (left) - Always stays the same -->
+       <div class="rounded-3xl p-8 card-shadow transition-all duration-300 feature-card" style="background-color: white;">
+        <div class="flex items-center gap-3 mb-6">
+         <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: #2C3E50;"><span class="text-white">📄</span></div>
+         <span class="font-main font-bold" style="color: #2C3E50;" data-i18n="demo_card_standard">Texto Estandar</span>
+        </div>
+        <div class="demo-text font-body leading-relaxed" style="color: #2C3E50;" id="demo-standard-content">
+         <p class="mb-4" data-i18n="demo_standard_p1">La educacion inclusiva es un derecho fundamental que debe garantizarse para todos los estudiantes, independientemente de sus capacidades o ubicacion geografica.</p>
+         <p data-i18n="demo_standard_p2">Sin embargo, muchos ninos y jovenes con dislexia y TDAH enfrentan barreras significativas que limitan su aprendizaje efectivo.</p>
+        </div>
+       </div>
+       <!-- Card 2: Modo We Grow App Comparison (right) -->
+       <div class="rounded-3xl p-8 card-shadow transition-all duration-500 feature-card" id="accessible-card" style="background-color: white;">
+        <div class="flex items-center gap-3 mb-6">
+         <div id="accessible-card-icon" class="w-10 h-10 rounded-xl flex items-center justify-center transition-all" style="background-color: #2C3E50;"><span id="accessible-card-icon-text" class="text-white">📄</span></div>
+         <span id="accessible-card-title" class="font-main font-bold transition-all" style="color: #2C3E50;" data-i18n="demo_card_accessible">Texto en Modo We Grow App</span>
+        </div>
+        <div id="accessible-demo-content" class="demo-text font-body leading-relaxed transition-all" style="color: #2C3E50;">
+         <p class="mb-4" data-i18n="demo_card_description">Activa el toggle para ver como se transforma el contenido con pictogramas, colores y la fuente OpenDyslexic.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
    <!-- Problem Section -->
    <section id="problema" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #2C3E50;">
     <div class="max-w-7xl mx-auto">
@@ -810,54 +858,6 @@
        </div>
       <h3 class="font-main text-xl font-bold mb-3 leading-tight" style="color: #2C3E50;" data-i18n="tool_6_title">Recursos personalizados</h3>
       <p class="font-body text-base leading-relaxed opacity-75" style="color: #2C3E50;" data-i18n="tool_6_desc">Cada estudiante avanza a su ritmo.</p>
-      </div>
-     </div>
-    </div>
-   </section>
-
-   <!-- Demo Section -->
-   <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #FFB142 0%, #F27405 100%);">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-12">
-      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: white; color: #F27405;" data-i18n="demo_badge">🎮 Demo Interactiva</span>
-      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="demo_title">Experimenta el Modo Accesible</h2>
-     </div>
-     <div class="max-w-6xl mx-auto">
-      <!-- Invitation Text -->
-      <p class="font-main text-2xl font-bold text-white mb-8 text-center max-w-2xl mx-auto" data-i18n="demo_invitation">Te invito a experimentar como la tecnologia puede cambiar la percepcion de un estudiante.</p>
-      <!-- Pictogram Instructions -->
-      <p class="font-body text-base text-white text-opacity-85 mb-8 text-center" data-i18n="demo_instructions">Pasa el cursor sobre las palabras subrayadas en naranja para ver los pictogramas con explicaciones sencillas</p>
-      <!-- Toggle Switch -->
-      <div class="flex justify-center items-center gap-4 mb-12">
-       <span id="mode-standard" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500" style="background-color: #FFB142; color: #2C3E50;" data-i18n="demo_mode_standard">📄 Estandar</span>
-      <button id="card-toggle-switch" class="relative inline-flex items-center h-8 w-14 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 flex-shrink-0" style="background-color: #E0E0E0;">
-        <span id="toggle-switch-dot" class="inline-block h-6 w-6 transform rounded-full bg-white transition-transform" style="margin-left: 2px;"></span>
-       </button>
-       <span id="mode-accessible" class="font-main font-semibold px-4 py-2 rounded-full transition-all duration-500 opacity-60" style="color: white;" data-i18n="demo_mode_accessible">Modo We Grow App</span>
-      </div>
-      <!-- Demo Cards Grid - Side by Side Comparison -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-       <!-- Card 1: Standard (left) - Always stays the same -->
-       <div class="rounded-3xl p-8 card-shadow transition-all duration-300 feature-card" style="background-color: white;">
-        <div class="flex items-center gap-3 mb-6">
-         <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: #2C3E50;"><span class="text-white">📄</span></div>
-         <span class="font-main font-bold" style="color: #2C3E50;" data-i18n="demo_card_standard">Texto Estandar</span>
-        </div>
-        <div class="demo-text font-body leading-relaxed" style="color: #2C3E50;" id="demo-standard-content">
-         <p class="mb-4" data-i18n="demo_standard_p1">La educacion inclusiva es un derecho fundamental que debe garantizarse para todos los estudiantes, independientemente de sus capacidades o ubicacion geografica.</p>
-         <p data-i18n="demo_standard_p2">Sin embargo, muchos ninos y jovenes con dislexia y TDAH enfrentan barreras significativas que limitan su aprendizaje efectivo.</p>
-        </div>
-       </div>
-       <!-- Card 2: Modo We Grow App Comparison (right) -->
-       <div class="rounded-3xl p-8 card-shadow transition-all duration-500 feature-card" id="accessible-card" style="background-color: white;">
-        <div class="flex items-center gap-3 mb-6">
-         <div id="accessible-card-icon" class="w-10 h-10 rounded-xl flex items-center justify-center transition-all" style="background-color: #2C3E50;"><span id="accessible-card-icon-text" class="text-white">📄</span></div>
-         <span id="accessible-card-title" class="font-main font-bold transition-all" style="color: #2C3E50;" data-i18n="demo_card_accessible">Texto en Modo We Grow App</span>
-        </div>
-        <div id="accessible-demo-content" class="demo-text font-body leading-relaxed transition-all" style="color: #2C3E50;">
-         <p class="mb-4" data-i18n="demo_card_description">Activa el toggle para ver como se transforma el contenido con pictogramas, colores y la fuente OpenDyslexic.</p>
-        </div>
-       </div>
       </div>
      </div>
     </div>
