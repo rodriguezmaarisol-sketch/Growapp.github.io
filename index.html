@@ -701,14 +701,16 @@
     }
 
     .challenges-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       max-width: 1000px;
       margin: 0 auto 60px;
     }
 
     .ch-card {
+      flex: 0 1 calc((100% - 40px) / 3);
       background: #FFFAF2;
       border: 1px solid rgba(242, 116, 5, 0.15);
       border-radius: 12px;
@@ -788,8 +790,11 @@
       }
 
       .challenges-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+      }
+
+      .ch-card {
+        flex: 0 1 calc((100% - 12px) / 2);
       }
 
       .problema-conclusion {
@@ -803,8 +808,8 @@
     }
 
     @media (max-width: 480px) {
-      .challenges-grid {
-        grid-template-columns: 1fr;
+      .ch-card {
+        flex-basis: 100%;
       }
 
       #problema h2 {
@@ -992,60 +997,64 @@
 <section id="problema">
 
   <div class="section-eyebrow">
-    <i class="ti ti-alert-circle" aria-hidden="true"></i> El problema
+    <i class="ti ti-alert-circle" aria-hidden="true"></i>
+    <span data-i18n="problem_eyebrow">El problema</span>
   </div>
 
-  <h2>La educación no está <em>diseñada para todos.</em></h2>
-  <p class="section-intro">Miles de estudiantes, especialmente en contextos rurales, enfrentan barreras que limitan su aprendizaje cada día. Los datos muestran una realidad urgente.</p>
+  <h2>
+    <span data-i18n="problem_title_prefix">La educación no está</span>
+    <em data-i18n="problem_title_emphasis">diseñada para todos.</em>
+  </h2>
+  <p class="section-intro" data-i18n="problem_intro">Miles de estudiantes, especialmente en contextos rurales, enfrentan barreras que limitan su aprendizaje cada día. Los datos muestran una realidad urgente.</p>
 
   <div class="stats-grid">
     <div class="stat-cell">
       <span class="stat-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></span>
-      <p class="stat-num">1 de 3</p>
-      <p class="stat-lbl">escuelas rurales sin materiales adaptados</p>
-      <p class="stat-sub">Falta de recursos y herramientas para una educación inclusiva.</p>
+      <p class="stat-num" data-i18n="problem_stat_a_num">1 de 3</p>
+      <p class="stat-lbl" data-i18n="problem_stat_a_lbl">escuelas rurales sin materiales adaptados</p>
+      <p class="stat-sub" data-i18n="problem_stat_a_sub">Falta de recursos y herramientas para una educación inclusiva.</p>
     </div>
     <div class="stat-cell">
       <span class="stat-icon"><i class="ti ti-brain" aria-hidden="true"></i></span>
-      <p class="stat-num">15–20%</p>
-      <p class="stat-lbl">de estudiantes con síntomas de dislexia sin diagnóstico</p>
-      <p class="stat-sub">Muchos estudiantes no reciben el apoyo que necesitan.</p>
+      <p class="stat-num" data-i18n="problem_stat_b_num">15-20%</p>
+      <p class="stat-lbl" data-i18n="problem_stat_b_lbl">de estudiantes con síntomas de dislexia sin diagnóstico</p>
+      <p class="stat-sub" data-i18n="problem_stat_b_sub">Muchos estudiantes no reciben el apoyo que necesitan.</p>
     </div>
     <div class="stat-cell">
       <span class="stat-icon"><i class="ti ti-school" aria-hidden="true"></i></span>
-      <p class="stat-num">+50%</p>
-      <p class="stat-lbl">de docentes pide formación en neurodiversidad</p>
-      <p class="stat-sub">Docentes comprometidos que necesitan herramientas y capacitación.</p>
+      <p class="stat-num" data-i18n="problem_stat_c_num">+50%</p>
+      <p class="stat-lbl" data-i18n="problem_stat_c_lbl">de docentes pide formación en neurodiversidad</p>
+      <p class="stat-sub" data-i18n="problem_stat_c_sub">Docentes comprometidos que necesitan herramientas y capacitación.</p>
     </div>
   </div>
 
-  <p class="challenges-label">Los desafíos del aprendizaje</p>
+  <p class="challenges-label" data-i18n="problem_challenges_label">Los desafíos del aprendizaje</p>
 
   <div class="challenges-grid">
     <div class="ch-card">
       <i class="ti ti-topology-complex" aria-hidden="true"></i>
-      <h3>Sobrecarga cognitiva</h3>
-      <p>Dificultad para procesar información extensa y poco visual.</p>
+      <h3 data-i18n="problem_ch_1_title">Sobrecarga cognitiva</h3>
+      <p data-i18n="problem_ch_1_desc">Dificultad para procesar información extensa y poco visual.</p>
     </div>
     <div class="ch-card">
       <i class="ti ti-file-off" aria-hidden="true"></i>
-      <h3>Materiales no adaptados</h3>
-      <p>Contenidos extensos sin apoyos visuales que dificultan la comprensión.</p>
+      <h3 data-i18n="problem_ch_2_title">Materiales no adaptados</h3>
+      <p data-i18n="problem_ch_2_desc">Contenidos extensos sin apoyos visuales que dificultan la comprensión.</p>
     </div>
     <div class="ch-card">
       <i class="ti ti-route-off" aria-hidden="true"></i>
-      <h3>Sin estrategias personalizadas</h3>
-      <p>Cada estudiante necesita herramientas diferentes para aprender mejor.</p>
+      <h3 data-i18n="problem_ch_3_title">Sin estrategias personalizadas</h3>
+      <p data-i18n="problem_ch_3_desc">Cada estudiante necesita herramientas diferentes para aprender mejor.</p>
     </div>
     <div class="ch-card">
       <i class="ti ti-mood-sad" aria-hidden="true"></i>
-      <h3>Desmotivación</h3>
-      <p>La frustración constante disminuye la participación y las ganas de aprender.</p>
+      <h3 data-i18n="problem_ch_4_title">Desmotivación</h3>
+      <p data-i18n="problem_ch_4_desc">La frustración constante disminuye la participación y las ganas de aprender.</p>
     </div>
     <div class="ch-card">
       <i class="ti ti-user-off" aria-hidden="true"></i>
-      <h3>Docentes sin formación</h3>
-      <p>Necesitan capacitación y herramientas para acompañar la neurodiversidad.</p>
+      <h3 data-i18n="problem_ch_5_title">Docentes sin formación</h3>
+      <p data-i18n="problem_ch_5_desc">Necesitan capacitación y herramientas para acompañar la neurodiversidad.</p>
     </div>
   </div>
 
@@ -1393,6 +1402,30 @@
         form_feedback_label: '💭 Ayudanos a diseñarla',
         form_feedback_placeholder: '¿Qué herramienta te falta para estudiar mejor?',
         form_submit: 'Quiero ser parte del estreno',
+        problem_eyebrow: 'El problema',
+        problem_title_prefix: 'La educación no está',
+        problem_title_emphasis: 'diseñada para todos.',
+        problem_intro: 'Miles de estudiantes, especialmente en contextos rurales, enfrentan barreras que limitan su aprendizaje cada día. Los datos muestran una realidad urgente.',
+        problem_stat_a_num: '1 de 3',
+        problem_stat_a_lbl: 'escuelas rurales sin materiales adaptados',
+        problem_stat_a_sub: 'Falta de recursos y herramientas para una educación inclusiva.',
+        problem_stat_b_num: '15-20%',
+        problem_stat_b_lbl: 'de estudiantes con síntomas de dislexia sin diagnóstico',
+        problem_stat_b_sub: 'Muchos estudiantes no reciben el apoyo que necesitan.',
+        problem_stat_c_num: '+50%',
+        problem_stat_c_lbl: 'de docentes pide formación en neurodiversidad',
+        problem_stat_c_sub: 'Docentes comprometidos que necesitan herramientas y capacitación.',
+        problem_challenges_label: 'Los desafíos del aprendizaje',
+        problem_ch_1_title: 'Sobrecarga cognitiva',
+        problem_ch_1_desc: 'Dificultad para procesar información extensa y poco visual.',
+        problem_ch_2_title: 'Materiales no adaptados',
+        problem_ch_2_desc: 'Contenidos extensos sin apoyos visuales que dificultan la comprensión.',
+        problem_ch_3_title: 'Sin estrategias personalizadas',
+        problem_ch_3_desc: 'Cada estudiante necesita herramientas diferentes para aprender mejor.',
+        problem_ch_4_title: 'Desmotivación',
+        problem_ch_4_desc: 'La frustración constante disminuye la participación y las ganas de aprender.',
+        problem_ch_5_title: 'Docentes sin formación',
+        problem_ch_5_desc: 'Necesitan capacitación y herramientas para acompañar la neurodiversidad.',
         problem_badge: '⚠️ El Problema',
         problem_title: 'La Doble Exclusión',
         problem_geo_title: 'Barrera Geográfica',
@@ -1510,6 +1543,30 @@
         form_feedback_label: '💭 Help us design it',
         form_feedback_placeholder: 'What tool do you need to study better?',
         form_submit: 'I want to be part of the launch',
+        problem_eyebrow: 'The problem',
+        problem_title_prefix: 'Education is not',
+        problem_title_emphasis: 'designed for everyone.',
+        problem_intro: 'Thousands of students, especially in rural contexts, face barriers that limit their learning every day. The data shows an urgent reality.',
+        problem_stat_a_num: '1 in 3',
+        problem_stat_a_lbl: 'rural schools without adapted materials',
+        problem_stat_a_sub: 'Lack of resources and tools for inclusive education.',
+        problem_stat_b_num: '15-20%',
+        problem_stat_b_lbl: 'of students with dyslexia symptoms remain undiagnosed',
+        problem_stat_b_sub: 'Many students do not receive the support they need.',
+        problem_stat_c_num: '+50%',
+        problem_stat_c_lbl: 'of teachers request neurodiversity training',
+        problem_stat_c_sub: 'Committed teachers who need tools and training.',
+        problem_challenges_label: 'Learning challenges',
+        problem_ch_1_title: 'Cognitive overload',
+        problem_ch_1_desc: 'Difficulty processing long and low-visual information.',
+        problem_ch_2_title: 'Non-adapted materials',
+        problem_ch_2_desc: 'Lengthy content without visual supports that hinders comprehension.',
+        problem_ch_3_title: 'No personalized strategies',
+        problem_ch_3_desc: 'Each student needs different tools to learn better.',
+        problem_ch_4_title: 'Demotivation',
+        problem_ch_4_desc: 'Constant frustration reduces participation and willingness to learn.',
+        problem_ch_5_title: 'Untrained teachers',
+        problem_ch_5_desc: 'They need training and tools to support neurodiversity.',
         problem_badge: '⚠️ The Problem',
         problem_title: 'The Double Exclusion',
         problem_geo_title: 'Geographic Barrier',
