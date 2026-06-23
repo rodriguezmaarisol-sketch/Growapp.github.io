@@ -597,6 +597,224 @@
       padding: 14px;
       z-index: 60;
     }
+
+    /* Estilos para la sección del problema */
+    #problema {
+      background-color: #2C3E50;
+      color: #FFFAF2;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #F27405;
+      margin-bottom: 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #problema h2 {
+      font-family: 'OpenDyslexic', 'Montserrat', sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    #problema h2 em {
+      font-style: normal;
+      color: #F27405;
+    }
+
+    .section-intro {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 60px;
+      line-height: 1.6;
+      color: rgba(255, 250, 242, 0.9);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+    }
+
+    .stat-cell {
+      background: rgba(255, 250, 242, 0.08);
+      border: 1px solid rgba(242, 116, 5, 0.3);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .stat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #F27405;
+      margin-bottom: 8px;
+    }
+
+    .stat-lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .stat-sub {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(255, 250, 242, 0.8);
+      line-height: 1.5;
+    }
+
+    .challenges-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #FFB142;
+      margin-bottom: 30px;
+      display: block;
+    }
+
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+    }
+
+    .ch-card {
+      background: rgba(255, 250, 242, 0.06);
+      border: 1px solid rgba(242, 116, 5, 0.2);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .ch-card:hover {
+      background: rgba(255, 250, 242, 0.12);
+      border-color: rgba(242, 116, 5, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .ch-card i {
+      font-size: 28px;
+      color: #F27405;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .ch-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .ch-card p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      color: rgba(255, 250, 242, 0.8);
+      line-height: 1.5;
+    }
+
+    .problema-conclusion {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(242, 116, 5, 0.15);
+      border: 2px solid rgba(242, 116, 5, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .problema-conclusion i {
+      font-size: 24px;
+      color: #F27405;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .problema-conclusion p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: white;
+      text-align: left;
+    }
+
+    .problema-conclusion strong {
+      color: #FFB142;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      #problema {
+        padding: 60px 16px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .challenges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .problema-conclusion {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .problema-conclusion p {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .challenges-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #problema h2 {
+        font-size: 24px;
+      }
+
+      .section-intro {
+        font-size: 16px;
+      }
+    }
   </style>
  </head>
  <body class="h-full font-body" style="background-color: #FFFAF2; color: #2C3E50;">
@@ -771,44 +989,72 @@
    </section>
 
    <!-- Problem Section -->
-   <section id="problema" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: #2C3E50;">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16">
-      <span class="inline-block px-4 py-2 rounded-full font-main font-semibold text-sm mb-4" style="background-color: #F27405; color: white;" data-i18n="problem_badge">⚠️ El Problema</span>
-      <h2 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="problem_title">La Doble Exclusión</h2>
-     </div>
-     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      <div class="rounded-3xl p-8 card-shadow" style="background-color: #FFFAF2;">
-       <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6" style="background-color: #FFB142;">📍</div>
-       <h3 class="font-dyslexic text-2xl font-bold mb-4" style="color: #2C3E50;" data-i18n="problem_geo_title">Barrera Geográfica</h3>
-       <p class="font-body text-lg opacity-80 mb-6" style="color: #2C3E50;" data-i18n="problem_geo_desc">La distancia física separa a los estudiantes rurales de las oportunidades educativas.</p>
-      </div>
-      <div class="rounded-3xl p-8 card-shadow" style="background-color: #FFFAF2;">
-       <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-6" style="background-color: #FFB142;">🧠</div>
-       <h3 class="font-dyslexic text-2xl font-bold mb-4" style="color: #2C3E50;" data-i18n="problem_cog_title">Barrera Cognitiva</h3>
-       <p class="font-body text-lg opacity-80 mb-6" style="color: #2C3E50;" data-i18n="problem_cog_desc">Para estudiantes con TDAH y dislexia, el sistema no ofrece herramientas adecuadas.</p>
-      </div>
-     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 max-w-5xl mx-auto mt-8">
-     <div class="rounded-2xl p-3 card-shadow text-center" style="background-color: #465D74;">
-      <p class="font-dyslexic text-2xl lg:text-3xl font-bold mb-1" style="color: #F27405;" data-i18n="problem_stat1_value">+50%</p>
-      <p class="font-body text-[11px] lg:text-xs leading-relaxed opacity-90" style="color: #FFFAF2;" data-i18n="problem_stat1_text">de los docentes reporta una necesidad urgente de formación para abordar la neurodiversidad en el aula.</p>
-     </div>
-     <div class="rounded-2xl p-3 card-shadow text-center" style="background-color: #465D74;">
-      <p class="font-dyslexic text-2xl lg:text-3xl font-bold mb-1" style="color: #F27405;" data-i18n="problem_stat2_value">15-20%</p>
-      <p class="font-body text-[11px] lg:text-xs leading-relaxed opacity-90" style="color: #FFFAF2;" data-i18n="problem_stat2_text">de la población en su conjunto tiene alguno de los síntomas de la dislexia.</p>
-     </div>
-     <div class="rounded-2xl p-3 card-shadow text-center" style="background-color: #465D74;">
-      <p class="font-dyslexic text-xl lg:text-2xl font-bold mb-1" style="color: #F27405;" data-i18n="problem_stat3_value">Estancamiento</p>
-      <p class="font-body text-[11px] lg:text-xs leading-relaxed opacity-90" style="color: #FFFAF2;" data-i18n="problem_stat3_text">En América Latina, en el acceso educativo, se muestran los límites del sistema para llegar a estudiantes de zonas rurales y contextos excluidos.</p>
-     </div>
-     <div class="rounded-2xl p-3 card-shadow text-center" style="background-color: #465D74;">
-      <p class="font-dyslexic text-2xl lg:text-3xl font-bold mb-1" style="color: #F27405;" data-i18n="problem_stat4_value">∞</p>
-      <p class="font-body text-[11px] lg:text-xs leading-relaxed opacity-90" style="color: #FFFAF2;" data-i18n="problem_stat4_text">potencial sin límites.</p>
-     </div>
+<section id="problema">
+
+  <div class="section-eyebrow">
+    <i class="ti ti-alert-circle" aria-hidden="true"></i> El problema
+  </div>
+
+  <h2>La educación no está <em>diseñada para todos.</em></h2>
+  <p class="section-intro">Miles de estudiantes, especialmente en contextos rurales, enfrentan barreras que limitan su aprendizaje cada día. Los datos muestran una realidad urgente.</p>
+
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <span class="stat-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></span>
+      <p class="stat-num">1 de 3</p>
+      <p class="stat-lbl">escuelas rurales sin materiales adaptados</p>
+      <p class="stat-sub">Falta de recursos y herramientas para una educación inclusiva.</p>
     </div>
+    <div class="stat-cell">
+      <span class="stat-icon"><i class="ti ti-brain" aria-hidden="true"></i></span>
+      <p class="stat-num">15–20%</p>
+      <p class="stat-lbl">de estudiantes con síntomas de dislexia sin diagnóstico</p>
+      <p class="stat-sub">Muchos estudiantes no reciben el apoyo que necesitan.</p>
     </div>
-   </section>
+    <div class="stat-cell">
+      <span class="stat-icon"><i class="ti ti-school" aria-hidden="true"></i></span>
+      <p class="stat-num">+50%</p>
+      <p class="stat-lbl">de docentes pide formación en neurodiversidad</p>
+      <p class="stat-sub">Docentes comprometidos que necesitan herramientas y capacitación.</p>
+    </div>
+  </div>
+
+  <p class="challenges-label">Los desafíos del aprendizaje</p>
+
+  <div class="challenges-grid">
+    <div class="ch-card">
+      <i class="ti ti-topology-complex" aria-hidden="true"></i>
+      <h3>Sobrecarga cognitiva</h3>
+      <p>Dificultad para procesar información extensa y poco visual.</p>
+    </div>
+    <div class="ch-card">
+      <i class="ti ti-file-off" aria-hidden="true"></i>
+      <h3>Materiales no adaptados</h3>
+      <p>Contenidos extensos sin apoyos visuales que dificultan la comprensión.</p>
+    </div>
+    <div class="ch-card">
+      <i class="ti ti-route-off" aria-hidden="true"></i>
+      <h3>Sin estrategias personalizadas</h3>
+      <p>Cada estudiante necesita herramientas diferentes para aprender mejor.</p>
+    </div>
+    <div class="ch-card">
+      <i class="ti ti-mood-sad" aria-hidden="true"></i>
+      <h3>Desmotivación</h3>
+      <p>La frustración constante disminuye la participación y las ganas de aprender.</p>
+    </div>
+    <div class="ch-card">
+      <i class="ti ti-user-off" aria-hidden="true"></i>
+      <h3>Docentes sin formación</h3>
+      <p>Necesitan capacitación y herramientas para acompañar la neurodiversidad.</p>
+    </div>
+  </div>
+
+  <div class="problema-conclusion">
+    <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    <p><strong>We Grow App existe para cerrar esa brecha:</strong> una plataforma diseñada para estudiantes que el sistema educativo no terminó de ver.</p>
+  </div>
+
+</section>
 
    <!-- Solution Section -->
    <section id="solucion" class="py-20 px-4 sm:px-6 lg:px-8">
