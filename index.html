@@ -514,6 +514,87 @@
       overflow: hidden;
     }
 
+    .site-footer {
+      background-color: #FFFAF2;
+      border-top: 1px solid rgba(44, 62, 80, 0.12);
+      padding: 56px 16px 28px;
+    }
+
+    .site-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-footer-logo {
+      height: 42px;
+      width: auto;
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .site-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .site-footer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #2C3E50;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .site-footer-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .site-footer-link {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+      color: #2C3E50;
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .site-footer-link:hover {
+      opacity: 1;
+    }
+
+    .site-footer-copy {
+      border-top: 1px solid rgba(44, 62, 80, 0.12);
+      padding-top: 14px;
+      font-size: 13px;
+      color: #2C3E50;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 900px) {
+      .site-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding-top: 44px;
+      }
+    }
+
     #instituciones {
       background-color: #FFFAF2;
     }
@@ -1452,10 +1533,48 @@
     </div>
    </section>
 
-   <!-- Footer -->
-   <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t" style="background-color: #FFFAF2; border-color: rgba(44, 62, 80, 0.1);">
-    <div class="max-w-7xl mx-auto text-center">
-    <p class="font-body text-sm opacity-70" style="color: #2C3E50;" data-i18n="footer_text">© 2026 We Grow App</p>
+   <footer class="site-footer">
+    <div class="site-footer-inner">
+      <a href="index.html" aria-label="We Grow App">
+        <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="site-footer-logo">
+      </a>
+
+      <div class="site-footer-grid">
+        <div>
+          <h3 class="site-footer-title" data-i18n="footer_follow">Seguinos</h3>
+          <ul class="site-footer-list">
+            <li><a class="site-footer-link" href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a class="site-footer-link" href="mailto:growapplat@gmail.com">Gmail</a></li>
+            <li><a class="site-footer-link" href="https://www.instagram.com/growapp.arg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="site-footer-title" data-i18n="footer_navigation">Navegación</h3>
+          <ul class="site-footer-list">
+            <li><a class="site-footer-link" href="index.html#demo" data-i18n="footer_demo">Demo</a></li>
+            <li><a class="site-footer-link" href="index.html#preguntas-frecuentes" data-i18n="footer_faq">Preguntas frecuentes</a></li>
+            <li><a class="site-footer-link" href="index.html#problema" data-i18n="footer_problem">El problema</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="site-footer-title" data-i18n="footer_resources">Recursos</h3>
+          <ul class="site-footer-list">
+            <li><a class="site-footer-link" href="index.html#instituciones" data-i18n="footer_schools">Para escuelas</a></li>
+            <li><a class="site-footer-link" href="index.html#contacto" data-i18n="footer_contact">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="site-footer-title" data-i18n="footer_legal">Legal</h3>
+          <ul class="site-footer-list">
+            <li><a class="site-footer-link" href="politica-privacidad.html" data-i18n="footer_privacy">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="site-footer-copy" data-i18n="footer_copyright">©We Grow App 2026. Todos los derechos reservados</p>
     </div>
    </footer>
   </div>
@@ -1614,7 +1733,18 @@
         about_epiphany_text: 'En la escuela vi algo que no podía ignorar: compañeros talentosos que se frustraban con tareas simples, otros que evitaban leer en voz alta, y muchos que luchaban contra barreras invisibles.',
         about_role: 'Estudiante de Relaciones Internacionales & Activista por la Educación de Argentina',
         about_quote: '"No era sobre esfuerzo. Era la falta de herramientas que se adaptaran a ellos. Ahí supe que la educación podía ser diferente. Ese fue el momento en que nació We Grow App."',
-        footer_text: '© 2026 We Grow App'
+        footer_text: '©We Grow App 2026. Todos los derechos reservados',
+        footer_follow: 'Seguinos',
+        footer_navigation: 'Navegación',
+        footer_demo: 'Demo',
+        footer_faq: 'Preguntas frecuentes',
+        footer_problem: 'El problema',
+        footer_resources: 'Recursos',
+        footer_schools: 'Para escuelas',
+        footer_contact: 'Contacto',
+        footer_legal: 'Legal',
+        footer_privacy: 'Política de privacidad',
+        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
       },
       en: {
         nav_inicio: 'Home',
@@ -1767,7 +1897,18 @@
         about_epiphany_text: 'At school I saw something I couldn\'t ignore: talented classmates who became frustrated with simple tasks, others who avoided reading aloud, and many who struggled against invisible barriers.',
         about_role: 'International Relations Student & Education Activist from Argentina',
         about_quote: '"It wasn\'t about effort. It was a lack of tools that adapted to them. That\'s when I knew education could be different. That was the moment We Grow App was born."',
-        footer_text: '© 2026 We Grow App'
+        footer_text: '©We Grow App 2026. Todos los derechos reservados',
+        footer_follow: 'Follow us',
+        footer_navigation: 'Navigation',
+        footer_demo: 'Demo',
+        footer_faq: 'FAQ',
+        footer_problem: 'The problem',
+        footer_resources: 'Resources',
+        footer_schools: 'For schools',
+        footer_contact: 'Contact',
+        footer_legal: 'Legal',
+        footer_privacy: 'Privacy policy',
+        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
       }
     };
 
