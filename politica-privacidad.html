@@ -1,32 +1,116 @@
 <!doctype html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWYJ9505XE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWYJ9505XE');
+  </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad | We Grow App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Política de privacidad · We Grow App</title>
+  <meta name="description" content="Política de privacidad de We Grow App.">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="images/favicon-v3.png?v=20260620">
   <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico?v=20260620">
   <link rel="apple-touch-icon" href="images/favicon-v3.png?v=20260620">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      box-sizing: border-box;
-      background-color: #ffffff;
-      color: #2C3E50;
-      font-family: 'Open Sans', sans-serif;
-    }
-    .font-main {
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
+  <meta name="theme-color" content="#2C3E50">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/wga.css?v=20261126b">
 </head>
-<body class="h-full">
-  <main class="max-w-4xl mx-auto px-6 py-20">
-    <a href="index.html" class="font-main font-semibold" style="color:#F27405;">← Volver al inicio</a>
-    <h1 class="font-main text-4xl font-bold mt-6 mb-4">Política de Privacidad</h1>
-    <p class="text-lg" style="color:#6b6b6b;">Esta página será completada con el contenido final de política de privacidad.</p>
-  </main>
+<body>
+<a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="We Grow App, inicio" data-i18n-attr="aria-label:logo_home"><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="63" height="44"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+      <li><a href="nosotros.html" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a></li>
+      <li><a href="index.html#luma" data-i18n="nav_luma">Luma</a></li>
+      <li><a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a></li>
+      <li><a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="a11y-btn" aria-expanded="false" aria-controls="a11y-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><path d="M5 8l7 1.5L19 8M12 9.5V14l-3 7M12 14l3 7"/></svg><span class="lbl" data-i18n="a11y_btn">Accesibilidad</span>
+      </button>
+      <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
+      <button class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" data-i18n-attr="aria-label:menu_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Opciones de accesibilidad" data-i18n-attr="aria-label:a11y_panel" hidden>
+      <h2 data-i18n="a11y_title">Leé a tu manera</h2>
+      <div class="row"><span data-i18n="a11y_font">Letra</span><div class="choice" data-group="font">
+        <button data-v="brand" aria-pressed="true">Nunito</button><button data-v="atk" aria-pressed="false" style="font-family:'Atkinson Hyperlegible',sans-serif">Atkinson</button><button data-v="od" aria-pressed="false" style="font-family:OpenDyslexic,sans-serif">OpenDyslexic</button></div></div>
+      <div class="row"><span data-i18n="a11y_size">Tamaño</span><div class="choice" data-group="size">
+        <button data-v="sm" aria-pressed="true" data-i18n="a11y_sm">Chico</button><button data-v="md" aria-pressed="false" data-i18n="a11y_md">Mediano</button><button data-v="lg" aria-pressed="false" data-i18n="a11y_lg">Grande</button></div></div>
+      <div class="row"><span><span data-i18n="a11y_leading">Interlineado</span> <output id="lh-out">1,6</output></span><input type="range" id="lh" min="1.5" max="2.2" step="0.1" value="1.6" aria-label="Interlineado" data-i18n-attr="aria-label:a11y_leading"></div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" hidden>
+      <a href="index.html" data-i18n="nav_home">Inicio</a>
+      <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+      <a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a>
+      <a href="index.html#luma" data-i18n="nav_luma">Luma</a>
+      <a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a>
+      <a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="co-hero navy on-navy">
+    <div class="wrap">
+      <a class="crumb" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="pv_back">Volver al inicio</span></a>
+      <h1 data-i18n="pv_title">Política de privacidad</h1>
+      <p data-i18n="pv_lead">Cómo cuidamos los datos de quienes usan We Grow App.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap doc">
+      <div class="card">
+        <span class="status" data-i18n="pv_status">En preparación</span>
+        <h2 data-i18n="pv_h">Estamos terminando este documento</h2>
+        <p data-i18n="pv_p1">La versión completa de nuestra política de privacidad va a estar disponible muy pronto en esta página.</p>
+        <p data-i18n="pv_p2">Si tenés preguntas sobre tus datos o querés pedirnos que los borremos, escribinos a <a class="link" href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a> y te respondemos en menos de 48 horas.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-navy">
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="80" height="56" loading="lazy"><p data-i18n="foot_tag">Tu código postal no define tu futuro.</p></div>
+      <div><h2 data-i18n="foot_follow">Seguinos</h2><ul><li><a href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/wegrowapp.arg/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a></li></ul></div>
+      <div><h2 data-i18n="foot_nav">Navegación</h2><ul><li><a href="index.html#inicio" data-i18n="foot_demo">Demo</a></li><li><a href="nosotros.html" data-i18n="foot_about">Nosotros</a></li><li><a href="index.html#problema" data-i18n="foot_why">Por qué existimos</a></li><li><a href="index.html#preguntas" data-i18n="foot_faq">Preguntas frecuentes</a></li></ul></div>
+      <div><h2 data-i18n="foot_res">Recursos</h2><ul><li><a href="index.html#instituciones" data-i18n="foot_schools">Para escuelas</a></li><li><a href="colabora.html?escuela=1" data-i18n="foot_join">Sumar mi colegio</a></li><li><a href="colabora.html" data-i18n="foot_contact">Contacto</a></li></ul></div>
+      <div><h2 data-i18n="foot_legal">Legal</h2><ul><li><a href="politica-privacidad.html" data-i18n="foot_privacy">Política de privacidad</a></li></ul></div>
+    </div>
+    <div class="legal" data-i18n="foot_copy">© We Grow App 2026. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script src="assets/wga.js?v=20261126b"></script>
+<script>
+(function () {
+  var W = window.WGA;
+  W.addDict({
+    _title: 'Privacy policy · We Grow App',
+    pv_back: 'Back to home', pv_title: 'Privacy policy', pv_lead: 'How we take care of the data of people who use We Grow App.',
+    pv_status: 'In progress', pv_h: 'We’re finishing this document',
+    pv_p1: 'The full version of our privacy policy will be available on this page very soon.',
+    pv_p2: 'If you have questions about your data or want us to delete it, write to us at <a class="link" href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a> and we’ll reply within 48 hours.'
+  });
+  W.start();
+})();
+</script>
 </body>
 </html>

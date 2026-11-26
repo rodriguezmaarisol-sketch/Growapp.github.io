@@ -1,489 +1,200 @@
 <!doctype html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWYJ9505XE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWYJ9505XE');
+  </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nosotros | We Grow App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nosotros · We Grow App</title>
+  <meta name="description" content="La historia de We Grow App: nació en Comandante Nicanor Otamendi y hoy acompaña a estudiantes y escuelas en cualquier aula.">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="images/favicon-v3.png?v=20260620">
   <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico?v=20260620">
   <link rel="apple-touch-icon" href="images/favicon-v3.png?v=20260620">
-  <meta name="theme-color" content="#F27405">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      box-sizing: border-box;
-      background-color: #ffffff;
-      color: #2C3E50;
-    }
-
-    @font-face {
-      font-family: 'OpenDyslexic';
-      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff') format('woff');
-      font-weight: normal;
-    }
-
-    @font-face {
-      font-family: 'OpenDyslexic';
-      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Bold.woff') format('woff');
-      font-weight: bold;
-    }
-
-    .font-dyslexic {
-      font-family: 'OpenDyslexic', 'Montserrat', sans-serif;
-    }
-
-    .font-main {
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .font-body {
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    .top-nav-row {
-      height: 76px;
-    }
-
-    .logo-nav-wrap {
-      height: 56px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-nav {
-      height: 100%;
-      width: auto;
-      display: block;
-      max-width: min(52vw, 320px);
-    }
-
-    .logo-home-link {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      line-height: 0;
-      cursor: pointer;
-    }
-
-    @media (min-width: 768px) {
-      .logo-nav-wrap {
-        height: 64px;
-      }
-
-      .logo-nav {
-        max-width: 360px;
-      }
-    }
-
-    .card-shadow {
-      box-shadow: 0 8px 32px rgba(244, 116, 5, 0.15);
-    }
-
-    .pulse-glow {
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(242, 116, 5, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(242, 116, 5, 0.6); }
-    }
-
-    .mobile-menu-fab {
-      position: fixed;
-      right: 16px;
-      bottom: 20px;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      border: 2px solid #F27405;
-      background-color: #F27405;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 30px rgba(242, 116, 5, 0.35);
-      z-index: 70;
-    }
-
-    .mobile-menu-fab:focus-visible {
-      outline: 3px solid rgba(242, 116, 5, 0.4);
-      outline-offset: 3px;
-    }
-
-    .mobile-menu-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(2px);
-      z-index: 58;
-    }
-
-    .mobile-menu-panel {
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 88px;
-      border-radius: 18px;
-      border: 2px solid rgba(242, 116, 5, 0.25);
-      background-color: #ffffff;
-      box-shadow: 0 18px 44px rgba(44, 62, 80, 0.22);
-      padding: 14px;
-      z-index: 60;
-    }
-
-    .site-footer {
-      background-color: #2C3E50;
-      padding: 28px 16px 16px;
-      margin-top: 10px;
-    }
-
-    .site-footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .site-footer-logo {
-      height: 34px;
-      width: auto;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .site-footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    .site-footer-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #FFFAF2;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .site-footer-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .site-footer-link {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 14px;
-      color: rgba(255, 250, 242, 0.88);
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .site-footer-link:hover {
-      opacity: 1;
-      color: #FFFAF2;
-    }
-
-    .site-footer-copy {
-      border-top: 1px solid rgba(255, 250, 242, 0.2);
-      padding-top: 10px;
-      font-size: 12px;
-      color: #FFFAF2;
-      opacity: 0.78;
-    }
-
-    @media (max-width: 900px) {
-      .site-footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .site-footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .site-footer {
-        padding-top: 24px;
-      }
-    }
-  </style>
+  <meta name="theme-color" content="#2C3E50">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/wga.css?v=20261126b">
 </head>
-<body class="h-full font-body">
-  <div class="w-full h-full overflow-auto">
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-95 backdrop-blur-sm" style="background-color: #FFFAF2;">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="top-nav-row flex justify-between items-center">
-          <div class="logo-nav-wrap flex items-center gap-3">
-            <a href="index.html" aria-label="Ir al inicio" class="logo-home-link">
-              <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="logo-nav">
-            </a>
-          </div>
-          <div class="flex items-center gap-3 sm:gap-6">
-            <div class="flex items-center gap-2 bg-white rounded-full p-1" style="border: 2px solid #F27405;">
-              <button id="lang-es" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="background-color: #F27405; color: white;">ES</button>
-              <button id="lang-en" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="color: #F27405;">EN</button>
-            </div>
-            <div class="hidden md:flex items-center gap-8 font-main font-medium">
-              <a href="index.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_inicio">Inicio</a>
-              <a href="nosotros.html" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_nosotros">Nosotros</a>
-              <a href="index.html#demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_demo">Demo</a>
-              <a href="index.html#preguntas-frecuentes" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;" data-i18n="nav_faq">Preguntas frecuentes</a>
-              <a href="colabora.html" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;" data-i18n="nav_conectar">Contáctanos</a>
-              <a href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full font-main font-bold text-white transition-all hover:scale-105 hover:shadow-lg pulse-glow whitespace-nowrap" style="background-color: #F27405;" data-i18n="nav_start_now">Empezar ahora</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<body>
+<a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="We Grow App, inicio" data-i18n-attr="aria-label:logo_home"><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="63" height="44"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+      <li><a href="nosotros.html" class="active" aria-current="page" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a></li>
+      <li><a href="index.html#luma" data-i18n="nav_luma">Luma</a></li>
+      <li><a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a></li>
+      <li><a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="a11y-btn" aria-expanded="false" aria-controls="a11y-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><path d="M5 8l7 1.5L19 8M12 9.5V14l-3 7M12 14l3 7"/></svg><span class="lbl" data-i18n="a11y_btn">Accesibilidad</span>
+      </button>
+      <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
+      <button class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" data-i18n-attr="aria-label:menu_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Opciones de accesibilidad" data-i18n-attr="aria-label:a11y_panel" hidden>
+      <h2 data-i18n="a11y_title">Leé a tu manera</h2>
+      <div class="row"><span data-i18n="a11y_font">Letra</span><div class="choice" data-group="font">
+        <button data-v="brand" aria-pressed="true">Nunito</button><button data-v="atk" aria-pressed="false" style="font-family:'Atkinson Hyperlegible',sans-serif">Atkinson</button><button data-v="od" aria-pressed="false" style="font-family:OpenDyslexic,sans-serif">OpenDyslexic</button></div></div>
+      <div class="row"><span data-i18n="a11y_size">Tamaño</span><div class="choice" data-group="size">
+        <button data-v="sm" aria-pressed="true" data-i18n="a11y_sm">Chico</button><button data-v="md" aria-pressed="false" data-i18n="a11y_md">Mediano</button><button data-v="lg" aria-pressed="false" data-i18n="a11y_lg">Grande</button></div></div>
+      <div class="row"><span><span data-i18n="a11y_leading">Interlineado</span> <output id="lh-out">1,6</output></span><input type="range" id="lh" min="1.5" max="2.2" step="0.1" value="1.6" aria-label="Interlineado" data-i18n-attr="aria-label:a11y_leading"></div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" hidden>
+      <a href="index.html" data-i18n="nav_home">Inicio</a>
+      <a href="nosotros.html" aria-current="page" data-i18n="nav_about">Nosotros</a>
+      <a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a>
+      <a href="index.html#luma" data-i18n="nav_luma">Luma</a>
+      <a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a>
+      <a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
     </nav>
+  </div>
+</header>
 
-    <button id="mobile-menu-toggle" type="button" class="mobile-menu-fab md:hidden" aria-label="Abrir menú" aria-controls="mobile-menu-panel" aria-expanded="false">
-      <span id="mobile-menu-icon" aria-hidden="true" class="text-2xl leading-none font-bold">☰</span>
-    </button>
+<main id="contenido">
+  <section class="ab-hero navy on-navy">
+    <span class="blob" aria-hidden="true"></span>
+    <div class="wrap ab-grid">
+      <div>
+        <span class="eyebrow" data-i18n="ab_eyebrow">Nosotros</span>
+        <h1 data-i18n="ab_title">Por qué creamos <em>We Grow App.</em></h1>
+        <div class="ab-story">
+          <p data-i18n="ab_p1">¡Hola! Soy Marisol Rodríguez. Crecí en <b>Comandante Nicanor Otamendi</b>, un pueblo de la provincia de Buenos Aires, donde los apoyos para aprender no llegaban igual a todas las personas.</p>
+          <p data-i18n="ab_p2">Con el tiempo entendí que las barreras no aparecen solo por la distancia. También aparecen cuando las herramientas educativas no tienen en cuenta las distintas formas de aprender. Y eso pasa en el campo y también en la ciudad.</p>
+          <p data-i18n="ab_p3">Por eso creé We Grow App: para que cada estudiante pueda aprender a su manera y cada escuela tenga cómo acompañarlo, sin importar dónde esté.</p>
+        </div>
+        <div class="ab-sign"><span><span>Marisol Rodríguez</span><small data-i18n="ab_role">Fundadora de We Grow App</small></span></div>
+      </div>
+      <figure class="ab-photo" style="margin:0">
+        <img src="images/marisol.jpg" alt="Marisol Rodríguez en la sede de Naciones Unidas, junto a la columna del Objetivo 4: Educación de calidad" data-i18n-attr="alt:ab_photo_alt" width="900" height="1600">
+        <figcaption><span data-i18n="ab_cap">ECOSOC Youth Forum</span><small data-i18n="ab_cap_d">Naciones Unidas, Nueva York</small></figcaption>
+      </figure>
+    </div>
+  </section>
 
-    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop hidden md:hidden" aria-hidden="true"></div>
-    <div id="mobile-menu-panel" class="mobile-menu-panel hidden md:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
-      <div class="flex flex-col gap-3 font-main font-semibold">
-        <a href="index.html" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_inicio">Inicio</a>
-        <a href="nosotros.html" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_nosotros">Nosotros</a>
-        <a href="index.html#demo" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_demo">Demo</a>
-        <a href="index.html#preguntas-frecuentes" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;" data-i18n="nav_faq">Preguntas frecuentes</a>
-        <a href="colabora.html" class="px-4 py-3 rounded-xl font-bold text-white" style="background-color: #F27405;" data-i18n="nav_conectar">Contáctanos</a>
-        <a href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl text-center font-bold text-white" style="background-color: #2C3E50;" data-i18n="nav_start_now">Empezar ahora</a>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="pp_eyebrow">Lo que nos mueve</span>
+        <h2 data-i18n="pp_title">Que cada estudiante pueda aprender a su manera.</h2>
+      </div>
+      <div class="purpose">
+        <article class="pcard reveal"><span class="eyebrow" data-i18n="pp1_e">Propósito</span><h3 data-i18n="pp1_t">Reducir las barreras de quienes aprenden de maneras diferentes.</h3><p data-i18n="pp1_d">Con herramientas accesibles para estudiantes y recursos concretos para escuelas y docentes, estén donde estén.</p></article>
+        <article class="pcard reveal"><span class="eyebrow" data-i18n="pp2_e">Qué hacemos</span><h3 data-i18n="pp2_t">Una herramienta neuroinclusiva para estudiantes y escuelas.</h3><p data-i18n="pp2_d">Adapta materiales, ordena el estudio y facilita el trabajo docente con estudiantes con TDAH, dislexia u otras formas de aprender.</p></article>
+        <article class="pcard reveal"><span class="eyebrow" data-i18n="pp3_e">Dónde estamos</span><h3 data-i18n="pp3_t">Nació en la ruralidad. Hoy está pensada para cualquier aula.</h3><p data-i18n="pp3_d">Empezamos trabajando con escuelas de la Ciudad de Buenos Aires, con la mirada puesta en toda América Latina.</p></article>
       </div>
     </div>
+  </section>
 
-    <main class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-      <section class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          <div class="relative mx-auto lg:mx-0 w-full max-w-xs sm:max-w-sm">
-            <div class="aspect-[4/5] rounded-[30px] overflow-hidden card-shadow" style="background-color: #F4F4F4;">
-              <img src="images/profile.jpg" alt="Marisol Rodriguez" class="w-full h-full object-cover">
-            </div>
-            <div class="hidden sm:block absolute -left-6 top-1/4 w-8 h-24 opacity-80" style="background-image: radial-gradient(#F27405 2px, transparent 2px); background-size: 8px 8px;"></div>
-            <div class="hidden sm:block absolute -right-7 bottom-8 w-20 h-20 opacity-80" style="background-image: radial-gradient(#F27405 2px, transparent 2px); background-size: 10px 10px;"></div>
-          </div>
-          <div class="max-w-2xl">
-            <h1 class="font-dyslexic text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: #0C1C3D;" data-i18n="about_story_title">Por qué creamos We Grow App</h1>
-            <div class="space-y-4">
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p1">¡Hola! Mi nombre es Marisol Rodriguez. Crecí en una comunidad rural llamada Comandante Nicanor Otamendi, donde las oportunidades educativas no siempre llegaban de la misma manera para todos.</p>
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p2">Con el tiempo entendí que las barreras no aparecen solamente por la distancia geográfica. También aparecen cuando las herramientas educativas no contemplan diferentes formas de aprender.</p>
-              <p class="font-body text-base sm:text-lg leading-relaxed" style="color: #23324D;" data-i18n="about_story_p3">We Grow App nació para acercar una educación más accesible, visual y personalizada a estudiantes con TDAH, dislexia y otras neurodivergencias.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-12 max-w-4xl mx-auto">
-          <p class="font-main font-semibold text-base sm:text-lg mb-3 text-center" style="color: #F27405;" data-i18n="about_video_title">Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App</p>
-          <div class="w-full rounded-2xl overflow-hidden card-shadow" style="position: relative; padding-top: 56.25%; background-color: #000;">
-            <iframe
-              src="https://www.youtube.com/embed/TNb6fAkdUAg"
-              title="Intervención en la ONU - ECOSOC Youth Forum"
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="site-footer-inner">
-        <a href="index.html" aria-label="We Grow App">
-          <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="site-footer-logo">
-        </a>
-
-        <div class="site-footer-grid">
-          <div>
-            <h3 class="site-footer-title" data-i18n="footer_follow">Seguinos</h3>
-            <ul class="site-footer-list">
-              <li><a class="site-footer-link" href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a class="site-footer-link" href="mailto:growapplat@gmail.com">Gmail</a></li>
-              <li><a class="site-footer-link" href="https://www.instagram.com/wegrowapp.arg/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="site-footer-title" data-i18n="footer_navigation">Navegación</h3>
-            <ul class="site-footer-list">
-              <li><a class="site-footer-link" href="index.html#demo" data-i18n="footer_demo">Demo</a></li>
-              <li><a class="site-footer-link" href="index.html#preguntas-frecuentes" data-i18n="footer_faq">Preguntas frecuentes</a></li>
-              <li><a class="site-footer-link" href="index.html#problema" data-i18n="footer_problem">El problema</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="site-footer-title" data-i18n="footer_resources">Recursos</h3>
-            <ul class="site-footer-list">
-              <li><a class="site-footer-link" href="index.html#instituciones" data-i18n="footer_schools">Para escuelas</a></li>
-              <li><a class="site-footer-link" href="colabora.html" data-i18n="footer_contact">Contacto</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="site-footer-title" data-i18n="footer_legal">Legal</h3>
-            <ul class="site-footer-list">
-              <li><a class="site-footer-link" href="politica-privacidad.html" data-i18n="footer_privacy">Política de privacidad</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="site-footer-copy" data-i18n="footer_copyright">©We Grow App 2026. Todos los derechos reservados</p>
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="vl_eyebrow">Nuestros valores</span>
+        <h2 data-i18n="vl_title">Lo que cuidamos en cada decisión.</h2>
       </div>
-    </footer>
+      <div class="values">
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><path d="M5 8l7 1.5L19 8M12 9.5V14l-3 7M12 14l3 7"/></svg><b data-i18n="v1_t">Accesibilidad</b><span data-i18n="v1_d">Primero se diseña para quien más barreras encuentra.</span></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><b data-i18n="v2_t">Autonomía</b><span data-i18n="v2_d">Cada persona elige sus apoyos.</span></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg><b data-i18n="v3_t">Equidad</b><span data-i18n="v3_d">Ni el barrio ni la escuela deberían limitar cómo aprendés.</span></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 15.5c.6-.3 1.3-.5 2-.5 3 0 6 2 6 5"/></svg><b data-i18n="v4_t">Co-creación</b><span data-i18n="v4_d">Se construye con docentes, familias y estudiantes.</span></div>
+        <div class="value reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b data-i18n="v5_t">Confianza</b><span data-i18n="v5_d">Sin promesas ni datos inventados.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="un-card reveal">
+        <div>
+          <span class="eyebrow" data-i18n="un_eyebrow">Naciones Unidas</span>
+          <h2 data-i18n="un_title">We Grow App en el ECOSOC Youth Forum.</h2>
+          <p data-i18n="un_lead">Presentamos We Grow App en el Foro de la Juventud del ECOSOC, en el panel sobre el Objetivo de Desarrollo Sostenible 9: industria, innovación e infraestructura.</p>
+          <a class="btn btn-secondary" href="https://www.youtube.com/watch?v=TNb6fAkdUAg" target="_blank" rel="noopener"><span data-i18n="un_yt">Ver en YouTube</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div>
+        <button class="player un-player" id="un-player" aria-label="Reproducir la intervención en Naciones Unidas" data-i18n-attr="aria-label:un_play">
+          <span class="poster" aria-hidden="true"><small>ECOSOC Youth Forum · ODS 9</small><b data-i18n="un_poster">Intervención de We Grow App</b></span>
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="join-card reveal">
+        <div>
+          <h2 data-i18n="ab_join_t">Sumate a este camino.</h2>
+          <p data-i18n="ab_join_d">Si sos parte de una escuela, una organización o querés aportar tu experiencia, nos encantaría conocerte.</p>
+        </div>
+        <a class="btn btn-primary" href="colabora.html"><span data-i18n="ab_join_b">Contactanos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-navy">
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="80" height="56" loading="lazy"><p data-i18n="foot_tag">Tu código postal no define tu futuro.</p></div>
+      <div><h2 data-i18n="foot_follow">Seguinos</h2><ul><li><a href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/wegrowapp.arg/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a></li></ul></div>
+      <div><h2 data-i18n="foot_nav">Navegación</h2><ul><li><a href="index.html#inicio" data-i18n="foot_demo">Demo</a></li><li><a href="nosotros.html" data-i18n="foot_about">Nosotros</a></li><li><a href="index.html#problema" data-i18n="foot_why">Por qué existimos</a></li><li><a href="index.html#preguntas" data-i18n="foot_faq">Preguntas frecuentes</a></li></ul></div>
+      <div><h2 data-i18n="foot_res">Recursos</h2><ul><li><a href="index.html#instituciones" data-i18n="foot_schools">Para escuelas</a></li><li><a href="colabora.html?escuela=1" data-i18n="foot_join">Sumar mi colegio</a></li><li><a href="colabora.html" data-i18n="foot_contact">Contacto</a></li></ul></div>
+      <div><h2 data-i18n="foot_legal">Legal</h2><ul><li><a href="politica-privacidad.html" data-i18n="foot_privacy">Política de privacidad</a></li></ul></div>
+    </div>
+    <div class="legal" data-i18n="foot_copy">© We Grow App 2026. Todos los derechos reservados.</div>
   </div>
+</footer>
 
-  <script>
-    const translations = {
-      es: {
-        nav_inicio: 'Inicio',
-        nav_nosotros: 'Nosotros',
-        nav_demo: 'Demo',
-        nav_faq: 'Preguntas frecuentes',
-        nav_conectar: 'Contáctanos',
-        nav_start_now: 'Empezar ahora',
-        about_story_title: 'Por qué creamos We Grow App',
-        about_story_p1: '¡Hola! Mi nombre es Marisol Rodriguez. Crecí en una comunidad rural llamada Comandante Nicanor Otamendi, donde las oportunidades educativas no siempre llegaban de la misma manera para todos.',
-        about_story_p2: 'Con el tiempo entendí que las barreras no aparecen solamente por la distancia geográfica. También aparecen cuando las herramientas educativas no contemplan diferentes formas de aprender.',
-        about_story_p3: 'We Grow App nació para acercar una educación más accesible, visual y personalizada a estudiantes con TDAH, dislexia y otras neurodivergencias.',
-        about_video_title: 'Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App',
-        about_story_cta: 'Intervención en la ONU - ECOSOC Youth Forum | SDG 9 Innovación: presentación de We Grow App ↗',
-        footer_follow: 'Seguinos',
-        footer_navigation: 'Navegación',
-        footer_demo: 'Demo',
-        footer_faq: 'Preguntas frecuentes',
-        footer_problem: 'El problema',
-        footer_resources: 'Recursos',
-        footer_schools: 'Para escuelas',
-        footer_contact: 'Contacto',
-        footer_legal: 'Legal',
-        footer_privacy: 'Política de privacidad',
-        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
-      },
-      en: {
-        nav_inicio: 'Home',
-        nav_nosotros: 'About us',
-        nav_demo: 'Demo',
-        nav_faq: 'FAQ',
-        nav_conectar: 'Contact us',
-        nav_start_now: 'Start now',
-        about_story_title: 'Why we created We Grow App',
-        about_story_p1: 'Hello! My name is Marisol Rodriguez. I grew up in a rural community called Comandante Nicanor Otamendi, where educational opportunities did not always reach everyone in the same way.',
-        about_story_p2: 'Over time I understood that barriers do not appear only because of geographic distance. They also appear when educational tools do not consider different ways of learning.',
-        about_story_p3: 'We Grow App was born to bring more accessible, visual, and personalized education to students with ADHD, dyslexia, and other neurodivergences.',
-        about_video_title: 'UN Intervention - ECOSOC Youth Forum | SDG 9 Innovation',
-        about_story_cta: 'UN Intervention - ECOSOC Youth Forum | SDG 9 Innovation: We Grow App presentation ↗',
-        footer_follow: 'Follow us',
-        footer_navigation: 'Navigation',
-        footer_demo: 'Demo',
-        footer_faq: 'FAQ',
-        footer_problem: 'The problem',
-        footer_resources: 'Resources',
-        footer_schools: 'For schools',
-        footer_contact: 'Contact',
-        footer_legal: 'Legal',
-        footer_privacy: 'Privacy policy',
-        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
-      }
-    };
-
-    let currentLang = localStorage.getItem('language') || 'es';
-
-    function updateLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('language', lang);
-
-      document.querySelectorAll('[data-i18n]').forEach((element) => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-
-      const esBtn = document.getElementById('lang-es');
-      const enBtn = document.getElementById('lang-en');
-
-      if (lang === 'es') {
-        esBtn.style.backgroundColor = '#F27405';
-        esBtn.style.color = 'white';
-        enBtn.style.backgroundColor = 'transparent';
-        enBtn.style.color = '#F27405';
-      } else {
-        enBtn.style.backgroundColor = '#F27405';
-        enBtn.style.color = 'white';
-        esBtn.style.backgroundColor = 'transparent';
-        esBtn.style.color = '#F27405';
-      }
-
-      const menuToggle = document.getElementById('mobile-menu-toggle');
-      if (menuToggle) {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-label', isExpanded ? (lang === 'es' ? 'Cerrar menú' : 'Close menu') : (lang === 'es' ? 'Abrir menú' : 'Open menu'));
-      }
-    }
-
-    document.getElementById('lang-es').addEventListener('click', () => updateLanguage('es'));
-    document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
-
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
-    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-
-    function setMobileMenuIcon(isOpen) {
-      if (!mobileMenuIcon) return;
-      mobileMenuIcon.textContent = isOpen ? '✕' : '☰';
-    }
-
-    function closeMobileMenu() {
-      mobileMenuPanel.classList.add('hidden');
-      mobileMenuBackdrop.classList.add('hidden');
-      mobileMenuToggle.setAttribute('aria-expanded', 'false');
-      mobileMenuToggle.setAttribute('aria-label', currentLang === 'es' ? 'Abrir menú' : 'Open menu');
-      setMobileMenuIcon(false);
-      document.body.style.overflow = '';
-    }
-
-    function openMobileMenu() {
-      mobileMenuPanel.classList.remove('hidden');
-      mobileMenuBackdrop.classList.remove('hidden');
-      mobileMenuToggle.setAttribute('aria-expanded', 'true');
-      mobileMenuToggle.setAttribute('aria-label', currentLang === 'es' ? 'Cerrar menú' : 'Close menu');
-      setMobileMenuIcon(true);
-      document.body.style.overflow = 'hidden';
-    }
-
-    if (mobileMenuToggle && mobileMenuPanel && mobileMenuBackdrop) {
-      mobileMenuToggle.addEventListener('click', () => {
-        if (mobileMenuPanel.classList.contains('hidden')) {
-          openMobileMenu();
-        } else {
-          closeMobileMenu();
-        }
-      });
-
-      mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
-
-      mobileMenuPanel.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMobileMenu);
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          closeMobileMenu();
-        }
-      });
-    }
-
-    updateLanguage(currentLang);
-  </script>
+<script src="assets/wga.js?v=20261126b"></script>
+<script>
+(function () {
+  var W = window.WGA;
+  W.addDict({
+    _title: 'About us · We Grow App',
+    ab_eyebrow: 'About us', ab_title: 'Why we created <em>We Grow App.</em>',
+    ab_p1: 'Hi! I’m Marisol Rodríguez. I grew up in <b>Comandante Nicanor Otamendi</b>, a small town in the province of Buenos Aires, where learning support didn’t reach everyone in the same way.',
+    ab_p2: 'Over time I realized that barriers don’t come only from distance. They also appear when learning tools don’t take different ways of learning into account. And that happens in rural towns and in big cities.',
+    ab_p3: 'That’s why I created We Grow App: so every student can learn their way and every school has a way to support them, wherever they are.',
+    ab_role: 'Founder of We Grow App', ab_photo_alt: 'Marisol Rodríguez at United Nations headquarters, next to the Goal 4: Quality Education column',
+    ab_cap: 'ECOSOC Youth Forum', ab_cap_d: 'United Nations, New York',
+    pp_eyebrow: 'What drives us', pp_title: 'Every student should be able to learn their way.',
+    pp1_e: 'Purpose', pp1_t: 'Reduce the barriers for people who learn differently.', pp1_d: 'With accessible tools for students and practical resources for schools and teachers, wherever they are.',
+    pp2_e: 'What we do', pp2_t: 'A neuroinclusive tool for students and schools.', pp2_d: 'It adapts materials, organizes study time and makes teachers’ work easier with students with ADHD, dyslexia or other ways of learning.',
+    pp3_e: 'Where we are', pp3_t: 'Born in a rural town. Built for any classroom.', pp3_d: 'We’re starting with schools in the City of Buenos Aires, with our sights set on all of Latin America.',
+    vl_eyebrow: 'Our values', vl_title: 'What we care about in every decision.',
+    v1_t: 'Accessibility', v1_d: 'We design first for whoever faces the most barriers.', v2_t: 'Autonomy', v2_d: 'Each person chooses their own support.',
+    v3_t: 'Equity', v3_d: 'Neither your neighborhood nor your school should limit how you learn.', v4_t: 'Co-creation', v4_d: 'Built together with teachers, families and students.',
+    v5_t: 'Trust', v5_d: 'No empty promises, no made-up data.',
+    un_eyebrow: 'United Nations', un_title: 'We Grow App at the ECOSOC Youth Forum.',
+    un_lead: 'We presented We Grow App at the ECOSOC Youth Forum, in the panel on Sustainable Development Goal 9: industry, innovation and infrastructure.',
+    un_yt: 'Watch on YouTube', un_play: 'Play the United Nations presentation', un_poster: 'We Grow App presentation',
+    ab_join_t: 'Join us on this journey.', ab_join_d: 'If you’re part of a school or an organization, or want to share your experience, we’d love to meet you.', ab_join_b: 'Contact us'
+  });
+  var player = document.getElementById('un-player');
+  player.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/TNb6fAkdUAg?autoplay=1&rel=0';
+    f.title = W.lang === 'en' ? 'We Grow App at the ECOSOC Youth Forum' : 'We Grow App en el ECOSOC Youth Forum';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin'; f.allowFullscreen = true;
+    player.innerHTML = ''; player.appendChild(f); player.style.cursor = 'default';
+  }, { once: true });
+  W.start();
+})();
+</script>
 </body>
 </html>
