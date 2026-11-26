@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
-  <link rel="stylesheet" href="assets/wga.css?v=20261126c">
+  <link rel="stylesheet" href="assets/wga.css?v=20261127">
 </head>
 <body>
 <a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -74,7 +74,7 @@
   <div class="wrap hero-grid">
     <div>
       <span class="badge"><i></i><span data-i18n="hero_badge">Ya disponible</span></span>
-      <h1 data-i18n="hero_title">Tu código postal no define tu <span class="hl">futuro.<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 80 4, 170 3, 296 12"/></svg></span></h1>
+      <h1 data-i18n="hero_title">Tu código postal no define tu <span class="hl anim">futuro.</span></h1>
       <p class="lead" data-i18n="hero_lead">Herramientas para leer, organizarte y aprender a tu manera. <b>Para estudiantes y escuelas</b>, en cualquier aula.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener"><span data-i18n="nav_start">Empezar ahora</span>
@@ -263,7 +263,7 @@
   </div>
 </footer>
 
-<script src="assets/wga.js?v=20261126c"></script>
+<script src="assets/wga.js?v=20261127"></script>
 <script>
 (function () {
   var W = window.WGA, $ = W.$, $$ = W.$$, svg = W.svg, I = W.I;
@@ -272,7 +272,7 @@
   W.addDict({
     _title: 'We Grow App · Your zip code doesn’t define your future',
     hero_badge: 'Now available',
-    hero_title: 'Your zip code doesn’t define your <span class="hl">future.<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 80 4, 170 3, 296 12"/></svg></span>',
+    hero_title: 'Your zip code doesn’t define your <span class="hl anim">future.</span>',
     hero_lead: 'Tools to read, get organized and learn your way. <b>For students and schools</b>, in any classroom.',
     hero_school: 'Add my school', hero_more: 'Learn more',
     tr1_t: 'Diverse minds', tr1_d: 'Evidence-based', tr2_t: 'Accessible', tr2_d: 'Wherever you live', tr3_t: 'Private and secure', tr3_d: 'Your data is protected', tr4_t: 'Real learning', tr4_d: 'For everyday classrooms',
@@ -356,9 +356,13 @@
     cells.forEach(function (c) { c.dataset.k = c.className; c.className = ''; });
     fill.style.width = '0%';
     $('#stat-dys').addEventListener('wga:visible', function () {
+      cells.forEach(function (c) { c.className = ''; });
       cells.forEach(function (c, n) { if (c.dataset.k) setTimeout(function () { c.className = c.dataset.k; }, n * 60); });
     });
-    $('#stat-doc').addEventListener('wga:visible', function () { requestAnimationFrame(function () { fill.style.width = '52%'; }); });
+    $('#stat-doc').addEventListener('wga:visible', function () {
+      fill.style.transition = 'none'; fill.style.width = '0%'; void fill.offsetWidth; fill.style.transition = '';
+      requestAnimationFrame(function () { fill.style.width = '52%'; });
+    });
   }
 
   /* ---------- Desafíos y herramientas ---------- */
@@ -389,8 +393,8 @@
       es: { t: 'Desmotivación', d: 'La frustración constante le quita ganas a cualquiera.' },
       en: { t: 'Low motivation', d: 'Constant frustration drains anyone’s will to learn.' } },
     { i: 'teach', tools: ['tips'],
-      es: { t: 'Docentes sin formación', d: 'Necesitan herramientas para acompañar la neurodiversidad.' },
-      en: { t: 'Teachers without training', d: 'They need tools to support neurodiversity.' } }
+      es: { t: 'Docentes sin recursos', d: 'Necesitan herramientas para acompañar la neurodiversidad en el aula.' },
+      en: { t: 'Teachers without resources', d: 'They need tools to support neurodiversity in the classroom.' } }
   ];
   var CONCEPTS = [
     { ic: 'leaf', es: ['Fotosíntesis', 'Las plantas usan la luz del sol, el agua y el aire para fabricar su alimento.'], en: ['Photosynthesis', 'Plants use sunlight, water and air to make their food.'] },
@@ -510,27 +514,37 @@
     for (var j = 0; j < weights.length; j++) { acc += weights[j]; if (target <= acc) return j; }
     return weights.length - 1;
   }
+  /* Si hay grabación real, se deja cargada de antemano para poder reproducirla al instante */
+  var RECORDING = { es: null, en: null };
+  ['es', 'en'].forEach(function (lg) {
+    if (!window.fetch || location.protocol === 'file:') return;
+    fetch(AUDIO_SRC[lg], { method: 'HEAD' }).then(function (r) {
+      if (!r.ok) return;
+      var a = new Audio(AUDIO_SRC[lg]); a.preload = 'auto';
+      a.addEventListener('ended', function () { if (speech.audio === a) stopSpeech(); });
+      RECORDING[lg] = a;
+    }).catch(function () { /* sin grabación: se usa la voz del navegador */ });
+  });
   function startSpeech() {
     var s = L(S), lang = W.lang === 'en' ? 'en' : 'es', text = speech.words.map(function (w) { return w.text; }).join(' ');
     var b = $('#listen-btn'), st = $('#listen-stop');
     b.disabled = true; b.querySelector('span').textContent = s.listen + '…'; st.hidden = false;
 
-    var a = new Audio(); a.preload = 'auto';
-    var usedAudio = false;
-    a.addEventListener('canplay', function onReady() {
-      a.removeEventListener('canplay', onReady);
-      if (!st || st.hidden) return;
-      usedAudio = true; speech.audio = a;
-      a.play().catch(function () { usedAudio = false; speech.audio = null; tts(); });
+    /* Todo arranca dentro del mismo toque: Safari en iPhone no deja sonar audio ni voz si se demora */
+    var a = RECORDING[lang];
+    if (a) {
+      speech.audio = a;
+      try { a.currentTime = 0; } catch (e) { /* nada */ }
+      var pr = a.play();
       (function loop() {
         if (speech.audio !== a) return;
         if (a.duration) mark(wordAt(Math.min(1, a.currentTime / a.duration)));
         speech.raf = requestAnimationFrame(loop);
       })();
-    });
-    a.addEventListener('ended', function () { if (speech.audio === a) stopSpeech(); });
-    a.addEventListener('error', function () { if (!usedAudio) tts(); });
-    a.src = AUDIO_SRC[lang];
+      if (pr && pr.catch) pr.catch(function () { if (speech.audio === a) { speech.audio = null; cancelAnimationFrame(speech.raf); tts(); } });
+      return;
+    }
+    tts();
 
     function tts() {
       var gotBoundary = false;
@@ -546,7 +560,7 @@
       }
       if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { $('#listen-note').hidden = false; runFallback(380); return; }
       var u = new SpeechSynthesisUtterance(text), v = bestVoice(lang);
-      u.lang = v ? v.lang : (lang === 'en' ? 'en-US' : 'es-AR');
+      u.lang = v ? v.lang : (lang === 'en' ? 'en-US' : 'es-ES');
       if (v) u.voice = v;
       u.rate = 1; u.pitch = 1;
       u.onboundary = function (e) {
@@ -558,7 +572,8 @@
       u.onend = function () { if (speech.utter === u) stopSpeech(); };
       u.onerror = function () { if (speech.utter === u && !gotBoundary) { speech.utter = null; $('#listen-note').hidden = false; runFallback(380); } };
       speech.utter = u;
-      speechSynthesis.cancel(); speechSynthesis.speak(u);
+      if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+      speechSynthesis.resume(); speechSynthesis.speak(u);
       setTimeout(function () { if (speech.utter === u && !gotBoundary) runFallback(330); }, 700);
     }
   }

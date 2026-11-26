@@ -134,16 +134,28 @@
     el.textContent = '0';
     requestAnimationFrame(step);
   }
+  /* Las animaciones (números, gráficos, subrayado del título) se repiten si la persona
+     vuelve a una sección después de un rato (REPLAY_MS) */
+  var REPLAY_MS = 60000;
+  function restartCss(root) {
+    $$('.hl', root).forEach(function (h) { h.classList.remove('anim'); void h.offsetWidth; h.classList.add('anim'); });
+  }
   function initReveal() {
-    var targets = $$('.reveal, [data-count-group]');
+    var targets = $$('.reveal, [data-count-group], .hero h1');
     if (!('IntersectionObserver' in window)) return;
+    var last = new Map(), away = new Map();
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        en.target.classList.remove('pre');
-        $$('.count', en.target).forEach(countUp);
-        en.target.dispatchEvent(new CustomEvent('wga:visible'));
-        io.unobserve(en.target);
+        var el = en.target;
+        if (!en.isIntersecting) { if (last.has(el)) away.set(el, true); return; }
+        el.classList.remove('pre');
+        var prev = last.get(el);
+        if (prev !== undefined && !(away.get(el) && Date.now() - prev >= REPLAY_MS)) return;
+        last.set(el, Date.now()); away.set(el, false);
+        if (prev === undefined && el.matches('.hero h1')) return; /* la primera vez ya anima con CSS */
+        $$('.count', el).forEach(countUp);
+        if (!reduce) restartCss(el.matches('.hero h1') ? el.parentNode : el);
+        el.dispatchEvent(new CustomEvent('wga:visible'));
       });
     }, { threshold: 0.25 });
     targets.forEach(function (el) {
