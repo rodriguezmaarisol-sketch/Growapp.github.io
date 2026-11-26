@@ -1,1161 +1,246 @@
 <!doctype html>
-<html lang="es" class="h-full">
+<html lang="es">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWYJ9505XE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWYJ9505XE');
+  </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F27405">
-  <title>Colabora con We Grow App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sumate a We Grow App · Escuelas y aliados</title>
+  <meta name="description" content="Sumá tu escuela a We Grow App o colaborá con el proyecto: desarrollo, diseño, alianzas, innovación educativa y mentoría.">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="images/favicon-v3.png?v=20260620">
   <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico?v=20260620">
   <link rel="apple-touch-icon" href="images/favicon-v3.png?v=20260620">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --or: #F27405;
-      --or-light: #FEF3E8;
-      --or-border: #F5C89A;
-      --or-text: #7A3A00;
-      --or-hover: #D96803;
-      --bg: #ffffff;
-      --bg2: #F9F8F6;
-      --text: #1a1a1a;
-      --text2: #6b6b6b;
-      --text3: #9a9a9a;
-      --border: rgba(0,0,0,0.10);
-      --border2: rgba(0,0,0,0.18);
-      --radius: 8px;
-      --radius-lg: 12px;
-      --error: #E24B4A;
-      --success: #3B6D11;
-      --success-bg: #EAF3DE;
-    }
-
-    body {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text);
-      background: var(--bg);
-    }
-
-    .font-main { font-family: 'Montserrat', sans-serif; }
-
-    .lang-btn.active {
-      background-color: #F27405;
-      color: #ffffff !important;
-    }
-
-    .top-nav-row { height: 76px; }
-
-    .logo-nav-wrap {
-      height: 56px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-nav {
-      height: 100%;
-      width: auto;
-      display: block;
-      max-width: min(52vw, 320px);
-    }
-
-    .logo-home-link {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      line-height: 0;
-      cursor: pointer;
-    }
-
-    @media (min-width: 768px) {
-      .logo-nav-wrap { height: 64px; }
-      .logo-nav { max-width: 360px; }
-    }
-
-    .mobile-menu-fab {
-      position: fixed;
-      right: 16px;
-      bottom: 20px;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      border: 2px solid #F27405;
-      background-color: #F27405;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 30px rgba(242, 116, 5, 0.35);
-      z-index: 70;
-    }
-
-    .mobile-menu-fab:focus-visible {
-      outline: 3px solid rgba(242, 116, 5, 0.4);
-      outline-offset: 3px;
-    }
-
-    .mobile-menu-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(2px);
-      z-index: 58;
-    }
-
-    .mobile-menu-panel {
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 88px;
-      border-radius: 18px;
-      border: 2px solid rgba(242, 116, 5, 0.25);
-      background-color: #ffffff;
-      box-shadow: 0 18px 44px rgba(44, 62, 80, 0.22);
-      padding: 14px;
-      z-index: 60;
-    }
-
-    .hero {
-      padding: 5rem 2rem 4.5rem;
-      text-align: center;
-      border-bottom: 0.5px solid var(--border);
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--or-light);
-      color: var(--or-text);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 20px;
-      border: 0.5px solid var(--or-border);
-      margin-bottom: 1.75rem;
-    }
-
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(26px, 5vw, 40px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero h1 em { font-style: normal; color: var(--or); }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text2);
-      max-width: 440px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    .section {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .section:last-of-type { border-bottom: none; }
-
-    .eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--or);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(28px, 4vw, 36px);
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .section-sub {
-      font-size: 16px;
-      color: var(--text2);
-      margin-bottom: 2rem;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    @media (max-width: 640px) { .cards-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 400px) { .cards-grid { grid-template-columns: 1fr; } }
-
-    .way-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    .way-card:hover { border-color: var(--or-border); }
-
-    .way-card.selected {
-      border: 1.5px solid var(--or);
-      background: var(--or-light);
-    }
-
-    .way-card .card-icon {
-      font-size: 22px;
-      color: var(--or);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .way-card h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 0.45rem;
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .way-card.selected h3 { color: var(--or-text); }
-
-    .way-card p {
-      font-size: 14px;
-      color: var(--text2);
-      margin: 0;
-      line-height: 1.55;
-    }
-
-    .way-card.selected p { color: var(--or-text); opacity: 0.85; }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
-    .form-grid.single { grid-template-columns: 1fr; }
-
-    .field { display: flex; flex-direction: column; gap: 6px; }
-
-    .field label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text2);
-      letter-spacing: 0.02em;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .field label .opt { font-weight: 400; color: var(--text3); }
-
-    .field input,
-    .field textarea {
-      font-family: inherit;
-      font-size: 15px;
-      background: var(--bg);
-      border: 0.5px solid var(--border2);
-      border-radius: var(--radius);
-      padding: 11px 14px;
-      color: var(--text);
-      width: 100%;
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
-      -webkit-appearance: none;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder { color: var(--text3); }
-
-    .field input:focus,
-    .field textarea:focus {
-      border-color: var(--or);
-      box-shadow: 0 0 0 3px rgba(242,116,5,0.13);
-    }
-
-    .field input.error { border-color: var(--error); }
-    .field input.error:focus { box-shadow: 0 0 0 3px rgba(226,75,74,0.13); }
-
-    .field textarea {
-      min-height: 100px;
-      resize: vertical;
-      line-height: 1.6;
-    }
-
-    .checks-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text2);
-      letter-spacing: 0.02em;
-      margin-bottom: 10px;
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .checks-label .opt { font-weight: 400; color: var(--text3); }
-
-    .checks-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    @media (max-width: 400px) { .checks-grid { grid-template-columns: 1fr; } }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 14px;
-      cursor: pointer;
-      padding: 10px 12px;
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text2);
-      transition: border-color 0.12s, background 0.12s, color 0.12s;
-      line-height: 1.3;
-    }
-
-    .check-item:hover { border-color: var(--or-border); color: var(--text); }
-
-    .check-item.checked {
-      border-color: var(--or);
-      background: var(--or-light);
-      color: var(--or-text);
-      font-weight: 500;
-    }
-
-    .check-item input[type="checkbox"] {
-      accent-color: var(--or);
-      width: 15px;
-      height: 15px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 14px 20px;
-      background: var(--or);
-      color: #ffffff;
-      border: none;
-      border-radius: var(--radius);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.15s, transform 0.1s;
-      margin-top: 4px;
-    }
-
-    .btn-submit:hover { background: var(--or-hover); }
-    .btn-submit:active { transform: scale(0.99); }
-
-    .privacy-note {
-      font-size: 12px;
-      color: var(--text3);
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .success-state {
-      display: none;
-      padding: 4rem 2rem;
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .success-state .s-icon {
-      font-size: 42px;
-      color: var(--or);
-      display: block;
-      margin-bottom: 1.25rem;
-    }
-
-    .success-state h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 30px;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-
-    .success-state p {
-      font-size: 16px;
-      color: var(--text2);
-      max-width: 380px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      color: var(--text2);
-      border: 0.5px solid var(--border2);
-      border-radius: var(--radius);
-      padding: 8px 16px;
-      background: transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .btn-back:hover { color: var(--text); border-color: var(--or); }
-
-    .cta-close {
-      text-align: center;
-      padding: 5rem 2rem;
-      max-width: 760px;
-      margin: 0 auto;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .accent-line {
-      width: 36px;
-      height: 3px;
-      background: var(--or);
-      border-radius: 2px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .cta-close h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.3;
-      max-width: 420px;
-      margin: 0 auto 1rem;
-    }
-
-    .cta-close p {
-      font-size: 16px;
-      color: var(--text2);
-      max-width: 360px;
-      margin: 0 auto;
-    }
-
-    .site-footer {
-      background-color: #2C3E50;
-      padding: 28px 16px 16px;
-      margin-top: 10px;
-    }
-
-    .site-footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .site-footer-logo {
-      height: 34px;
-      width: auto;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .site-footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    .site-footer-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #FFFAF2;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .site-footer-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .site-footer-link {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 14px;
-      color: rgba(255, 250, 242, 0.88);
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .site-footer-link:hover {
-      opacity: 1;
-      color: #FFFAF2;
-    }
-
-    .site-footer-copy {
-      border-top: 1px solid rgba(255, 250, 242, 0.2);
-      padding-top: 10px;
-      font-size: 12px;
-      color: #FFFAF2;
-      opacity: 0.78;
-    }
-
-    @media (max-width: 900px) {
-      .site-footer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 560px) {
-      .site-footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .error-msg {
-      font-size: 12px;
-      color: var(--error);
-      margin-top: 3px;
-      display: none;
-    }
-
-    .error-msg.show { display: block; }
-  </style>
+  <meta name="theme-color" content="#2C3E50">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="assets/wga.css?v=20261126">
 </head>
-<body class="h-full">
-  <div class="w-full h-full overflow-auto">
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-95 backdrop-blur-sm" style="background-color: #FFFAF2; border-bottom: 1px solid rgba(44, 62, 80, 0.1);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="top-nav-row flex justify-between items-center">
-          <div class="logo-nav-wrap flex items-center gap-3">
-            <a href="index.html" aria-label="Ir al inicio" class="logo-home-link">
-              <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="logo-nav">
-            </a>
-          </div>
-          <div class="flex items-center gap-3 sm:gap-6">
-            <div class="flex items-center gap-2 bg-white rounded-full p-1" style="border: 2px solid #F27405;">
-              <button id="lang-es" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="background-color: #F27405; color: white;">ES</button>
-              <button id="lang-en" class="lang-btn px-4 py-1.5 rounded-full font-main font-semibold transition-all" style="color: #F27405;">EN</button>
-            </div>
-            <div class="hidden md:flex items-center gap-8 font-main font-medium">
-              <a href="index.html" id="nav-home" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Inicio</a>
-              <a href="nosotros.html" id="nav-about" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Nosotros</a>
-              <a href="index.html#demo" id="nav-demo" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Demo</a>
-              <a href="index.html#preguntas-frecuentes" id="nav-faq" class="nav-link hover:text-orange-500 transition-colors" style="color: #2C3E50;">Preguntas frecuentes</a>
-              <a href="colabora.html" id="nav-contact" class="nav-link px-6 py-2.5 rounded-full font-semibold text-white transition-all hover:scale-105" style="background-color: #F27405;">Contáctanos</a>
-              <a href="https://wegrowapp.lovable.app/" id="nav-start" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full font-main font-bold text-white transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap" style="background-color: #F27405;">Empezar ahora</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<body>
+<a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="We Grow App, inicio" data-i18n-attr="aria-label:logo_home"><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="63" height="44"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+      <li><a href="nosotros.html" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a></li>
+      <li><a href="index.html#luma" data-i18n="nav_luma">Luma</a></li>
+      <li><a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a></li>
+      <li><a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="a11y-btn" aria-expanded="false" aria-controls="a11y-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="1.6"/><path d="M5 8l7 1.5L19 8M12 9.5V14l-3 7M12 14l3 7"/></svg><span class="lbl" data-i18n="a11y_btn">Accesibilidad</span>
+      </button>
+      <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es" aria-pressed="true">ES</button><button data-lang="en" aria-pressed="false">EN</button></div>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
+      <button class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú" data-i18n-attr="aria-label:menu_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Opciones de accesibilidad" data-i18n-attr="aria-label:a11y_panel" hidden>
+      <h2 data-i18n="a11y_title">Leé a tu manera</h2>
+      <div class="row"><span data-i18n="a11y_font">Letra</span><div class="choice" data-group="font">
+        <button data-v="brand" aria-pressed="true">Nunito</button><button data-v="atk" aria-pressed="false" style="font-family:'Atkinson Hyperlegible',sans-serif">Atkinson</button><button data-v="od" aria-pressed="false" style="font-family:OpenDyslexic,sans-serif">OpenDyslexic</button></div></div>
+      <div class="row"><span data-i18n="a11y_size">Tamaño</span><div class="choice" data-group="size">
+        <button data-v="sm" aria-pressed="true" data-i18n="a11y_sm">Chico</button><button data-v="md" aria-pressed="false" data-i18n="a11y_md">Mediano</button><button data-v="lg" aria-pressed="false" data-i18n="a11y_lg">Grande</button></div></div>
+      <div class="row"><span><span data-i18n="a11y_leading">Interlineado</span> <output id="lh-out">1,6</output></span><input type="range" id="lh" min="1.5" max="2.2" step="0.1" value="1.6" aria-label="Interlineado" data-i18n-attr="aria-label:a11y_leading"></div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" hidden>
+      <a href="index.html" data-i18n="nav_home">Inicio</a>
+      <a href="nosotros.html" data-i18n="nav_about">Nosotros</a>
+      <a href="index.html#herramientas" data-i18n="nav_tools">Herramientas</a>
+      <a href="index.html#luma" data-i18n="nav_luma">Luma</a>
+      <a href="index.html#instituciones" data-i18n="nav_schools">Escuelas</a>
+      <a href="index.html#preguntas" data-i18n="nav_faq">Preguntas</a>
+      <a class="btn btn-primary" href="https://wegrowapp.lovable.app/" target="_blank" rel="noopener" data-i18n="nav_start">Empezar ahora</a>
     </nav>
+  </div>
+</header>
 
-    <button id="mobile-menu-toggle" type="button" class="mobile-menu-fab md:hidden" aria-label="Abrir menú" aria-controls="mobile-menu-panel" aria-expanded="false">
-      <span id="mobile-menu-icon" aria-hidden="true" class="text-2xl leading-none font-bold">☰</span>
-    </button>
+<main id="contenido">
+  <section class="co-hero navy on-navy">
+    <div class="wrap">
+      <a class="crumb" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="co_back">Volver al inicio</span></a>
+      <h1 data-i18n="co_title">Construimos educación inclusiva. <em>Sumate al equipo.</em></h1>
+      <p data-i18n="co_lead">Buscamos escuelas, organizaciones, desarrolladores y diseñadores que compartan una idea: aprender no debería depender de dónde naciste ni de cómo procesás la información.</p>
+    </div>
+  </section>
 
-    <div id="mobile-menu-backdrop" class="mobile-menu-backdrop hidden md:hidden" aria-hidden="true"></div>
-    <div id="mobile-menu-panel" class="mobile-menu-panel hidden md:hidden" role="dialog" aria-modal="true" aria-label="Menú principal">
-      <div class="flex flex-col gap-3 font-main font-semibold">
-        <a href="index.html" id="m-nav-home" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Inicio</a>
-        <a href="nosotros.html" id="m-nav-about" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Nosotros</a>
-        <a href="index.html#demo" id="m-nav-demo" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Demo</a>
-        <a href="index.html#preguntas-frecuentes" id="m-nav-faq" class="px-4 py-3 rounded-xl" style="background-color: #fff; color: #2C3E50;">Preguntas frecuentes</a>
-        <a href="colabora.html" id="m-nav-contact" class="px-4 py-3 rounded-xl font-bold text-white" style="background-color: #F27405;">Contáctanos</a>
-        <a href="https://wegrowapp.lovable.app/" id="m-nav-start" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl text-center font-bold text-white" style="background-color: #2C3E50;">Empezar ahora</a>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" data-i18n="co_ways_eyebrow">Formas de colaborar</span>
+        <h2 data-i18n="co_ways_title">Encontrá tu lugar en We Grow App.</h2>
+        <p data-i18n="co_ways_lead">Elegí la forma que mejor se adapta a lo que hacés. Podés elegir más de una.</p>
+      </div>
+      <div class="ways" id="ways"></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0" id="formulario">
+    <div class="wrap form-grid">
+      <div class="form-side">
+        <div class="sec-head"><span class="eyebrow" data-i18n="co_form_eyebrow">Contacto</span><h2 data-i18n="co_form_title">Contanos sobre vos.</h2><p data-i18n="co_form_lead">Respondemos todos los mensajes en menos de 48 horas.</p></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><b data-i18n="co_talk_t">¿Preferís hablar?</b><span data-i18n="co_talk_d">Agendá una reunión de 30 minutos.</span> <a class="link" href="https://calendly.com/growapplat/30min" target="_blank" rel="noopener" data-i18n="co_talk_l">Agendar reunión</a></span></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg><span><b data-i18n="co_mail_t">¿Preferís escribirnos?</b><a class="link" href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a></span></div>
+        <div class="perk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b data-i18n="co_priv_t">Tus datos son confidenciales</b><span data-i18n="co_priv_d">No los compartimos con terceros.</span></span></div>
+      </div>
+      <div>
+        <form class="cform" id="cform" novalidate>
+          <div class="field" id="fld-name"><label for="f-name" data-i18n="f_name">Nombre y apellido</label><input type="text" id="f-name" name="nombre" placeholder="Tu nombre completo" data-i18n-attr="placeholder:f_name_ph" autocomplete="name" required><span class="msg" data-i18n="f_name_err">Escribí tu nombre.</span></div>
+          <div class="field" id="fld-email"><label for="f-email">Email</label><input type="email" id="f-email" name="email" placeholder="tu@email.com" data-i18n-attr="placeholder:f_email_ph" autocomplete="email" required><span class="msg" data-i18n="f_email_err">Ingresá un email válido.</span></div>
+          <div class="field"><label for="f-org"><span data-i18n="f_org">Organización</span> <span class="opt" data-i18n="f_opt">(opcional)</span></label><input type="text" id="f-org" name="organizacion" placeholder="Escuela, empresa u organización" data-i18n-attr="placeholder:f_org_ph" autocomplete="organization"></div>
+          <fieldset class="field" id="fld-part"><legend><span data-i18n="f_part">¿Cómo te gustaría participar?</span> <span class="opt" data-i18n="f_part_opt">(podés elegir más de una)</span></legend><div class="checks" id="checks"></div><span class="msg" data-i18n="f_part_err">Elegí al menos una opción.</span></fieldset>
+          <div class="field" id="fld-msg"><label for="f-msg" data-i18n="f_msg">Mensaje</label><textarea id="f-msg" name="mensaje" placeholder="Contanos qué hacés, qué te interesa del proyecto y cómo te gustaría aportar." data-i18n-attr="placeholder:f_msg_ph" required></textarea><span class="msg" data-i18n="f_msg_err">Contanos un poco más.</span></div>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit" id="submit-btn"><span data-i18n="f_send">Enviar mensaje</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><span data-i18n="f_privacy">Tus datos son confidenciales. No los compartimos con terceros.</span></p>
+        </form>
+        <div class="success" id="success" hidden tabindex="-1">
+          <img src="images/luma-saludo.png" alt="Luma saludando" data-i18n-attr="alt:ok_alt" width="295" height="320">
+          <span class="ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span data-i18n="ok_badge">Enviado</span></span>
+          <h2 data-i18n="ok_title">¡Recibimos tu mensaje!</h2>
+          <p data-i18n="ok_text">Gracias por escribirnos. El equipo de We Grow App te va a responder en menos de 48 horas.</p>
+          <a class="btn btn-secondary" href="index.html" data-i18n="co_back">Volver al inicio</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <main class="pt-24">
-      <section class="hero">
-        <div class="pill">
-          <i class="ti ti-users" style="font-size:13px" aria-hidden="true"></i>
-          <span id="pill-text">Abierto a colaboraciones</span>
-        </div>
-        <h1><span id="hero-line-1">Construimos educación inclusiva.</span><br><em id="hero-line-2">Sumate al equipo.</em></h1>
-        <p id="hero-subtitle">Buscamos desarrolladores, diseñadores, instituciones y organizaciones que compartan la convicción de que aprender no debería depender de dónde naciste ni de cómo procesás la información.</p>
-      </section>
+  <section class="navy on-navy co-close reveal">
+    <div class="wrap">
+      <div class="num">+<span class="count" data-to="15">15</span> <span data-i18n="cl_unit">millones</span></div>
+      <h2 data-i18n="cl_title">de estudiantes en América Latina aprenden de otra manera.</h2>
+      <p data-i18n="cl_lead">Ayudanos a construir las herramientas que necesitan.</p>
+    </div>
+  </section>
+</main>
 
-      <section class="section">
-        <p class="eyebrow" id="ways-eyebrow">Formas de colaborar</p>
-        <h2 class="section-title" id="ways-title">Encontrá tu lugar en We Grow App</h2>
-        <p class="section-sub" id="ways-subtitle">Elegí la forma que mejor se adapta a lo que hacés. Podés seleccionar más de una.</p>
-
-        <div class="cards-grid" id="ways-grid">
-          <div class="way-card" data-val="Desarrollo de producto" onclick="toggleWay(this)">
-            <i class="ti ti-code card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-1">Desarrollo de producto</h3>
-            <p id="way-desc-1">Ingeniería frontend, backend, mobile y accesibilidad técnica.</p>
-          </div>
-          <div class="way-card" data-val="Diseño UX/UI y accesibilidad" onclick="toggleWay(this)">
-            <i class="ti ti-palette card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-2">Diseño UX/UI</h3>
-            <p id="way-desc-2">Experiencia de usuario, diseño de interfaces y accesibilidad.</p>
-          </div>
-          <div class="way-card" data-val="Instituciones educativas" onclick="toggleWay(this)">
-            <i class="ti ti-school card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-3">Instituciones educativas</h3>
-            <p id="way-desc-3">Escuelas, universidades y centros que quieran implementar We Grow App.</p>
-          </div>
-          <div class="way-card" data-val="Alianzas estratégicas" onclick="toggleWay(this)">
-            <i class="ti ti-handshake card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-4">Alianzas estratégicas</h3>
-            <p id="way-desc-4">Organizaciones, fundaciones e inversores alineados con el impacto educativo.</p>
-          </div>
-          <div class="way-card" data-val="Innovación educativa" onclick="toggleWay(this)">
-            <i class="ti ti-bulb card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-5">Innovación educativa</h3>
-            <p id="way-desc-5">Investigadores, docentes y especialistas en pedagogía inclusiva.</p>
-          </div>
-          <div class="way-card" data-val="Mentoría" onclick="toggleWay(this)">
-            <i class="ti ti-star card-icon" aria-hidden="true"></i>
-            <h3 id="way-title-6">Mentoría</h3>
-            <p id="way-desc-6">Mentores de producto, negocio, impacto social y escalabilidad.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="form-section">
-        <p class="eyebrow" id="contact-eyebrow">Contacto</p>
-        <h2 class="section-title" id="contact-title">Contanos sobre vos</h2>
-        <p class="section-sub" id="contact-subtitle">Respondemos todos los mensajes en menos de 48 horas.</p>
-
-        <form id="contact-form" novalidate>
-          <div class="form-grid">
-            <div class="field">
-              <label for="f-name" id="label-name">Nombre y apellido</label>
-              <input type="text" id="f-name" name="nombre" placeholder="Tu nombre completo" autocomplete="name">
-              <span class="error-msg" id="err-name">Este campo es obligatorio.</span>
-            </div>
-            <div class="field">
-              <label for="f-email" id="label-email">Email</label>
-              <input type="email" id="f-email" name="email" placeholder="tu@email.com" autocomplete="email">
-              <span class="error-msg" id="err-email">Ingresá un email válido.</span>
-            </div>
-          </div>
-
-          <div class="form-grid single">
-            <div class="field">
-              <label for="f-org"><span id="label-org">Organización</span> <span class="opt" id="optional-org">(opcional)</span></label>
-              <input type="text" id="f-org" name="organizacion" placeholder="Empresa, institución u organización" autocomplete="organization">
-            </div>
-          </div>
-
-          <span class="checks-label"><span id="checks-label-main">¿Cómo te gustaría participar?</span> <span class="opt" id="checks-label-opt">(podés elegir más de una)</span></span>
-          <div class="checks-grid" id="checks-grid">
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Desarrollo de producto"> <span id="check-text-1">Desarrollo de producto</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Diseño UX/UI y accesibilidad"> <span id="check-text-2">Diseño UX/UI y accesibilidad</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Instituciones educativas"> <span id="check-text-3">Instituciones educativas</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Alianzas estratégicas"> <span id="check-text-4">Alianzas estratégicas</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Innovación educativa"> <span id="check-text-5">Innovación educativa</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Mentoría"> <span id="check-text-6">Mentoría</span>
-            </label>
-            <label class="check-item" onclick="toggleCheck(this)">
-              <input type="checkbox" name="participacion" value="Otro"> <span id="check-text-7">Otro</span>
-            </label>
-          </div>
-
-          <div class="form-grid single" style="margin-bottom:18px">
-            <div class="field">
-              <label for="f-msg" id="label-message">Mensaje</label>
-              <textarea id="f-msg" name="mensaje" placeholder="Contanos qué hacés, qué te interesa del proyecto y cómo podrías aportar."></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="btn-submit" id="submit-btn">
-            <i class="ti ti-send" style="font-size:16px" aria-hidden="true"></i>
-            <span id="submit-text">Enviar mensaje</span>
-          </button>
-          <p class="privacy-note" id="privacy-note">Tus datos son confidenciales. No los compartimos con terceros.</p>
-        </form>
-      </section>
-
-      <div class="success-state" id="success-state">
-        <i class="ti ti-circle-check s-icon" aria-hidden="true"></i>
-        <h2 id="success-title">¡Se envió correctamente!</h2>
-        <p id="success-text">Recibimos tu mensaje y el equipo de We Grow App te responderá en menos de 48 horas. Gracias por tu interés.</p>
-        <a href="index.html" class="btn-back">
-          <i class="ti ti-arrow-left" style="font-size:14px" aria-hidden="true"></i>
-          <span id="back-home-text">Volver al inicio</span>
-        </a>
-      </div>
-
-      <div class="cta-close">
-        <div class="accent-line"></div>
-        <h2 id="close-title">Más de 15 millones de estudiantes en América Latina aprenden diferente.</h2>
-        <p id="close-text">Ayudanos a construir el sistema que necesitan.</p>
-      </div>
-
-      <footer class="site-footer">
-        <div class="site-footer-inner">
-          <a href="index.html" aria-label="We Grow App">
-            <img src="images/logo-nav.png?v=20260620" alt="We Grow App" class="site-footer-logo">
-          </a>
-
-          <div class="site-footer-grid">
-            <div>
-              <h3 class="site-footer-title" id="footer-follow-title">Seguinos</h3>
-              <ul class="site-footer-list">
-                <li><a class="site-footer-link" href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a class="site-footer-link" href="mailto:growapplat@gmail.com">Gmail</a></li>
-                <li><a class="site-footer-link" href="https://www.instagram.com/wegrowapp.arg/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="site-footer-title" id="footer-navigation-title">Navegación</h3>
-              <ul class="site-footer-list">
-                <li><a class="site-footer-link" href="index.html#demo" id="footer-demo-link">Demo</a></li>
-                <li><a class="site-footer-link" href="index.html#preguntas-frecuentes" id="footer-faq-link">Preguntas frecuentes</a></li>
-                <li><a class="site-footer-link" href="index.html#problema" id="footer-problem-link">El problema</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="site-footer-title" id="footer-resources-title">Recursos</h3>
-              <ul class="site-footer-list">
-                <li><a class="site-footer-link" href="index.html#instituciones" id="footer-schools-link">Para escuelas</a></li>
-                <li><a class="site-footer-link" href="colabora.html" id="footer-contact-link">Contacto</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="site-footer-title" id="footer-legal-title">Legal</h3>
-              <ul class="site-footer-list">
-                <li><a class="site-footer-link" href="politica-privacidad.html" id="footer-privacy-link">Política de privacidad</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="site-footer-copy" id="footer-copyright">©We Grow App 2026. Todos los derechos reservados</p>
-        </div>
-      </footer>
-    </main>
+<footer class="site-footer on-navy">
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="images/logo-nav.png?v=20260620" alt="We Grow App" width="80" height="56" loading="lazy"><p data-i18n="foot_tag">Tu código postal no define tu futuro.</p></div>
+      <div><h2 data-i18n="foot_follow">Seguinos</h2><ul><li><a href="https://www.linkedin.com/in/marisol-rodriguez-63aa66220" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/wegrowapp.arg/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:wegrowapplatam@gmail.com">wegrowapplatam@gmail.com</a></li></ul></div>
+      <div><h2 data-i18n="foot_nav">Navegación</h2><ul><li><a href="index.html#inicio" data-i18n="foot_demo">Demo</a></li><li><a href="nosotros.html" data-i18n="foot_about">Nosotros</a></li><li><a href="index.html#problema" data-i18n="foot_why">Por qué existimos</a></li><li><a href="index.html#preguntas" data-i18n="foot_faq">Preguntas frecuentes</a></li></ul></div>
+      <div><h2 data-i18n="foot_res">Recursos</h2><ul><li><a href="index.html#instituciones" data-i18n="foot_schools">Para escuelas</a></li><li><a href="colabora.html?escuela=1" data-i18n="foot_join">Sumar mi colegio</a></li><li><a href="#formulario" data-i18n="foot_contact">Contacto</a></li></ul></div>
+      <div><h2 data-i18n="foot_legal">Legal</h2><ul><li><a href="politica-privacidad.html" data-i18n="foot_privacy">Política de privacidad</a></li></ul></div>
+    </div>
+    <div class="legal" data-i18n="foot_copy">© We Grow App 2026. Todos los derechos reservados.</div>
   </div>
+</footer>
 
-  <script>
-    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/growapplat@gmail.com';
-    const translations = {
-      es: {
-        nav_home: 'Inicio',
-        nav_about: 'Nosotros',
-        nav_demo: 'Demo',
-        nav_faq: 'Preguntas frecuentes',
-        nav_contact: 'Contáctanos',
-        nav_start: 'Empezar ahora',
-        pill_text: 'Abierto a colaboraciones',
-        hero_line_1: 'Construimos educación inclusiva.',
-        hero_line_2: 'Sumate al equipo.',
-        hero_subtitle: 'Buscamos desarrolladores, diseñadores, instituciones y organizaciones que compartan la convicción de que aprender no debería depender de dónde naciste ni de cómo procesás la información.',
-        ways_eyebrow: 'Formas de colaborar',
-        ways_title: 'Encontrá tu lugar en We Grow App',
-        ways_subtitle: 'Elegí la forma que mejor se adapta a lo que hacés. Podés seleccionar más de una.',
-        way_title_1: 'Desarrollo de producto',
-        way_desc_1: 'Ingeniería frontend, backend, mobile y accesibilidad técnica.',
-        way_title_2: 'Diseño UX/UI',
-        way_desc_2: 'Experiencia de usuario, diseño de interfaces y accesibilidad.',
-        way_title_3: 'Instituciones educativas',
-        way_desc_3: 'Escuelas, universidades y centros que quieran implementar We Grow App.',
-        way_title_4: 'Alianzas estratégicas',
-        way_desc_4: 'Organizaciones, fundaciones e inversores alineados con el impacto educativo.',
-        way_title_5: 'Innovación educativa',
-        way_desc_5: 'Investigadores, docentes y especialistas en pedagogía inclusiva.',
-        way_title_6: 'Mentoría',
-        way_desc_6: 'Mentores de producto, negocio, impacto social y escalabilidad.',
-        contact_eyebrow: 'Contacto',
-        contact_title: 'Contanos sobre vos',
-        contact_subtitle: 'Respondemos todos los mensajes en menos de 48 horas.',
-        label_name: 'Nombre y apellido',
-        label_email: 'Email',
-        label_org: 'Organización',
-        optional_org: '(opcional)',
-        checks_label_main: '¿Cómo te gustaría participar?',
-        checks_label_opt: '(podés elegir más de una)',
-        check_text_1: 'Desarrollo de producto',
-        check_text_2: 'Diseño UX/UI y accesibilidad',
-        check_text_3: 'Instituciones educativas',
-        check_text_4: 'Alianzas estratégicas',
-        check_text_5: 'Innovación educativa',
-        check_text_6: 'Mentoría',
-        check_text_7: 'Otro',
-        label_message: 'Mensaje',
-        submit_text: 'Enviar mensaje',
-        privacy_note: 'Tus datos son confidenciales. No los compartimos con terceros.',
-        success_title: '¡Se envió correctamente!',
-        success_text: 'Recibimos tu mensaje y el equipo de We Grow App te responderá en menos de 48 horas. Gracias por tu interés.',
-        back_home_text: 'Volver al inicio',
-        close_title: 'Más de 15 millones de estudiantes en América Latina aprenden diferente.',
-        close_text: 'Ayudanos a construir el sistema que necesitan.',
-        err_name: 'Este campo es obligatorio.',
-        err_email: 'Ingresá un email válido.',
-        placeholder_name: 'Tu nombre completo',
-        placeholder_org: 'Empresa, institución u organización',
-        placeholder_message: 'Contanos qué hacés, qué te interesa del proyecto y cómo podrías aportar.',
-        loading_text: 'Enviando...',
-        error_send: 'Hubo un error al enviar. Intentá de nuevo o escribinos a growapplat@gmail.com',
-        footer_follow: 'Seguinos',
-        footer_navigation: 'Navegación',
-        footer_demo: 'Demo',
-        footer_faq: 'Preguntas frecuentes',
-        footer_problem: 'El problema',
-        footer_resources: 'Recursos',
-        footer_schools: 'Para escuelas',
-        footer_contact: 'Contacto',
-        footer_legal: 'Legal',
-        footer_privacy: 'Política de privacidad',
-        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
-      },
-      en: {
-        nav_home: 'Home',
-        nav_about: 'About us',
-        nav_demo: 'Demo',
-        nav_faq: 'FAQ',
-        nav_contact: 'Contact us',
-        nav_start: 'Start now',
-        pill_text: 'Open to collaborations',
-        hero_line_1: 'We build inclusive education.',
-        hero_line_2: 'Join the team.',
-        hero_subtitle: 'We are looking for developers, designers, institutions, and organizations that share the belief that learning should not depend on where you were born or how you process information.',
-        ways_eyebrow: 'Ways to collaborate',
-        ways_title: 'Find your place in We Grow App',
-        ways_subtitle: 'Choose the way that best fits what you do. You can select more than one.',
-        way_title_1: 'Product development',
-        way_desc_1: 'Frontend, backend, mobile engineering, and technical accessibility.',
-        way_title_2: 'UX/UI design',
-        way_desc_2: 'User experience, interface design, and accessibility.',
-        way_title_3: 'Educational institutions',
-        way_desc_3: 'Schools, universities, and centers that want to implement We Grow App.',
-        way_title_4: 'Strategic alliances',
-        way_desc_4: 'Organizations, foundations, and investors aligned with educational impact.',
-        way_title_5: 'Educational innovation',
-        way_desc_5: 'Researchers, teachers, and inclusive pedagogy specialists.',
-        way_title_6: 'Mentoring',
-        way_desc_6: 'Product, business, social impact, and scalability mentors.',
-        contact_eyebrow: 'Contact',
-        contact_title: 'Tell us about yourself',
-        contact_subtitle: 'We reply to all messages in less than 48 hours.',
-        label_name: 'Full name',
-        label_email: 'Email',
-        label_org: 'Organization',
-        optional_org: '(optional)',
-        checks_label_main: 'How would you like to participate?',
-        checks_label_opt: '(you can choose more than one)',
-        check_text_1: 'Product development',
-        check_text_2: 'UX/UI design and accessibility',
-        check_text_3: 'Educational institutions',
-        check_text_4: 'Strategic alliances',
-        check_text_5: 'Educational innovation',
-        check_text_6: 'Mentoring',
-        check_text_7: 'Other',
-        label_message: 'Message',
-        submit_text: 'Send message',
-        privacy_note: 'Your data is confidential. We do not share it with third parties.',
-        success_title: 'Sent successfully!',
-        success_text: 'We received your message and the We Grow App team will reply within 48 hours. Thank you for your interest.',
-        back_home_text: 'Back to home',
-        close_title: 'More than 15 million students in Latin America learn differently.',
-        close_text: 'Help us build the system they need.',
-        err_name: 'This field is required.',
-        err_email: 'Please enter a valid email.',
-        placeholder_name: 'Your full name',
-        placeholder_org: 'Company, institution, or organization',
-        placeholder_message: 'Tell us what you do, what interests you about the project, and how you could contribute.',
-        loading_text: 'Sending...',
-        error_send: 'There was an error sending your message. Please try again or email us at growapplat@gmail.com',
-        footer_follow: 'Follow us',
-        footer_navigation: 'Navigation',
-        footer_demo: 'Demo',
-        footer_faq: 'FAQ',
-        footer_problem: 'The problem',
-        footer_resources: 'Resources',
-        footer_schools: 'For schools',
-        footer_contact: 'Contact',
-        footer_legal: 'Legal',
-        footer_privacy: 'Privacy policy',
-        footer_copyright: '©We Grow App 2026. Todos los derechos reservados'
-      }
-    };
+<script src="assets/wga.js?v=20261126"></script>
+<script>
+(function () {
+  var W = window.WGA, $ = W.$, $$ = W.$$, svg = W.svg;
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/wegrowapplatam@gmail.com';
 
-    let currentLang = localStorage.getItem('language') || 'es';
+  W.addDict({
+    _title: 'Join We Grow App · Schools and partners',
+    co_back: 'Back to home', co_title: 'We build inclusive education. <em>Join the team.</em>',
+    co_lead: 'We’re looking for schools, organizations, developers and designers who share one idea: learning shouldn’t depend on where you were born or how you process information.',
+    co_ways_eyebrow: 'Ways to collaborate', co_ways_title: 'Find your place at We Grow App.', co_ways_lead: 'Choose what best fits what you do. You can pick more than one.',
+    co_form_eyebrow: 'Contact', co_form_title: 'Tell us about yourself.', co_form_lead: 'We reply to every message within 48 hours.',
+    co_talk_t: 'Prefer to talk?', co_talk_d: 'Book a 30-minute meeting.', co_talk_l: 'Book a meeting', co_mail_t: 'Prefer to write?',
+    co_priv_t: 'Your data is confidential', co_priv_d: 'We don’t share it with third parties.',
+    f_name: 'Full name', f_name_ph: 'Your full name', f_name_err: 'Please enter your name.', f_email_ph: 'you@email.com', f_email_err: 'Please enter a valid email.',
+    f_org: 'Organization', f_opt: '(optional)', f_org_ph: 'School, company or organization',
+    f_part: 'How would you like to take part?', f_part_opt: '(you can pick more than one)', f_part_err: 'Please choose at least one option.',
+    f_msg: 'Message', f_msg_ph: 'Tell us what you do, what interests you about the project and how you’d like to contribute.', f_msg_err: 'Please tell us a bit more.',
+    f_send: 'Send message', f_sending: 'Sending…', f_privacy: 'Your data is confidential. We don’t share it with third parties.',
+    f_error: 'We couldn’t send your message. Try again or write to us at wegrowapplatam@gmail.com.',
+    ok_alt: 'Luma waving', ok_badge: 'Sent', ok_title: 'We got your message!', ok_text: 'Thanks for writing to us. The We Grow App team will reply within 48 hours.',
+    cl_unit: 'million', cl_title: 'students in Latin America learn differently.', cl_lead: 'Help us build the tools they need.',
+    prio: 'Priority'
+  });
+  var ES_EXTRA = { f_sending: 'Enviando…', f_error: 'No pudimos enviar tu mensaje. Probá de nuevo o escribinos a wegrowapplatam@gmail.com.', prio: 'Prioridad' };
+  function tx(k) { return W.lang === 'en' ? W.t(k) : ES_EXTRA[k]; }
 
-    function t(key) {
-      return translations[currentLang][key] || translations.es[key] || key;
-    }
+  /* Cada forma de colaborar tiene un valor fijo en español, para que los mails lleguen siempre igual */
+  var WAYS = [
+    { v: 'Instituciones educativas', ic: 'school', prio: true, es: ['Instituciones educativas', 'Escuelas, universidades y centros que quieran implementar We Grow App.'], en: ['Schools and institutions', 'Schools, universities and centers that want to implement We Grow App.'] },
+    { v: 'ONG, fundaciones y asociaciones', ic: 'people', es: ['ONG, fundaciones y asociaciones', 'Organizaciones que trabajan en educación, inclusión o tecnología.'], en: ['NGOs, foundations and associations', 'Organizations working in education, inclusion or technology.'] },
+    { v: 'Desarrollo de producto', ic: 'code', es: ['Desarrollo de producto', 'Ingeniería frontend, backend, mobile y accesibilidad técnica.'], en: ['Product development', 'Frontend, backend and mobile engineering, and technical accessibility.'] },
+    { v: 'Diseño UX/UI', ic: 'pen', es: ['Diseño UX/UI', 'Experiencia de usuario, diseño de interfaces y accesibilidad.'], en: ['UX/UI design', 'User experience, interface design and accessibility.'] },
+    { v: 'Alianzas estratégicas', ic: 'hand', es: ['Alianzas estratégicas', 'Empresas, fundaciones e inversores alineados con el impacto educativo.'], en: ['Strategic partnerships', 'Companies, foundations and investors aligned with educational impact.'] },
+    { v: 'Innovación educativa', ic: 'bulb', es: ['Innovación educativa', 'Investigadores, docentes y especialistas en pedagogía inclusiva.'], en: ['Educational innovation', 'Researchers, teachers and specialists in inclusive teaching.'] },
+    { v: 'Mentoría', ic: 'compass', es: ['Mentoría', 'Mentores de producto, negocio, impacto social y escalabilidad.'], en: ['Mentoring', 'Mentors in product, business, social impact and scaling.'] }
+  ];
+  var OTHER = { es: 'Otro', en: 'Other' };
+  var selected = {};
+  if (/[?&]escuela=1/.test(location.search)) selected['Instituciones educativas'] = true;
 
-    function setText(id, value) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = value;
-    }
+  var waysBox = $('#ways'), checks = $('#checks');
+  function render() {
+    var l = W.lang;
+    waysBox.innerHTML = '';
+    WAYS.forEach(function (w) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'way' + (w.prio ? ' wide' : ''); b.setAttribute('aria-pressed', String(!!selected[w.v]));
+      b.innerHTML = '<span class="tick">' + svg('check', 2.6) + '</span>' + (w.prio ? '<span class="prio">' + tx('prio') + '</span>' : '') + '<span class="ic">' + svg(w.ic) + '</span><b>' + w[l][0] + '</b><span class="d">' + w[l][1] + '</span>';
+      b.addEventListener('click', function () { selected[w.v] = !selected[w.v]; $('#fld-part').classList.remove('err'); render(); });
+      waysBox.appendChild(b);
+    });
+    checks.innerHTML = '';
+    WAYS.concat([{ v: 'Otro', es: [OTHER.es], en: [OTHER.en] }]).forEach(function (w) {
+      var lab = document.createElement('label');
+      lab.innerHTML = '<input type="checkbox" name="participacion" value="' + w.v + '"' + (selected[w.v] ? ' checked' : '') + '>' + w[l][0];
+      lab.querySelector('input').addEventListener('change', function () { selected[w.v] = this.checked; $('#fld-part').classList.remove('err'); render(); });
+      checks.appendChild(lab);
+    });
+  }
 
-    function updateLanguageButtons() {
-      const esBtn = document.getElementById('lang-es');
-      const enBtn = document.getElementById('lang-en');
-      if (!esBtn || !enBtn) return;
+  var form = $('#cform'), btn = $('#submit-btn'), errBox = $('#form-error');
+  form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('err'); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    function chk(id, cond) { $(id).classList.toggle('err', !cond); if (!cond) ok = false; }
+    chk('#fld-name', $('#f-name').value.trim().length > 1);
+    chk('#fld-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#f-email').value.trim()));
+    chk('#fld-part', !!checks.querySelector('input:checked'));
+    chk('#fld-msg', $('#f-msg').value.trim().length > 3);
+    if (!ok) { var f = form.querySelector('.err input, .err textarea'); if (f) f.focus(); else checks.querySelector('input').focus(); return; }
+    if (form._honey.value) return;
 
-      esBtn.classList.toggle('active', currentLang === 'es');
-      enBtn.classList.toggle('active', currentLang === 'en');
-      esBtn.style.color = currentLang === 'es' ? 'white' : '#F27405';
-      enBtn.style.color = currentLang === 'en' ? 'white' : '#F27405';
-      esBtn.style.backgroundColor = currentLang === 'es' ? '#F27405' : 'transparent';
-      enBtn.style.backgroundColor = currentLang === 'en' ? '#F27405' : 'transparent';
-    }
+    var name = $('#f-name').value.trim().replace(/\s+/g, ' '), email = $('#f-email').value.trim().toLowerCase();
+    var data = new FormData();
+    data.append('nombre', name);
+    data.append('email', email);
+    data.append('organizacion', $('#f-org').value.trim());
+    data.append('participacion', $$('#checks input:checked').map(function (i) { return i.value; }).join(', '));
+    data.append('mensaje', $('#f-msg').value.trim());
+    data.append('idioma', W.lang);
+    data.append('_subject', 'Nueva colaboración - ' + name + ' - We Grow App');
+    data.append('_replyto', email);
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
 
-    function applyLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('language', lang);
-
-      const map = {
-        'nav-home': 'nav_home',
-        'nav-about': 'nav_about',
-        'nav-demo': 'nav_demo',
-        'nav-faq': 'nav_faq',
-        'nav-contact': 'nav_contact',
-        'nav-start': 'nav_start',
-        'm-nav-home': 'nav_home',
-        'm-nav-about': 'nav_about',
-        'm-nav-demo': 'nav_demo',
-        'm-nav-faq': 'nav_faq',
-        'm-nav-contact': 'nav_contact',
-        'm-nav-start': 'nav_start',
-        'pill-text': 'pill_text',
-        'hero-line-1': 'hero_line_1',
-        'hero-line-2': 'hero_line_2',
-        'hero-subtitle': 'hero_subtitle',
-        'ways-eyebrow': 'ways_eyebrow',
-        'ways-title': 'ways_title',
-        'ways-subtitle': 'ways_subtitle',
-        'way-title-1': 'way_title_1',
-        'way-desc-1': 'way_desc_1',
-        'way-title-2': 'way_title_2',
-        'way-desc-2': 'way_desc_2',
-        'way-title-3': 'way_title_3',
-        'way-desc-3': 'way_desc_3',
-        'way-title-4': 'way_title_4',
-        'way-desc-4': 'way_desc_4',
-        'way-title-5': 'way_title_5',
-        'way-desc-5': 'way_desc_5',
-        'way-title-6': 'way_title_6',
-        'way-desc-6': 'way_desc_6',
-        'contact-eyebrow': 'contact_eyebrow',
-        'contact-title': 'contact_title',
-        'contact-subtitle': 'contact_subtitle',
-        'label-name': 'label_name',
-        'label-email': 'label_email',
-        'label-org': 'label_org',
-        'optional-org': 'optional_org',
-        'checks-label-main': 'checks_label_main',
-        'checks-label-opt': 'checks_label_opt',
-        'check-text-1': 'check_text_1',
-        'check-text-2': 'check_text_2',
-        'check-text-3': 'check_text_3',
-        'check-text-4': 'check_text_4',
-        'check-text-5': 'check_text_5',
-        'check-text-6': 'check_text_6',
-        'check-text-7': 'check_text_7',
-        'label-message': 'label_message',
-        'submit-text': 'submit_text',
-        'privacy-note': 'privacy_note',
-        'success-title': 'success_title',
-        'success-text': 'success_text',
-        'back-home-text': 'back_home_text',
-        'close-title': 'close_title',
-        'close-text': 'close_text',
-        'err-name': 'err_name',
-        'err-email': 'err_email',
-        'footer-follow-title': 'footer_follow',
-        'footer-navigation-title': 'footer_navigation',
-        'footer-demo-link': 'footer_demo',
-        'footer-faq-link': 'footer_faq',
-        'footer-problem-link': 'footer_problem',
-        'footer-resources-title': 'footer_resources',
-        'footer-schools-link': 'footer_schools',
-        'footer-contact-link': 'footer_contact',
-        'footer-legal-title': 'footer_legal',
-        'footer-privacy-link': 'footer_privacy',
-        'footer-copyright': 'footer_copyright'
-      };
-
-      Object.keys(map).forEach(function(id) {
-        setText(id, t(map[id]));
-      });
-
-      document.getElementById('f-name').placeholder = t('placeholder_name');
-      document.getElementById('f-org').placeholder = t('placeholder_org');
-      document.getElementById('f-msg').placeholder = t('placeholder_message');
-
-      updateLanguageButtons();
-    }
-
-    function showSuccess() {
-      document.getElementById('form-section').style.display = 'none';
-      document.getElementById('success-state').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function toggleWay(card) {
-      card.classList.toggle('selected');
-      var val = card.dataset.val;
-      document.querySelectorAll('#checks-grid .check-item input').forEach(function(cb) {
-        if (cb.value === val) {
-          cb.checked = card.classList.contains('selected');
-          cb.closest('.check-item').classList.toggle('checked', cb.checked);
-        }
-      });
-    }
-
-    function toggleCheck(label) {
-      setTimeout(function() {
-        var cb = label.querySelector('input');
-        label.classList.toggle('checked', cb.checked);
-        var val = cb.value;
-        document.querySelectorAll('#ways-grid .way-card').forEach(function(c) {
-          if (c.dataset.val === val) c.classList.toggle('selected', cb.checked);
-        });
-      }, 0);
-    }
-
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var valid = true;
-      var name = document.getElementById('f-name');
-      var email = document.getElementById('f-email');
-      var errName = document.getElementById('err-name');
-      var errEmail = document.getElementById('err-email');
-
-      name.classList.remove('error');
-      email.classList.remove('error');
-      errName.classList.remove('show');
-      errEmail.classList.remove('show');
-
-      if (!name.value.trim()) {
-        name.classList.add('error');
-        errName.classList.add('show');
-        valid = false;
-      }
-
-      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email.value.trim() || !emailRe.test(email.value.trim())) {
-        email.classList.add('error');
-        errEmail.classList.add('show');
-        valid = false;
-      }
-
-      if (!valid) return;
-
-      var btn = document.getElementById('submit-btn');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader" style="font-size:16px" aria-hidden="true"></i> ' + t('loading_text');
-
-      var cleanName = name.value.trim().replace(/\s+/g, ' ');
-      var cleanEmail = email.value.trim().toLowerCase();
-      var formData = new FormData(this);
-      formData.append('_subject', 'Nueva colaboración - ' + cleanName + ' - ' + cleanEmail + ' - We Grow App');
-      formData.append('_captcha', 'false');
-      formData.append('_template', 'table');
-      formData.append('source_page', 'colabora.html');
-      formData.append('submitted_at', new Date().toISOString());
-
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
+    errBox.hidden = true; btn.disabled = true;
+    var label = btn.querySelector('span'); label.textContent = tx('f_sending');
+    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: data })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json().catch(function () { return {}; }); })
+      .then(function (res) {
+        if (res && (res.success === false || res.success === 'false')) throw new Error(res.message || 'error');
+        form.hidden = true; var s = $('#success'); s.hidden = false; s.focus();
+        if (window.gtag) gtag('event', 'form_submit', { form: 'colabora' });
       })
-      .then(function() {
-        showSuccess();
-      })
-      .catch(function() {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="ti ti-send" style="font-size:16px" aria-hidden="true"></i> ' + t('submit_text');
-        alert(t('error_send'));
-      });
-    });
+      .catch(function () { errBox.textContent = tx('f_error'); errBox.hidden = false; })
+      .then(function () { btn.disabled = false; label.textContent = W.t('f_send') || 'Enviar mensaje'; });
+  });
 
-    document.getElementById('lang-es').addEventListener('click', function() {
-      applyLanguage('es');
-    });
-
-    document.getElementById('lang-en').addEventListener('click', function() {
-      applyLanguage('en');
-    });
-
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
-    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-
-    function setMobileMenu(open) {
-      mobileMenuPanel.classList.toggle('hidden', !open);
-      mobileMenuBackdrop.classList.toggle('hidden', !open);
-      mobileMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      mobileMenuIcon.textContent = open ? '✕' : '☰';
-      document.body.style.overflow = open ? 'hidden' : '';
-    }
-
-    if (mobileMenuToggle && mobileMenuPanel && mobileMenuBackdrop && mobileMenuIcon) {
-      mobileMenuToggle.addEventListener('click', function() {
-        const open = mobileMenuPanel.classList.contains('hidden');
-        setMobileMenu(open);
-      });
-      mobileMenuBackdrop.addEventListener('click', function() {
-        setMobileMenu(false);
-      });
-      document.querySelectorAll('#mobile-menu-panel a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          setMobileMenu(false);
-        });
-      });
-      window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768) {
-          setMobileMenu(false);
-        }
-      });
-    }
-
-    applyLanguage(currentLang);
-  </script>
+  W.onLang(render);
+  W.start();
+})();
+</script>
 </body>
 </html>
