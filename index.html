@@ -452,10 +452,15 @@
   function stopTimer(reset) { clearInterval(timer); timer = null; if (reset) secs = 1500; }
   function stopAll(resetPomo) { stopTimer(resetPomo); stopSpeech(); }
 
-  /* Lectura en voz alta: resalta palabra por palabra mientras se escucha */
-  var speech = { words: [], idx: -1, fallback: null, utter: null };
+  /* Lectura en voz alta: resalta palabra por palabra mientras se escucha.
+     1) Si existe una grabación real (assets/audio/lectura-es.mp3 o lectura-en.mp3), se usa esa.
+     2) Si no, se elige la voz más natural que tenga el navegador. */
+  var AUDIO_SRC = { es: 'assets/audio/lectura-es.mp3', en: 'assets/audio/lectura-en.mp3' };
+  var speech = { words: [], idx: -1, fallback: null, utter: null, audio: null, raf: 0 };
   function stopSpeech() {
     if (window.speechSynthesis) try { speechSynthesis.cancel(); } catch (e) { /* nada */ }
+    if (speech.audio) { speech.audio.pause(); speech.audio = null; }
+    cancelAnimationFrame(speech.raf);
     clearInterval(speech.fallback); speech.fallback = null; speech.idx = -1; speech.utter = null;
     $$('#listen-txt .w.on').forEach(function (w) { w.classList.remove('on'); });
     var b = $('#listen-btn'), st = $('#listen-stop');
@@ -467,39 +472,95 @@
     speech.idx = i;
     speech.words.forEach(function (w, j) { w.el.classList.toggle('on', j === i); });
   }
+  /* Puntaje de cada voz: primero las neuronales/naturales, después las mejoradas; nunca las "compactas" */
+  function voiceScore(v, lang) {
+    var n = (v.name + ' ' + v.voiceURI).toLowerCase(), l = (v.lang || '').toLowerCase().replace('_', '-'), s = 0;
+    if (lang === 'es') {
+      if (l.indexOf('es') !== 0) return -1;
+      if (l === 'es-ar') s += 6; else if (/es-(419|us|mx|co|cl|uy)/.test(l)) s += 4; else s += 1;
+      if (/elena|tomas|tomás|paulina|mónica|monica|sabina|dalia|jorge|valentina|camila|lucía|lucia|helena/.test(n)) s += 2;
+    } else {
+      if (l.indexOf('en') !== 0) return -1;
+      if (l === 'en-us') s += 3; else if (l === 'en-gb') s += 2;
+      if (/aria|jenny|guy|samantha|ava|allison|karen|daniel|serena/.test(n)) s += 2;
+    }
+    if (/natural|neural/.test(n)) s += 20;
+    if (/premium/.test(n)) s += 16;
+    if (/enhanced|mejorad/.test(n)) s += 12;
+    if (/siri/.test(n)) s += 10;
+    if (/online/.test(n)) s += 6;
+    if (/google/.test(n)) s += 5;
+    if (v.localService === false) s += 2;
+    if (/compact|espeak|robot|novelty|whisper|bells|bubbles|bad news|good news|zarvox|trinoids|albert|fred|junior|ralph|kathy|bahh|boing|cellos|deranged|hysterical|organ|superstar/.test(n)) s -= 30;
+    return s;
+  }
+  function bestVoice(lang) {
+    if (!window.speechSynthesis) return null;
+    var vs = speechSynthesis.getVoices() || [], best = null, bs = -1;
+    vs.forEach(function (v) { var sc = voiceScore(v, lang); if (sc > bs) { bs = sc; best = v; } });
+    return best;
+  }
+  if (window.speechSynthesis) {
+    try { speechSynthesis.getVoices(); speechSynthesis.addEventListener('voiceschanged', function () { speechSynthesis.getVoices(); }); } catch (e) { /* nada */ }
+  }
+  /* Resaltado proporcional al avance (para la grabación o si la voz no informa palabras) */
+  function wordAt(progress) {
+    var total = 0, weights = speech.words.map(function (w) { var k = w.text.length + 2; total += k; return k; });
+    var target = progress * total, acc = 0;
+    for (var j = 0; j < weights.length; j++) { acc += weights[j]; if (target <= acc) return j; }
+    return weights.length - 1;
+  }
   function startSpeech() {
-    var s = L(S), text = speech.words.map(function (w) { return w.text; }).join(' ');
+    var s = L(S), lang = W.lang === 'en' ? 'en' : 'es', text = speech.words.map(function (w) { return w.text; }).join(' ');
     var b = $('#listen-btn'), st = $('#listen-stop');
     b.disabled = true; b.querySelector('span').textContent = s.listen + '…'; st.hidden = false;
-    var gotBoundary = false;
-    function runFallback() {
-      if (speech.fallback) return;
-      var i = Math.max(0, speech.idx);
-      mark(i);
-      speech.fallback = setInterval(function () {
-        i++;
-        if (i >= speech.words.length) { stopSpeech(); return; }
+
+    var a = new Audio(); a.preload = 'auto';
+    var usedAudio = false;
+    a.addEventListener('canplay', function onReady() {
+      a.removeEventListener('canplay', onReady);
+      if (!st || st.hidden) return;
+      usedAudio = true; speech.audio = a;
+      a.play().catch(function () { usedAudio = false; speech.audio = null; tts(); });
+      (function loop() {
+        if (speech.audio !== a) return;
+        if (a.duration) mark(wordAt(Math.min(1, a.currentTime / a.duration)));
+        speech.raf = requestAnimationFrame(loop);
+      })();
+    });
+    a.addEventListener('ended', function () { if (speech.audio === a) stopSpeech(); });
+    a.addEventListener('error', function () { if (!usedAudio) tts(); });
+    a.src = AUDIO_SRC[lang];
+
+    function tts() {
+      var gotBoundary = false;
+      function runFallback(rate) {
+        if (speech.fallback) return;
+        var i = Math.max(0, speech.idx);
         mark(i);
-      }, 380);
+        speech.fallback = setInterval(function () {
+          i++;
+          if (i >= speech.words.length) { if (!speech.utter) stopSpeech(); return; }
+          mark(i);
+        }, rate || 330);
+      }
+      if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { $('#listen-note').hidden = false; runFallback(380); return; }
+      var u = new SpeechSynthesisUtterance(text), v = bestVoice(lang);
+      u.lang = v ? v.lang : (lang === 'en' ? 'en-US' : 'es-AR');
+      if (v) u.voice = v;
+      u.rate = 1; u.pitch = 1;
+      u.onboundary = function (e) {
+        if (e.name && e.name !== 'word') return;
+        gotBoundary = true; clearInterval(speech.fallback); speech.fallback = null;
+        var acc = 0;
+        for (var j = 0; j < speech.words.length; j++) { if (e.charIndex < acc + speech.words[j].text.length + 1) { mark(j); break; } acc += speech.words[j].text.length + 1; }
+      };
+      u.onend = function () { if (speech.utter === u) stopSpeech(); };
+      u.onerror = function () { if (speech.utter === u && !gotBoundary) { speech.utter = null; $('#listen-note').hidden = false; runFallback(380); } };
+      speech.utter = u;
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+      setTimeout(function () { if (speech.utter === u && !gotBoundary) runFallback(330); }, 700);
     }
-    if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { $('#listen-note').hidden = false; runFallback(); return; }
-    var u = new SpeechSynthesisUtterance(text);
-    u.lang = W.lang === 'en' ? 'en-US' : 'es-AR';
-    var voices = speechSynthesis.getVoices(), pref = W.lang === 'en' ? /^en/i : /^es/i;
-    var v = voices.filter(function (x) { return /es-AR|es-419|es-US|es-MX/i.test(x.lang); })[0] || voices.filter(function (x) { return pref.test(x.lang); })[0];
-    if (v && W.lang !== 'en') u.voice = v; else if (W.lang === 'en') { var ve = voices.filter(function (x) { return pref.test(x.lang); })[0]; if (ve) u.voice = ve; }
-    u.rate = 0.95;
-    u.onboundary = function (e) {
-      if (e.name && e.name !== 'word') return;
-      gotBoundary = true; clearInterval(speech.fallback); speech.fallback = null;
-      var acc = 0;
-      for (var j = 0; j < speech.words.length; j++) { if (e.charIndex < acc + speech.words[j].text.length + 1) { mark(j); break; } acc += speech.words[j].text.length + 1; }
-    };
-    u.onend = function () { stopSpeech(); };
-    u.onerror = function () { if (!gotBoundary) { $('#listen-note').hidden = false; runFallback(); } };
-    speech.utter = u;
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
-    setTimeout(function () { if (speech.utter === u && !gotBoundary) runFallback(); }, 900);
   }
 
   function buildPicto(target) {
@@ -585,7 +646,6 @@
       paint();
     }
   }
-  if (window.speechSynthesis && speechSynthesis.getVoices) { speechSynthesis.getVoices(); }
 
   /* ---------- Video: se carga recién al tocar (más liviano) ---------- */
   var player = $('#player');
