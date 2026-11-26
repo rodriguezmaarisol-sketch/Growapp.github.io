@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
-  <link rel="stylesheet" href="assets/wga.css?v=20261126b">
+  <link rel="stylesheet" href="assets/wga.css?v=20261126c">
 </head>
 <body>
 <a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -263,7 +263,7 @@
   </div>
 </footer>
 
-<script src="assets/wga.js?v=20261126b"></script>
+<script src="assets/wga.js?v=20261126c"></script>
 <script>
 (function () {
   var W = window.WGA, $ = W.$, $$ = W.$$, svg = W.svg, I = W.I;
@@ -362,66 +362,188 @@
   }
 
   /* ---------- Desafíos y herramientas ---------- */
-  var TOOLS = { es: ['Pomodoro adaptativo', 'Modo dislexia', 'Pictogramas', 'Tips de aprendizaje', 'Tarjetas de conceptos clave', 'Recursos personalizados'], en: ['Adaptive Pomodoro', 'Dyslexia mode', 'Pictograms', 'Learning tips', 'Key concept cards', 'Personalized resources'] };
+  var TOOLS = {
+    es: ['Mapas conceptuales', 'Pomodoro adaptativo', 'Pictogramas', 'Lectura en voz alta', 'Tarjetas de conceptos clave', 'Recursos personalizados', 'Tips de aprendizaje'],
+    en: ['Concept maps', 'Adaptive Pomodoro', 'Pictograms', 'Read aloud', 'Key concept cards', 'Personalized resources', 'Learning tips']
+  };
+  var TOOL_INFO = {
+    map: { idx: 0, es: ['Mapa conceptual', 'We Grow App arma el mapa conceptual de un texto automáticamente: las ideas principales y cómo se conectan, de un vistazo.'], en: ['Concept map', 'We Grow App builds a concept map from any text automatically: the main ideas and how they connect, at a glance.'] },
+    pomo: { idx: 1, es: ['Pomodoro adaptativo', 'Organizá tu tiempo de estudio sin sobrecarga: bloques cortos de enfoque, con pausas que se ajustan a tu energía.'], en: ['Adaptive Pomodoro', 'Organize your study time without overload: short focus blocks with breaks that adapt to your energy.'] },
+    picto: { idx: 2, es: ['Pictogramas', 'Las palabras clave tienen un pictograma y una explicación simple. Pasá el cursor o tocá una palabra subrayada.'], en: ['Pictograms', 'Key words come with a pictogram and a simple explanation. Hover or tap an underlined word.'] },
+    listen: { idx: 3, es: ['Lectura en voz alta', 'Escuchá el texto mientras cada palabra se resalta. Así es más fácil seguir la lectura sin perderte.'], en: ['Read aloud', 'Listen to the text while each word is highlighted, so it’s easier to follow along.'] },
+    cards: { idx: 4, es: ['Tarjetas de conceptos clave', 'Definiciones simples y directas. Cada tarjeta es un paso corto que se puede completar.'], en: ['Key concept cards', 'Simple, direct definitions. Each card is a short step you can complete.'] },
+    path: { idx: 5, es: ['Recursos personalizados', 'Cada estudiante avanza a su ritmo, con recursos que se ajustan a su forma de aprender.'], en: ['Personalized resources', 'Each student moves at their own pace, with resources that fit how they learn.'] },
+    tips: { idx: 6, es: ['Tips de aprendizaje', 'Estrategias concretas para mejorar la concentración, la comprensión y la organización del estudio.'], en: ['Learning tips', 'Practical strategies to improve focus, comprehension and study organization.'] }
+  };
   var CH = [
-    { i: 'layers', on: [0], scene: 'pomo',
-      es: { t: 'Sobrecarga cognitiva', d: 'Cuesta procesar información extensa y poco visual.', tool: 'Pomodoro adaptativo', desc: 'Organizá tu tiempo de estudio sin sobrecarga: bloques cortos de enfoque, con pausas que se ajustan a tu energía.' },
-      en: { t: 'Cognitive overload', d: 'Long, text-heavy information is hard to process.', tool: 'Adaptive Pomodoro', desc: 'Organize your study time without overload: short focus blocks with breaks that adapt to your energy.' } },
-    { i: 'doc', on: [1, 2], scene: 'compare',
-      es: { t: 'Materiales no adaptados', d: 'Textos largos y sin apoyos visuales que dificultan la comprensión.', tool: 'Modo dislexia y pictogramas', desc: 'El mismo texto, con OpenDyslexic, más espacio y palabras clave con apoyo visual.' },
-      en: { t: 'Materials that aren’t adapted', d: 'Long texts without visual support make understanding harder.', tool: 'Dyslexia mode and pictograms', desc: 'The same text, in OpenDyslexic, with more spacing and visual support for key words.' } },
-    { i: 'route', on: [5], scene: 'path',
-      es: { t: 'Sin estrategias personalizadas', d: 'Cada estudiante necesita herramientas distintas para aprender mejor.', tool: 'Recursos personalizados', desc: 'Cada estudiante avanza a su ritmo, con recursos que se ajustan a su forma de aprender.' },
-      en: { t: 'No personalized strategies', d: 'Each student needs different tools to learn better.', tool: 'Personalized resources', desc: 'Each student moves at their own pace, with resources that fit how they learn.' } },
-    { i: 'battery', on: [4], scene: 'cards',
-      es: { t: 'Desmotivación', d: 'La frustración constante le quita ganas a cualquiera.', tool: 'Tarjetas de conceptos clave', desc: 'Definiciones simples y directas. Cada tarjeta es un paso corto que se puede completar.' },
-      en: { t: 'Low motivation', d: 'Constant frustration drains anyone’s will to learn.', tool: 'Key concept cards', desc: 'Simple, direct definitions. Each card is a short step you can complete.' } },
-    { i: 'teach', on: [3], scene: 'tips',
-      es: { t: 'Docentes sin formación', d: 'Necesitan herramientas para acompañar la neurodiversidad.', tool: 'Tips de aprendizaje', desc: 'Estrategias concretas para mejorar la concentración, la comprensión y la organización del estudio.' },
-      en: { t: 'Teachers without training', d: 'They need tools to support neurodiversity.', tool: 'Learning tips', desc: 'Practical strategies to improve focus, comprehension and study organization.' } }
+    { i: 'layers', tools: ['map', 'pomo'],
+      es: { t: 'Sobrecarga cognitiva', d: 'Cuesta procesar información extensa y poco visual.' },
+      en: { t: 'Cognitive overload', d: 'Long, text-heavy information is hard to process.' } },
+    { i: 'doc', tools: ['picto', 'listen'],
+      es: { t: 'Materiales no adaptados', d: 'Textos largos y sin apoyos visuales que dificultan la comprensión.' },
+      en: { t: 'Materials that aren’t adapted', d: 'Long texts without visual support make understanding harder.' } },
+    { i: 'route', tools: ['path'],
+      es: { t: 'Sin estrategias personalizadas', d: 'Cada estudiante necesita herramientas distintas para aprender mejor.' },
+      en: { t: 'No personalized strategies', d: 'Each student needs different tools to learn better.' } },
+    { i: 'battery', tools: ['cards'],
+      es: { t: 'Desmotivación', d: 'La frustración constante le quita ganas a cualquiera.' },
+      en: { t: 'Low motivation', d: 'Constant frustration drains anyone’s will to learn.' } },
+    { i: 'teach', tools: ['tips'],
+      es: { t: 'Docentes sin formación', d: 'Necesitan herramientas para acompañar la neurodiversidad.' },
+      en: { t: 'Teachers without training', d: 'They need tools to support neurodiversity.' } }
   ];
   var CONCEPTS = [
     { ic: 'leaf', es: ['Fotosíntesis', 'Las plantas usan la luz del sol, el agua y el aire para fabricar su alimento.'], en: ['Photosynthesis', 'Plants use sunlight, water and air to make their food.'] },
     { ic: 'globe', es: ['Ecosistema', 'Un lugar donde los seres vivos se relacionan entre sí y con el ambiente.'], en: ['Ecosystem', 'A place where living things interact with each other and their surroundings.'] },
     { ic: 'bolt', es: ['Energía', 'Lo que hace que las cosas se muevan, se calienten o cambien.'], en: ['Energy', 'What makes things move, heat up or change.'] }
   ];
+  /* Texto de ejemplo para pictogramas y lectura en voz alta */
+  var SAMPLE = {
+    es: [['Las '], ['plantas', 'sprout', 'Seres vivos que crecen en la tierra y no se mueven de lugar'], [' usan la '], ['luz del sol', 'spark', 'La energía que llega del Sol'], [', el '], ['agua', 'drop', 'Lo que toman por las raíces'], [' y el '], ['aire', 'wind', 'Lo que toman por las hojas'], [' para fabricar su '], ['alimento', 'leaf', 'Lo que necesitan para vivir y crecer'], ['. Este proceso se llama '], ['fotosíntesis', 'book', 'Cómo las plantas hacen su propia comida'], ['.']],
+    en: [['Plants', 'sprout', 'Living things that grow in the ground and stay in place'], [' use '], ['sunlight', 'spark', 'The energy that comes from the Sun'], [', '], ['water', 'drop', 'What they take in through their roots'], [' and '], ['air', 'wind', 'What they take in through their leaves'], [' to make their '], ['food', 'leaf', 'What they need to live and grow'], ['. This process is called '], ['photosynthesis', 'book', 'How plants make their own food'], ['.']]
+  };
+  var MAP = {
+    es: { text: 'La fotosíntesis es el proceso por el cual las plantas fabrican su alimento. Usan la luz del sol, el agua que toman por las raíces y el dióxido de carbono del aire. Como resultado producen glucosa, que les da energía, y liberan oxígeno.',
+      root: 'Fotosíntesis', branches: [['¿Quién la hace?', ['Las plantas']], ['¿Qué usa?', ['Luz del sol', 'Agua', 'Dióxido de carbono']], ['¿Qué produce?', ['Glucosa (energía)', 'Oxígeno']]] },
+    en: { text: 'Photosynthesis is the process plants use to make their food. They use sunlight, water taken in through their roots and carbon dioxide from the air. As a result they produce glucose, which gives them energy, and release oxygen.',
+      root: 'Photosynthesis', branches: [['Who does it?', ['Plants']], ['What does it use?', ['Sunlight', 'Water', 'Carbon dioxide']], ['What does it make?', ['Glucose (energy)', 'Oxygen']]] }
+  };
+  I.drop = '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>';
+  I.wind = '<path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h7"/>';
+  I.volume = '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>';
+  I.mapIc = '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 7.2L6.2 15.8M13 7.2l4.8 8.6"/>';
   var S = {
     es: { label: 'La herramienta', focus: 'de enfoque', rest: 'de descanso', adapts: 'Se adapta', adaptsD: 'si necesitás parar antes', start: 'Empezar', pause: 'Pausar', resume: 'Seguir', done: 'Completaste tu sesión',
-      before: 'Antes', with: 'Con We Grow App', cmpA: 'La fotosíntesis es el proceso mediante el cual las plantas convierten la energía lumínica en energía química.', cmpB: 'La <u>fotosíntesis</u> es cómo las plantas usan la <u>luz del sol</u> para hacer su comida.',
       p1: 'Lectura', p2: 'Enfoque', p3: 'Conceptos', of: 'de', pNote: 'Ejemplo. Cada estudiante avanza a un ritmo distinto, y está bien.',
       flip: 'Tocá para ver la definición', def: 'Definición simple', flipL: 'Dar vuelta la tarjeta', prev: 'Concepto anterior', next: 'Concepto siguiente',
-      tips: ['Dar una consigna por vez, por escrito y en voz alta.', 'Usar colores para separar ideas principales y ejemplos.', 'Proponer pausas cortas cada 20 a 25 minutos.'] },
+      tips: ['Dar una consigna por vez, por escrito y en voz alta.', 'Usar colores para separar ideas principales y ejemplos.', 'Proponer pausas cortas cada 20 a 25 minutos.'],
+      listen: 'Escuchar', stop: 'Detener', noVoice: 'Tu navegador no tiene voz disponible: mirá cómo se resaltan las palabras.', speed: 'Velocidad',
+      gen: 'Generar mapa conceptual', regen: 'Volver a generar', genning: 'Armando el mapa…', srcLbl: 'Texto' },
     en: { label: 'The tool', focus: 'of focus', rest: 'break', adapts: 'Adapts', adaptsD: 'if you need to stop early', start: 'Start', pause: 'Pause', resume: 'Resume', done: 'Session complete',
-      before: 'Before', with: 'With We Grow App', cmpA: 'Photosynthesis is the process by which plants convert light energy into chemical energy.', cmpB: '<u>Photosynthesis</u> is how plants use <u>sunlight</u> to make their food.',
       p1: 'Reading', p2: 'Focus', p3: 'Concepts', of: 'of', pNote: 'Example. Every student moves at a different pace, and that’s okay.',
       flip: 'Tap to see the definition', def: 'Simple definition', flipL: 'Flip the card', prev: 'Previous concept', next: 'Next concept',
-      tips: ['Give one instruction at a time, written and out loud.', 'Use colors to separate main ideas from examples.', 'Offer short breaks every 20 to 25 minutes.'] }
+      tips: ['Give one instruction at a time, written and out loud.', 'Use colors to separate main ideas from examples.', 'Offer short breaks every 20 to 25 minutes.'],
+      listen: 'Listen', stop: 'Stop', noVoice: 'Your browser has no voice available: watch how the words are highlighted.', speed: 'Speed',
+      gen: 'Generate concept map', regen: 'Generate again', genning: 'Building the map…', srcLbl: 'Text' }
   };
-  var list = $('#challenges'), panel = $('#panel'), current = 0, timer = null, secs = 1500;
+  var list = $('#challenges'), panel = $('#panel'), current = 0, sub = 0, timer = null, secs = 1500, cIdx = 0;
+  function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
   function scene(name, s) {
     if (name === 'pomo') return '<div class="pomo"><svg viewBox="0 0 150 150" aria-hidden="true"><circle cx="75" cy="75" r="62" fill="none" stroke="rgba(255,250,242,.15)" stroke-width="12"/><circle id="pomo-ring" cx="75" cy="75" r="62" fill="none" stroke="#FFB142" stroke-width="12" stroke-linecap="round" stroke-dasharray="389.6" stroke-dashoffset="' + (389.6 * (1 - secs / 1500)) + '" transform="rotate(-90 75 75)" style="transition:stroke-dashoffset 1s linear"/><text class="time" id="pomo-time" x="75" y="83" text-anchor="middle">' + fmt(secs) + '</text></svg><div class="side"><ul><li><b>25 min</b> ' + s.focus + '</li><li><b>5 min</b> ' + s.rest + '</li><li><b>' + s.adapts + '</b> ' + s.adaptsD + '</li></ul><button class="btn btn-primary" id="pomo-btn">' + (timer ? s.pause : (secs < 1500 ? s.resume : s.start)) + '</button></div></div>';
-    if (name === 'compare') return '<div class="compare"><div class="a"><small>' + s.before + '</small>' + s.cmpA + '</div><div class="b"><small>' + s.with + '</small>' + s.cmpB + '</div></div>';
+    if (name === 'picto') return '<div class="sample-card"><p class="sample-txt" id="picto-txt"></p></div>';
+    if (name === 'listen') return '<div class="sample-card"><div class="listen-bar"><button class="btn btn-primary" id="listen-btn">' + svg('volume') + '<span>' + s.listen + '</span></button><button class="chip" id="listen-stop" hidden>' + s.stop + '</button></div><p class="sample-txt" id="listen-txt"></p><p class="listen-note" id="listen-note" hidden>' + s.noVoice + '</p></div>';
+    if (name === 'map') return '<div class="map-wrap"><div class="map-src"><small>' + s.srcLbl + '</small><p>' + esc(L(MAP).text) + '</p></div><button class="btn btn-primary" id="map-btn">' + svg('mapIc') + '<span>' + s.gen + '</span></button><div class="cmap" id="cmap" hidden></div></div>';
     if (name === 'path') return '<div class="path"><div class="path-row"><b>' + s.p1 + '</b><span class="path-track"><i style="width:80%"></i></span><span>4 ' + s.of + ' 5</span></div><div class="path-row"><b>' + s.p2 + '</b><span class="path-track"><i style="width:40%"></i></span><span>2 ' + s.of + ' 5</span></div><div class="path-row"><b>' + s.p3 + '</b><span class="path-track"><i style="width:60%"></i></span><span>3 ' + s.of + ' 5</span></div><small style="color:var(--on-navy-muted);font-size:.82rem">' + s.pNote + '</small></div>';
     if (name === 'cards') return '<div class="concept"><button class="ccard" id="ccard" aria-label="' + s.flipL + '"><span class="ccard-inner"><span class="face front"><span class="pic" id="c-pic"></span><b id="c-term"></b><small>' + s.flip + '</small></span><span class="face back"><small>' + s.def + '</small><span id="c-def"></span></span></span></button><div class="dots"><button class="chip" id="c-prev" aria-label="' + s.prev + '">' + svg('arrowL', 2.4, 16) + '</button><span id="c-dots"></span><button class="chip" id="c-next" aria-label="' + s.next + '">' + svg('arrowR', 2.4, 16) + '</button></div></div>';
     return '<ul class="tips">' + s.tips.map(function (x) { return '<li>' + svg('check', 2.4) + x + '</li>'; }).join('') + '</ul>';
   }
-  function fmt(s) { return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
   function renderList() {
     list.innerHTML = '';
     CH.forEach(function (c, k) {
       var b = document.createElement('button'), x = L(c);
       b.className = 'challenge'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(k === current));
       b.innerHTML = '<span class="ic">' + svg(c.i) + '</span><span><b>' + x.t + '</b><small>' + x.d + '</small></span><span class="arrow">' + svg('arrowR', 2.4) + '</span>';
-      b.addEventListener('click', function () { if (current !== k) { stopTimer(true); } current = k; renderList(); renderPanel(); });
+      b.addEventListener('click', function () { if (current !== k) { stopAll(true); current = k; sub = 0; } renderList(); renderPanel(); });
       list.appendChild(b);
     });
   }
   function stopTimer(reset) { clearInterval(timer); timer = null; if (reset) secs = 1500; }
-  var cIdx = 0;
+  function stopAll(resetPomo) { stopTimer(resetPomo); stopSpeech(); }
+
+  /* Lectura en voz alta: resalta palabra por palabra mientras se escucha */
+  var speech = { words: [], idx: -1, fallback: null, utter: null };
+  function stopSpeech() {
+    if (window.speechSynthesis) try { speechSynthesis.cancel(); } catch (e) { /* nada */ }
+    clearInterval(speech.fallback); speech.fallback = null; speech.idx = -1; speech.utter = null;
+    $$('#listen-txt .w.on').forEach(function (w) { w.classList.remove('on'); });
+    var b = $('#listen-btn'), st = $('#listen-stop');
+    if (b) { b.disabled = false; b.querySelector('span').textContent = L(S).listen; }
+    if (st) st.hidden = true;
+  }
+  function mark(i) {
+    if (i === speech.idx) return;
+    speech.idx = i;
+    speech.words.forEach(function (w, j) { w.el.classList.toggle('on', j === i); });
+  }
+  function startSpeech() {
+    var s = L(S), text = speech.words.map(function (w) { return w.text; }).join(' ');
+    var b = $('#listen-btn'), st = $('#listen-stop');
+    b.disabled = true; b.querySelector('span').textContent = s.listen + '…'; st.hidden = false;
+    var gotBoundary = false;
+    function runFallback() {
+      if (speech.fallback) return;
+      var i = Math.max(0, speech.idx);
+      mark(i);
+      speech.fallback = setInterval(function () {
+        i++;
+        if (i >= speech.words.length) { stopSpeech(); return; }
+        mark(i);
+      }, 380);
+    }
+    if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { $('#listen-note').hidden = false; runFallback(); return; }
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = W.lang === 'en' ? 'en-US' : 'es-AR';
+    var voices = speechSynthesis.getVoices(), pref = W.lang === 'en' ? /^en/i : /^es/i;
+    var v = voices.filter(function (x) { return /es-AR|es-419|es-US|es-MX/i.test(x.lang); })[0] || voices.filter(function (x) { return pref.test(x.lang); })[0];
+    if (v && W.lang !== 'en') u.voice = v; else if (W.lang === 'en') { var ve = voices.filter(function (x) { return pref.test(x.lang); })[0]; if (ve) u.voice = ve; }
+    u.rate = 0.95;
+    u.onboundary = function (e) {
+      if (e.name && e.name !== 'word') return;
+      gotBoundary = true; clearInterval(speech.fallback); speech.fallback = null;
+      var acc = 0;
+      for (var j = 0; j < speech.words.length; j++) { if (e.charIndex < acc + speech.words[j].text.length + 1) { mark(j); break; } acc += speech.words[j].text.length + 1; }
+    };
+    u.onend = function () { stopSpeech(); };
+    u.onerror = function () { if (!gotBoundary) { $('#listen-note').hidden = false; runFallback(); } };
+    speech.utter = u;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    setTimeout(function () { if (speech.utter === u && !gotBoundary) runFallback(); }, 900);
+  }
+
+  function buildPicto(target) {
+    L(SAMPLE).forEach(function (x) {
+      if (!x[1]) { target.appendChild(document.createTextNode(x[0])); return; }
+      var sp = document.createElement('span');
+      sp.className = 'pw'; sp.tabIndex = 0; sp.setAttribute('role', 'button'); sp.setAttribute('aria-label', x[0] + ': ' + x[2]);
+      sp.innerHTML = x[0] + '<span class="pbox" aria-hidden="true"><span class="pic">' + svg(x[1]) + '</span><span>' + x[2] + '</span></span>';
+      if (!touch) { sp.addEventListener('mouseenter', function () { sp.classList.add('open'); }); sp.addEventListener('mouseleave', function () { sp.classList.remove('open'); }); }
+      sp.addEventListener('focus', function () { sp.classList.add('open'); });
+      sp.addEventListener('blur', function () { sp.classList.remove('open'); });
+      sp.addEventListener('click', function (e) { e.stopPropagation(); var was = sp.classList.contains('open'); closeAll(); if (!was || !touch) sp.classList.add('open'); });
+      target.appendChild(sp);
+    });
+  }
+  function buildListen(target) {
+    speech.words = [];
+    var text = L(SAMPLE).map(function (x) { return x[0]; }).join('');
+    text.split(/(\s+)/).forEach(function (part) {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { target.appendChild(document.createTextNode(part)); return; }
+      var w = document.createElement('span'); w.className = 'w'; w.textContent = part;
+      target.appendChild(w); speech.words.push({ el: w, text: part });
+    });
+  }
+  function buildMap(box, animate) {
+    var m = L(MAP);
+    var html = '<div class="cmap-root n">' + esc(m.root) + '</div><div class="cmap-branches">' +
+      m.branches.map(function (br) {
+        return '<div class="cmap-branch"><div class="cmap-q n">' + esc(br[0]) + '</div><div class="cmap-leaves">' + br[1].map(function (l) { return '<span class="cmap-leaf n">' + esc(l) + '</span>'; }).join('') + '</div></div>';
+      }).join('') + '</div>';
+    box.innerHTML = html; box.hidden = false;
+    if (animate && !W.reduce) {
+      $$('.n', box).forEach(function (n, k) { n.classList.add('pending'); setTimeout(function () { n.classList.remove('pending'); }, 120 + k * 140); });
+    }
+  }
+
   function renderPanel() {
-    var c = CH[current], x = L(c), s = L(S), tools = L(TOOLS);
-    panel.innerHTML = '<div class="fade"><span class="label">' + s.label + '</span><h3>' + x.tool + '</h3><p class="desc">' + x.desc + '</p><div class="stage">' + scene(c.scene, s) + '</div><div class="tools-chips">' + tools.map(function (t, j) { return '<span class="' + (c.on.indexOf(j) > -1 ? 'on' : '') + '">' + t + '</span>'; }).join('') + '</div></div>';
-    if (c.scene === 'pomo') {
+    var c = CH[current], s = L(S), tools = L(TOOLS), key = c.tools[sub], info = L(TOOL_INFO[key]);
+    var tabs = c.tools.length > 1 ? '<div class="subtabs" role="tablist">' + c.tools.map(function (k, j) { return '<button role="tab" aria-selected="' + (j === sub) + '" data-sub="' + j + '">' + L(TOOL_INFO[k])[0] + '</button>'; }).join('') + '</div>' : '';
+    var onIdx = c.tools.map(function (k) { return TOOL_INFO[k].idx; });
+    panel.innerHTML = '<div class="fade"><span class="label">' + s.label + '</span>' + tabs + '<h3>' + info[0] + '</h3><p class="desc">' + info[1] + '</p><div class="stage">' + scene(key, s) + '</div><div class="tools-chips">' + tools.map(function (t, j) { return '<span class="' + (onIdx.indexOf(j) > -1 ? 'on' : '') + '">' + t + '</span>'; }).join('') + '</div></div>';
+    $$('.subtabs button', panel).forEach(function (b) { b.addEventListener('click', function () { var n = +b.dataset.sub; if (n !== sub) { stopAll(false); sub = n; renderPanel(); } }); });
+    if (key === 'pomo') {
       var btn = $('#pomo-btn');
       btn.addEventListener('click', function () {
         if (timer) { stopTimer(false); btn.textContent = s.resume; return; }
@@ -436,7 +558,21 @@
         }, 1000);
       });
     }
-    if (c.scene === 'cards') {
+    if (key === 'picto') buildPicto($('#picto-txt'));
+    if (key === 'listen') {
+      buildListen($('#listen-txt'));
+      $('#listen-btn').addEventListener('click', startSpeech);
+      $('#listen-stop').addEventListener('click', stopSpeech);
+    }
+    if (key === 'map') {
+      var mb = $('#map-btn');
+      mb.addEventListener('click', function () {
+        var box = $('#cmap'), label = mb.querySelector('span');
+        mb.disabled = true; label.textContent = s.genning;
+        setTimeout(function () { buildMap(box, true); mb.disabled = false; label.textContent = s.regen; }, W.reduce ? 0 : 600);
+      });
+    }
+    if (key === 'cards') {
       var card = $('#ccard');
       var paint = function () {
         var k = CONCEPTS[cIdx], v = L(k); card.classList.remove('flipped');
@@ -449,6 +585,7 @@
       paint();
     }
   }
+  if (window.speechSynthesis && speechSynthesis.getVoices) { speechSynthesis.getVoices(); }
 
   /* ---------- Video: se carga recién al tocar (más liviano) ---------- */
   var player = $('#player');
@@ -494,7 +631,7 @@
       ['¿Qué es We Grow App?', 'Es una plataforma educativa neuroinclusiva pensada para estudiantes y escuelas. Reúne herramientas visuales, accesibles y personalizables para leer, organizarse y estudiar, y acompaña las distintas formas de aprender.'],
       ['¿Necesito tener un diagnóstico para usarla?', 'No. Cualquier estudiante puede usar We Grow App. Está pensada para quien busca estudiar de una forma más visual, ordenada y adaptada a sus necesidades, tenga o no un diagnóstico.'],
       ['¿We Grow App hace diagnósticos?', 'No. We Grow App no diagnostica ni evalúa. Es una herramienta que acompaña el aprendizaje con apoyos para leer, organizarse y estudiar. Si tenés dudas sobre un diagnóstico, lo mejor es consultar con un profesional de la salud o con el equipo de orientación de tu escuela.'],
-      ['¿Qué herramientas incluye?', 'Temporizador de estudio con pausas, modo de lectura con OpenDyslexic, pictogramas, tarjetas de conceptos clave, tips de aprendizaje, calendarios visuales y recursos personalizados.'],
+      ['¿Qué herramientas incluye?', 'Lectura en voz alta con resaltado de palabras, tipografías accesibles como OpenDyslexic, pictogramas, mapas conceptuales automáticos, tarjetas de conceptos clave, temporizador de estudio con pausas, tips de aprendizaje, calendarios visuales y recursos personalizados.'],
       ['¿Funciona en celular, tablet y computadora?', 'Sí. Podés usarla desde cualquier dispositivo con conexión a internet y seguir estudiando donde estés.'],
       ['¿La pueden usar las escuelas?', 'Sí. Trabajamos con escuelas que quieren ofrecer un aprendizaje más inclusivo. Las y los docentes tienen aulas virtuales para acompañar a cada estudiante sin sumar trabajo.'],
       ['¿Cómo sumo We Grow App a mi colegio?', 'Completá el formulario <a class="link" href="colabora.html?escuela=1">Sumar mi colegio</a> o agendá una reunión de 30 minutos con el equipo. Conversamos sobre las necesidades de tu escuela y te contamos las opciones de implementación.'],
@@ -506,7 +643,7 @@
       ['What is We Grow App?', 'It’s a neuroinclusive learning platform built for students and schools. It brings together visual, accessible and customizable tools to read, get organized and study, and supports different ways of learning.'],
       ['Do I need a diagnosis to use it?', 'No. Any student can use We Grow App. It’s designed for anyone who wants to study in a more visual, organized way that fits their needs, with or without a diagnosis.'],
       ['Does We Grow App diagnose?', 'No. We Grow App doesn’t diagnose or assess. It’s a tool that supports learning with help for reading, organizing and studying. If you have questions about a diagnosis, it’s best to talk to a health professional or your school’s guidance team.'],
-      ['What tools does it include?', 'A study timer with breaks, a reading mode with OpenDyslexic, pictograms, key concept cards, learning tips, visual calendars and personalized resources.'],
+      ['What tools does it include?', 'Read aloud with word highlighting, accessible fonts like OpenDyslexic, pictograms, automatic concept maps, key concept cards, a study timer with breaks, learning tips, visual calendars and personalized resources.'],
       ['Does it work on phones, tablets and computers?', 'Yes. You can use it on any device with an internet connection and keep studying wherever you are.'],
       ['Can schools use it?', 'Yes. We work with schools that want to offer more inclusive learning. Teachers get virtual classrooms to support each student without adding to their workload.'],
       ['How do I bring We Grow App to my school?', 'Fill out the <a class="link" href="colabora.html?escuela=1">Add my school</a> form or book a 30-minute meeting with the team. We’ll talk about your school’s needs and walk you through the implementation options.'],
@@ -534,7 +671,7 @@
     ['inicio', 'herramientas', 'luma', 'instituciones', 'preguntas'].forEach(function (id) { io.observe(document.getElementById(id)); });
   }
 
-  W.onLang(function () { renderReader(); renderList(); renderPanel(); renderFaq(); resetChat(); var o = $('#lh-out'); if (o) o.textContent = String($('#lh').value).replace('.', W.lang === 'es' ? ',' : '.'); });
+  W.onLang(function () { stopSpeech(); renderReader(); renderList(); renderPanel(); renderFaq(); resetChat(); var o = $('#lh-out'); if (o) o.textContent = String($('#lh').value).replace('.', W.lang === 'es' ? ',' : '.'); });
   W.start();
 })();
 </script>
